@@ -1,0 +1,46 @@
+@use "sass:map";
+@import '../../../../sass/Helpers/variable';
+.myHeaderBottom {
+    background-color: $green-2;
+    ul{
+        li{
+            .myDropdown-menu{
+                a{
+                    color: #383838;
+                    border-top: 1px solid gainsboro;
+                    border-bottom: 1px solid gainsboro;
+                }
+                ul{
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    li{
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        a{
+                            padding-top: 8px;
+                            padding-bottom: 8px;
+                            margin-right: 12px;
+                        }
+                        i{
+                            position: absolute;
+                            color: #383838;
+                            right: 5%;
+                        }
+                    }
+                }
+            }
+            a{
+                color: white;
+            }
+            &:last-child{
+                a{
+                    &:first-child{
+                        border-right:2px solid white;
+                    }
+                }
+            }
+        }
+    }
+}

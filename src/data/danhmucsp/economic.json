@@ -1,0 +1,317 @@
+[
+    {
+        "id": 1,
+        "title": "Bí Kíp Kinh Doanh - Những Điều Cần Kíp Khi Bí",
+        "author": "Hồ Trọng Lai",
+        "image": "./images/books/economic/eco-1.jpg",
+        "price": "",
+        "priceSale": "300.000",
+        "soLuong": 1
+    },
+    {
+        "id": 2,
+        "title": "Trọn Bộ 4 Quyển Sách Trên Lưng Khổng Tượng - Kinh Doanh Online Trên Sàn Thương Mại Điện Tử - Khởi Nghiệp Với Bán Hàng Qua Mạng và Nhãn Hàng Riêng",
+        "author": "",
+        "image": "./images/books/economic/eco-2.jpg",
+        "price": "",
+        "priceSale": "796.000",
+        "soLuong": 1
+    },
+    {
+        "id": 3,
+        "title": "Khởi Nghiệp Kinh Doanh Online - Bán Hàng Hiệu Quả Trên Facebook",
+        "author": "Nguyễn Trí Long",
+        "image": "./images/books/economic/eco-3.jpg",
+        "price": "",
+        "priceSale": "199.000",
+        "soLuong": 1
+    },
+    {
+        "id": 4,
+        "title": "Thao Túng Hành Vi Trong Bán Hàng",
+        "author": "Vũ Vĩnh Mai",
+        "image": "./images/books/economic/eco-4.jpg",
+        "price": "179.000",
+        "priceSale": "161.000",
+        "soLuong": 1
+    },
+    {
+        "id": 5,
+        "title": "Tái Tạo Mô Hình Kinh Doanh Hiệu Quả",
+        "author": "Mark W.Johnson",
+        "image": "./images/books/economic/eco-5.jpg",
+        "price": "149.000",
+        "priceSale": "134.000",
+        "soLuong": 1
+    },
+    {
+        "id": 6,
+        "title": "Kinh Doanh Online",
+        "author": "Jonathan Allen",
+        "image": "./images/books/economic/eco-6.jpg",
+        "price": "149.000",
+        "priceSale": "134.000",
+        "soLuong": 1
+    },
+    {
+        "id": 7,
+        "title": "Digital Marketing - Từ Chiến Lược Đến Thực Thi (Tái Bản 2019)",
+        "author": "Vinalink",
+        "image": "./images/books/economic/eco-7.jpg",
+        "price": "220.000",
+        "priceSale": "198.000",
+        "soLuong": 1
+    },
+    {
+        "id": 8,
+        "title": "Mưu Lược Trong Kinh Doanh (Tái Bản)",
+        "author": "Vinalink",
+        "image": "./images/books/economic/eco-8.jpg",
+        "price": "130.000",
+        "priceSale": "117.000",
+        "soLuong": 1
+    },
+    {
+        "id": 9,
+        "title": "Thấu Hiểu Khách Hàng",
+        "author": "Đặng Thúy Hà",
+        "image": "./images/books/economic/eco-9.jpg",
+        "price": "269.000",
+        "priceSale": "242.000",
+        "soLuong": 1
+    },
+    {
+        "id": 10,
+        "title": "Chiến Lược Video Marketing (Tái Bản 2023)",
+        "author": "Jon Mowat",
+        "image": "./images/books/economic/eco-10.jpg",
+        "price": "179.000",
+        "priceSale": "161.000",
+        "soLuong": 1
+    },
+    {
+        "id": 11,
+        "title": "Người Giàu Có Nhất Thành Babylon",
+        "author": "George Samuel Clason",
+        "image": "./images/books/economic/eco-11.jpg",
+        "price": "98.000",
+        "priceSale": "88.000",
+        "soLuong": 1
+    },
+    {
+        "id": 12,
+        "title": "Bill Gates - Tham Vọng Lớn Lao & Quá Trình Hình Thành Đế Chế Microsoft",
+        "author": "James Wallace",
+        "image": "./images/books/economic/eco-12.jpg",
+        "price": "249.000",
+        "priceSale": "199.000",
+        "soLuong": 1
+    },
+    {
+        "id": 13,
+        "title": "Sự Minh Triết Của Tài Chính - Đi Tìm Tính Nhân Văn Trong Thế Giới Của Rủi Ro Và Lợi Nhuận",
+        "author": "Mihir A. Desai",
+        "image": "./images/books/economic/eco-13.jpg",
+        "price": "140.000",
+        "priceSale": "112.000",
+        "soLuong": 1
+    },
+    {
+        "id": 14,
+        "title": "Phân Tích Dòng Tiền Trong Đầu Tư Bất Động Sản",
+        "author": "Từ Viễn",
+        "image": "./images/books/economic/eco-14.jpg",
+        "price": "195.000",
+        "priceSale": "176.000",
+        "soLuong": 1
+    },
+    {
+        "id": 15,
+        "title": "Elon Musk Và Cuộc Cách Mạng Tài Chính Toàn Cầu",
+        "author": "Jimmy Soni",
+        "image": "./images/books/economic/eco-15.jpg",
+        "price": "249.000",
+        "priceSale": "224.000",
+        "soLuong": 1
+    },
+    {
+        "id": 16,
+        "title": "Tạo Fan Thương Hiệu - Chốt Triệu Đơn Hàng",
+        "author": "Laura Sicola",
+        "image": "./images/books/economic/eco-16.jpg",
+        "price": "149.000",
+        "priceSale": "134.000",
+        "soLuong": 1
+    },
+    {
+        "id": 17,
+        "title": "Phương Pháp Đầu Tư Cổ Phiếu Tăng Trưởng",
+        "author": "Laura Sicola",
+        "image": "./images/books/economic/eco-17.jpg",
+        "price": "159.000",
+        "priceSale": "143.000",
+        "soLuong": 1
+    },
+    {
+        "id": 18,
+        "title": "Phân Tích Thị Trường Chứng Khoán (Tái Bản 2023)",
+        "author": "Laura Sicola",
+        "image": "./images/books/economic/eco-18.jpg",
+        "price": "249.000",
+        "priceSale": "197.000",
+        "soLuong": 1
+    },
+    {
+        "id": 19,
+        "title": "Vua Trái Phiếu",
+        "author": "Laura Sicola",
+        "image": "./images/books/economic/eco-19.jpg",
+        "price": "219.000",
+        "priceSale": "197.000",
+        "soLuong": 1
+    },
+    {
+        "id": 20,
+        "title": "Nói Sao Cho Khách Hàng Thích - Bán Sao Cho Khách Hàng Mua",
+        "author": "Jeb Blount",
+        "image": "./images/books/economic/eco-20.jpg",
+        "price": "149.000",
+        "priceSale": "134.000",
+        "soLuong": 1
+    },
+    {
+        "id": 21,
+        "title": "Agile - Phương Pháp Quản Lý Công Việc Hiệu Quả",
+        "author": "Laura Sicola",
+        "image": "./images/books/economic/eco-21.jpg",
+        "price": "219.000",
+        "priceSale": "197.000",
+        "soLuong": 1
+    },
+    {
+        "id": 22,
+        "title": "Business Plan - Lập Kế Hoạch Kinh Doanh Chuyên Nghiệp",
+        "author": "Brian Finch",
+        "image": "./images/books/economic/eco-22.jpg",
+        "price": "179.000",
+        "priceSale": "161.000",
+        "soLuong": 1
+    },
+    {
+        "id": 23,
+        "title": "Chiến Lược Bứt Phá Từ McKinsey Và Company",
+        "author": "Chris Bradley",
+        "image": "./images/books/economic/eco-23.jpg",
+        "price": "180.000",
+        "priceSale": "162.000",
+        "soLuong": 1
+    },
+    {
+        "id": 24,
+        "title": "Hành Trình Gọi Vốn - 7 Bước Chinh Phục Nhà Đầu Tư",
+        "author": "Carlye Adler",
+        "image": "./images/books/economic/eco-24.jpg",
+        "price": "180.000",
+        "priceSale": "162.000",
+        "soLuong": 1
+    },
+    {
+        "id": 25,
+        "title": "Ngựa Lùn Giữa Đàn Kỳ Lân",
+        "author": "Sahil Lavingia",
+        "image": "./images/books/economic/eco-25.jpg",
+        "price": "160.000",
+        "priceSale": "144.000",
+        "soLuong": 1
+    },
+    {
+        "id": 26,
+        "title": "Kỹ Thuật Phân Tích Biểu Đồ Chứng Khoán",
+        "author": "Hiroki Takeuchi",
+        "image": "./images/books/economic/eco-26.jpg",
+        "price": "169.000",
+        "priceSale": "152.000",
+        "soLuong": 1
+    },
+    {
+        "id": 27,
+        "title": "Lập Kế Hoạch Dòng Tiền Thông Minh",
+        "author": "Michaela Chung",
+        "image": "./images/books/economic/eco-27.jpg",
+        "price": "159.000",
+        "priceSale": "143.000",
+        "soLuong": 1
+    },
+    {
+        "id": 28,
+        "title": "KOLs Marketing",
+        "author": "Neal Schaffer",
+        "image": "./images/books/economic/eco-28.jpg",
+        "price": "149.000",
+        "priceSale": "134.000",
+        "soLuong": 1
+    },
+    {
+        "id": 29,
+        "title": "Tâm Lý Đầu Tư Của Warren Buffett",
+        "author": "Carey Avalon",
+        "image": "./images/books/economic/eco-29.jpg",
+        "price": "219.000",
+        "priceSale": "197.000",
+        "soLuong": 1
+    },
+    {
+        "id": 30,
+        "title": "Chiến Lược Xây Dựng Thương Hiệu Và Quản Lý Sản Phẩm",
+        "author": "Melissa Perri",
+        "image": "./images/books/economic/eco-30.jpg",
+        "price": "179.000",
+        "priceSale": "161.000",
+        "soLuong": 1
+    },
+    {
+        "id": 31,
+        "title": "Boxset Textbook Services Marketing (Bộ 2 Cuốn)",
+        "author": "Nhiều tác giả",
+        "image": "./images/books/economic/eco-31.jpg",
+        "price": "700.000",
+        "priceSale": "630.000",
+        "soLuong": 1
+    },
+    {
+        "id": 32,
+        "title": "Marketing Plan - 9 Bước Xây Dựng Chiến Lược Thương Hiệu Chuyên Nghiệp",
+        "author": "John Westwood",
+        "image": "./images/books/economic/eco-32.jpg",
+        "price": "159.000",
+        "priceSale": "143.000",
+        "soLuong": 1
+    },
+    {
+        "id": 33,
+        "title": "Tâm Lý Đầu Tư Của Warren Buffett",
+        "author": "Carey Avalon",
+        "image": "./images/books/economic/eco-33.jpg",
+        "price": "219.000",
+        "priceSale": "197.000",
+        "soLuong": 1
+    },
+    {
+        "id": 34,
+        "title": "Digital Marketing Thực Chiến",
+        "author": "Nhiều tác giả",
+        "image": "./images/books/economic/eco-34.jpg",
+        "price": "159.000",
+        "priceSale": "143.000",
+        "soLuong": 1
+    },
+    {
+        "id": 35,
+        "title": "KPI - Công Cụ Đo Lường Và Quản Lý Hiệu Suất Công Việc",
+        "author": "Maureen Callahan",
+        "image": "./images/books/economic/eco-35.jpg",
+        "price": "189.000",
+        "priceSale": "170.000",
+        "soLuong": 1
+    },
+]

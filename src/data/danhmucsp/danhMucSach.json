@@ -1,0 +1,54 @@
+[
+    {
+        "id": 1,
+        "title": "Sách Bán Chạy"
+    },
+    {
+        "id": 2,
+        "title": "Sách Mới Phát Hành"
+    },
+    {
+        "id": 3,
+        "title": "Sách Ngoại Văn"
+    },
+    {
+        "id": 4,
+        "title": "Sách Kinh Tế"
+    },
+    {
+        "id": 5,
+        "title": "Sách Văn học Trong Nước"
+    },
+    {
+        "id": 6,
+        "title": "Sách Văn học Nước Ngoài"
+    },
+    {
+        "id": 7,
+        "title": "Sách Thường Thức – Đời Sống"
+    },
+    {
+        "id": 8,
+        "title": "Sách Thiếu Nhi"
+    },
+    {
+        "id": 9,
+        "title": "Sách Phát Triển Bản Thân"
+    },
+    {
+        "id": 10,
+        "title": "Sách Tin Học - Ngoại Ngữ"
+    },
+    {
+        "id": 11,
+        "title": "Sách Chuyên Ngành"
+    },
+    {
+        "id": 12,
+        "title": "Sách Giáo Khoa - Giáo Trình"
+    },
+    {
+        "id": 13,
+        "title": "Tạp chí - Văn phòng phẩm"
+    }
+]

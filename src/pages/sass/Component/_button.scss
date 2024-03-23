@@ -1,0 +1,9 @@
+@import '../Helpers/variable';
+.btnBuyNow {
+    background-color: $red-1;
+    padding: $pd-2 $pd-5;
+    border: none;
+    color: $white-1;
+    border-radius: $pd-1;
+    font-size: $fz-4 - 2;
+}

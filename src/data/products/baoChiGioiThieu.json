@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "title": "Người Kép Già - Truyện Ngắn Và Vừa Kim Lân (Với 18 Minh Họa Của Thành Chương)",
+        "author": "Thành Chương",
+        "image": "./images/books/baoChiGioiThieu/bc-1.jpg",
+        "price": "360.000",
+        "priceSale": "109.000",
+        "soLuong": 1
+    },
+    {
+        "id": 2,
+        "title": "Tỏa Sáng - Jessica Jung",
+        "author": "Jessica Jung",
+        "image": "./images/books/baoChiGioiThieu/bc-2.jpg",
+        "price": "95.000",
+        "priceSale": "33.000",
+        "soLuong": 1
+    },
+    {
+        "id": 3,
+        "title": "Muôn Kiếp Nhân Sinh",
+        "author": "Nguyên Phong",
+        "image": "./images/books/baoChiGioiThieu/bc-3.jpg",
+        "price": "168.000",
+        "priceSale": "143.000",
+        "soLuong": 1
+    },
+]

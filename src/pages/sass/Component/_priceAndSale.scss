@@ -1,0 +1,23 @@
+ .mySale {
+    padding-top: 10px;
+     border-top: 1px dashed $gray-1;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+
+     .mySale-price-container {
+         display: flex;
+         align-items: center;
+         .mySale-price{
+            margin-right: 15px;
+            text-decoration: line-through;
+            color: $gray-2;
+            font-size: $fz-3 - 1;
+         }
+         .mySale-price-sale{
+            font-size: $fz-3 + 2;
+            color: $red-3;
+            font-weight: bold;
+         }
+     }
+ }

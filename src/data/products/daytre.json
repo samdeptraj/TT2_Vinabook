@@ -1,0 +1,68 @@
+[
+    {
+        "id": 1,
+        "title": "Chạm Đến Tim Con",
+        "author": "Thích Nhật Từ",
+        "desc": "Nuôi dạy con chưa bao giờ là việc dễ dàng đối với bậc làm cha, làm mẹ. Sự đấu tranh giữa lý trí và con tim",
+        "image": "./images/books/daytre/daytre-1.jpg",
+        "price": "99.000",
+        "priceSale": "79.000",
+        "sale": "20",
+        "soLuong": 1
+    },
+    {
+        "id": 2,
+        "title": "Người Mẹ “Giàu Có” - Cùng Con Bay Vào Tuổi Thơ Yêu Thương",
+        "author": "Tạ lăng Khiết",
+        "desc": "Người Mẹ “Giàu Có” - Cùng Con Bay Vào Tuổi Thơ Yêu Thương LỜI MỞ ĐẦU Đây là những câu chuyện của một người mẹ",
+        "image": "./images/books/daytre/daytre-2.jpg",
+        "price": "85.000",
+        "priceSale": "77.000",
+        "sale": "9",
+        "soLuong": 1
+    },
+    {
+        "id": 3,
+        "title": "IQ Montessori Logic - Phát Triển Toàn Diện Khả Năng Tư Duy Logic Cho Trẻ Từ 3-6 Tuổi",
+        "author": "Quỳnh Hương",
+        "desc": "",
+        "image": "./images/books/daytre/daytre-3.jpg",
+        "price": "89.000",
+        "priceSale": "80.000",
+        "sale": "10",
+        "soLuong": 1
+    },
+    {
+        "id": 4,
+        "title": "Vô Cùng Tàn Nhẫn Vô Cùng Yêu Thương - Tập 4",
+        "author": "Sara Imas",
+        "desc": "Vô cùng tàn nhẫn vô cùng yêu thương 4 là những chia sẻ của Sara Imas trong việc bồi dưỡng trí tuệ tài chính cho con trẻ",
+        "image": "./images/books/daytre/daytre-4.jpg",
+        "price": "149.000",
+        "priceSale": "127.000",
+        "sale": "15",
+        "soLuong": 1
+    },
+    {
+        "id": 5,
+        "title": "Được Nuôi Bởi Mẹ, Được Dạy Bởi Cha",
+        "author": "An Nhĩ Tử",
+        "desc": "Mỗi chúng ta, trước khi làm bố mẹ, đều vẫn luôn là một con ngườiTuổi thơ một đi sẽ bao giờ quay trở lại",
+        "image": "./images/books/daytre/daytre-5.jpg",
+        "price": "98.000",
+        "priceSale": "83.000",
+        "sale": "15",
+        "soLuong": 1
+    },
+    {
+        "id": 6,
+        "title": "Vô Cùng Tàn Nhẫn, Vô Cùng Yêu Thương - Tập 1 (Tái Bản 2021)",
+        "author": "Sara Imas",
+        "desc": "Vô Cùng Tàn Nhẫn Vô Cùng Yêu Thương là cuốn sách nuôi dạy con của một bà mẹ Do Thái sinh ra và lớn lên ở Trung Quốc",
+        "image": "./images/books/daytre/daytre-6.jpg",
+        "price": "189.000",
+        "priceSale": "161.000",
+        "sale": "15",
+        "soLuong": 1
+    },
+]

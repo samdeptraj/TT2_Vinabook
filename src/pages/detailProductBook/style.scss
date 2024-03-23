@@ -1,0 +1,77 @@
+.myDetailProduct {
+    .myDetailProduct-ulRight {
+        li {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .li-1 {
+            p {
+                &:last-child {
+                    text-decoration: line-through;
+                }
+            }
+        }
+
+        .li-2 {
+            p {
+                &:last-child {
+                    color: $red-3;
+                    font-size: $fz-4 - 2;
+                }
+            }
+        }
+    }
+
+    .myDetailProduct-ulDetail {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            display: flex;
+            width: 50%;
+        }
+    }
+
+    .myDetailProduct-rate {
+        .myDetailProduct-rate-child1 {
+
+            text-align: center;
+            border-right: 1px dashed $gray-1;
+            .pTag-2{
+                color: $gray-3;
+            }
+            .pTag-3{
+                font-size: 35px;
+            }
+        }
+
+        .myDetailProduct-padding {
+            padding: 20px;
+            box-shadow: 1px 1px 1px 1px $gray-1;
+            .myDetailProduct-rate-progress {
+                width: 80%;
+                height: 5px;
+                background-color: $gray-4;
+            }
+
+            .myDetailProduct-rate-ulStar {
+                li {
+                    span {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+            }
+        }
+    }
+    .myDetailProduct-infoAuthor{
+        li{
+            padding: 5px 0;
+        }
+    }
+}

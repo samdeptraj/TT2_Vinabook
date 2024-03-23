@@ -1,0 +1,593 @@
+{
+    "hotbooks": [
+        {
+            "id": 1,
+            "title": "Hippi - Những Kẻ Lãng Du",
+            "author": "Paulo Coelho",
+            "desc": "Hippie – Những kẻ lãng du  đưa ta đến với những con người hoàn toàn xa lạ, với những mục đích khác nhau nhưng cùng hướng đến vùng đất xa xôi Nepal trên con đường mòn hippie huyền thoại.",
+            "image": "./images/books/hotbook/hotbook-1.jpg",
+            "price": 150000,
+            "priceSale": 120000,
+            "sale": "20",
+            "soLuong": 1
+        },
+        {
+            "id": 2,
+            "title": "Sau Động Đất",
+            "author": "Haruki Murakami",
+            "desc": "MỘT TÁC PHẨM TUYỆT VỜI NỮA CỦA HARUKI MURAKAMI ĐƯỢC NHÃ NAM GỬI ĐẾN BẠN ĐỌC!",
+            "image": "./images/books/hotbook/hotbook-2.jpg",
+            "price": 110000,
+            "priceSale": 88000,
+            "sale": "20",
+            "soLuong": 1
+        },
+        {
+            "id": 3,
+            "title": "MBA Bằng Hình - The Visual MBA",
+            "author": "",
+            "desc": "MBA Bằng Hình - The Usual MBA Jason Barron, MBA, là một nhà lãnh đạo đầy sáng tạo tập trung vào chiến lược sản phẩm số và trải nghiệm người dùng. Ông cũng là đồng sự sáng lập nên công ty khởi nghiệp LowestMed, vốn được RetailMeNot thâu tóm vào năm",
+            "image": "./images/books/hotbook/hotbook-3.jpg",
+            "price": 189000,
+            "priceSale": 170000,
+            "sale": "10",
+            "soLuong": 1
+        },
+        {
+            "id": 4,
+            "title": "Đám Trẻ Ở Đại Dương Đen",
+            "author": "Châu Sa Đáy Mắt",
+            "desc": "nỗi buồn không rõ hình thùta cho nó dáng, ta thu vào lòngta ôm mà chẳng đề phòngmột ngày nó lớn chất chồng tâm can",
+            "image": "./images/books/hotbook/hotbook-4.jpg",
+            "price": 99000,
+            "priceSale": 79000,
+            "sale": "20",
+            "soLuong": 1
+        },
+        {
+            "id": 5,
+            "title": "Lý Thuyết Trò Chơi",
+            "author": "Trần Phách Hàm",
+            "desc": "Đời người giống như trò chơi, mỗi bước đều phải cân nhắc xem đi như thế nào, đi về đâu, phải kết hợp nhiều yếu tố lại chúng ta mới có thể đưa ra được lựa chọn.",
+            "image": "./images/books/hotbook/hotbook-5.jpg",
+            "price": 179000,
+            "priceSale": 152000,
+            "sale": "15",
+            "soLuong": 1
+        },
+        {
+            "id": 6,
+            "title": "Sapiens - Lược Sử Loài Người Bằng Tranh - Tập 2: Những Trụ Cột Của Nền Văn Minh",
+            "author": "Yuval Noah Harari",
+            "desc": "TẬP 2 của loạt truyện tranh chuyển thể từ tác phẩm Sapiens - Lược sử loài người của tác giả Yuval Noah Harari được chính thức phát hành trên toàn cầu.",
+            "image": "./images/books/hotbook/hotbook-6.jpg",
+            "price": 345000,
+            "priceSale": 293000,
+            "sale": "15",
+            "soLuong": 1
+        }
+    ],
+    "vanhoc": [
+        {
+            "id": 6,
+            "title": "Mong Mẹ Hãy Yêu Lấy Chính Mình",
+            "author": "Jang Hae Joo",
+            "desc": "",
+            "image": "./images/books/vanhoc/vanhoc-1.jpg",
+            "price": 99000,
+            "priceSale": 84000,
+            "sale": "15"
+        },
+        {
+            "id": 7,
+            "title": "Mọi Chuyện Đều Là Sự An Bài Tốt Nhất",
+            "author": "Đại Sư Tinh Vân",
+            "desc": "",
+            "image": "./images/books/vanhoc/vanhoc-2.jpg",
+            "price": 129000,
+            "priceSale": 110000,
+            "sale": "15",
+            "soLuong": 1
+        },
+        {
+            "id": 8,
+            "title": "Thương",
+            "author": "Nhiều tác giả",
+            "desc": "Em nói em từ bỏSao em lại đau lòng?Em nói em từ bỏSao em còn trông mong?",
+            "image": "./images/books/vanhoc/vanhoc-3.jpg",
+            "price": 75000,
+            "priceSale": 64000,
+            "sale": "15",
+            "soLuong": 1
+        },
+        {
+            "id": 9,
+            "title": "Càng Kỷ Luật, Càng Tự Do",
+            "author": "Ca Tây",
+            "desc": "KỶ LUẬT vốn là ván cờ bạn phải tự đấu với chính mình. Thắng - bạn sẽ có được “bản năng của người mạnh mẽ nhất”, đó là sự tự kiểm soát bản thân. Thua - bạn mãi sống trong cảm giác tạm bợ, nuối tiếc.",
+            "image": "./images/books/vanhoc/vanhoc-4.jpg",
+            "price": 109000,
+            "priceSale": 93000,
+            "sale": "15",
+            "soLuong": 1
+        },
+        {
+            "id": 10,
+            "title": "Càng Bình Tĩnh Càng Hạnh Phúc",
+            "author": "Vãn Tình",
+            "desc": "",
+            "image": "./images/books/vanhoc/vanhoc-5.jpg",
+            "price": 139000,
+            "priceSale": 118000,
+            "sale": "15",
+            "soLuong": 1
+        },
+        {
+            "id": 11,
+            "title": "999 Lá Thư Gửi Cho Chính Mình - Tô Màu Cuộc Sống",
+            "author": "Miêu Công Tử",
+            "desc": "Chúng mình đều biết những sắc màu của cuộc sống đều bắt nguồn từ những điều bình dị và thường nhật nhất xung quanh mà ta vẫn thường tiếp xúc mỗi ngày",
+            "image": "./images/books/vanhoc/vanhoc-6.jpg",
+            "price": 99000,
+            "priceSale": 84000,
+            "sale": "15",
+            "soLuong": 1
+        }
+    ],
+    "economic": [
+        {
+            "id": 12,
+            "title": "Business Plan - Lập Kế Hoạch Kinh Doanh Chuyên Nghiệp",
+            "author": "Brian Finch",
+            "desc": "Business Plan - Lập Kế Hoạch Kinh Doanh Chuyên Nghiệp Khi bắt đầu thành lập doanh nghiệp hay mở rộng quy mô hoạt động",
+            "image": "./images/books/economic/economic-1.jpg",
+            "price": 179000,
+            "priceSale": 161000,
+            "sale": "10",
+            "soLuong": 1
+        },
+        {
+            "id": 13,
+            "title": "Phân Tích Thị Trường Chứng Khoán (Tái Bản 2023)",
+            "author": "Laura Sicola",
+            "desc": "Phân Tích Thị Trường Chứng Khoán Thị trường đầu tư là sự kết hợp của rất nhiều chu kỳ lớn nhỏ",
+            "image": "./images/books/economic/economic-2.jpg",
+            "price": 219000,
+            "priceSale": 197000,
+            "sale": "10",
+            "soLuong": 1
+        },
+        {
+            "id": 14,
+            "title": "Phương Pháp Đầu Tư Cổ Phiếu Tăng Trưởng",
+            "author": "Laura Sicola",
+            "desc": "Phương Pháp Đầu Tư Cổ Phiếu Tăng Trưởng Đầu tư tăng trưởng là một trong ba chiến lược đầu tư hiệu quả nhất thị trường khoán hiện tại",
+            "image": "./images/books/economic/economic-3.jpg",
+            "price": 159000,
+            "priceSale": 143000,
+            "sale": "10",
+            "soLuong": 1
+        },
+        {
+            "id": 15,
+            "title": "Ngựa Lùn Giữa Đàn Kỳ Lân",
+            "author": "Sahil Lavingia",
+            "desc": "",
+            "image": "./images/books/economic/economic-4.jpg",
+            "price": 160000,
+            "priceSale": 144000,
+            "sale": "10",
+            "soLuong": 1
+        },
+        {
+            "id": 16,
+            "title": "Chiến Lược Bứt Phá Từ McKinsey Và Company",
+            "author": "Chris Bradley",
+            "desc": "",
+            "image": "./images/books/economic/economic-5.jpg",
+            "price": 180000,
+            "priceSale": 162000,
+            "sale": "10",
+            "soLuong": 1
+        },
+        {
+            "id": 17,
+            "title": "Thao Túng Về Tiền",
+            "author": "Shannon Thomas",
+            "desc": "",
+            "image": "./images/books/economic/economic-6.jpg",
+            "price": 149000,
+            "priceSale": 134000,
+            "sale": "10",
+            "soLuong": 1
+        }
+    ],
+    "magazine": [
+        {
+            "id": 18,
+            "title": "Tạp chí Forbes - Số 109 (Tháng 9/2022)",
+            "author": "Nhiều tác giả",
+            "desc": "12tháng trước cả Việt Nam căng mình đối phó với đại dịch COVID-19. TP.HCM và vùng phụ cận bị tổn thương nặng nề",
+            "image": "./images/books/magazine/magazine-1.jpg",
+            "price": 95000,
+            "priceSale": 90000,
+            "sale": "5",
+            "soLuong": 1
+        },
+        {
+            "id": 19,
+            "title": "Tạp chí Forbes - Số 108 (Tháng 8/2022)",
+            "author": "Nhiều tác giả",
+            "desc": "Tạp chí Forbes Việt Nam số 108: Danh sách 25 thương hiệu công ty dẫn đầu lĩnh vực F&B",
+            "image": "./images/books/magazine/magazine-2.jpg",
+            "price": 95000,
+            "priceSale": 90000,
+            "sale": "5",
+            "soLuong": 1
+        },
+        {
+            "id": 20,
+            "title": "Tạp chí Forbes - Số 107 (Tháng 7/2022)",
+            "author": "Nhiều tác giả",
+            "desc": "Forbes Việt Nam cung cấp những thông tin và góc nhìn sâu sắc về doanh nghiệp và môi trường kinh doanh",
+            "image": "./images/books/magazine/magazine-3.jpg",
+            "price":null ,
+            "priceSale": 95000,
+            "sale": "",
+            "soLuong": 1
+        },
+        {
+            "id": 21,
+            "title": "Forbes Việt Nam - Số 106 (Tháng 6/2022)",
+            "author": "Nhiều tác giả",
+            "desc": "Forbes Việt Nam cung cấp những thông tin và góc nhìn sâu sắc về doanh nghiệp và môi trường kinh doanh tại Việt Nam",
+            "image": "./images/books/magazine/magazine-4.jpg",
+            "price": 95000,
+            "priceSale": 90000,
+            "sale": "5",
+            "soLuong": 1
+        },
+        {
+            "id": 22,
+            "title": "Forbes Việt Nam - Số 105 (Tháng 5/2022)",
+            "author": "Nhiều tác giả",
+            "desc": "Forbes Việt Nam cung cấp những thông tin và góc nhìn sâu sắc về doanh nghiệp và môi trường kinh doanh tại Việt Nam",
+            "image": "./images/books/magazine/magazine-5.jpg",
+            "price": 95000,
+            "priceSale": 90000,
+            "sale": "5",
+            "soLuong": 1
+        },
+        {
+            "id": 23,
+            "title": "Forbes Việt Nam - Số 104 (Tháng 4/2022)",
+            "author": "Nhiều tác giả",
+            "desc": "Tạp chí Forbes Việt NamẤN PHẨM TIẾNG VIỆT CỦA TẠP CHÍ KINH DOANH HÀNG ĐẦUĐÃ CÓ MẶT TRÊN HƠN 40 QUỐC GIA",
+            "image": "./images/books/magazine/magazine-6.jpg",
+            "price": 95000,
+            "priceSale": 90000,
+            "sale": "5",
+            "soLuong": 1
+        }
+    ],
+    "daytre": [
+        {
+            "id": 24,
+            "title": "Chạm Đến Tim Con",
+            "author": "Thích Nhật Từ",
+            "desc": "Nuôi dạy con chưa bao giờ là việc dễ dàng đối với bậc làm cha, làm mẹ. Sự đấu tranh giữa lý trí và con tim",
+            "image": "./images/books/daytre/daytre-1.jpg",
+            "price": 99000,
+            "priceSale": 79000,
+            "sale": "20",
+            "soLuong": 1
+        },
+        {
+            "id": 25,
+            "title": "Người Mẹ “Giàu Có” - Cùng Con Bay Vào Tuổi Thơ Yêu Thương",
+            "author": "Tạ lăng Khiết",
+            "desc": "Người Mẹ “Giàu Có” - Cùng Con Bay Vào Tuổi Thơ Yêu Thương LỜI MỞ ĐẦU Đây là những câu chuyện của một người mẹ",
+            "image": "./images/books/daytre/daytre-2.jpg",
+            "price": 85000,
+            "priceSale": 77000,
+            "sale": "9",
+            "soLuong": 1
+        },
+        {
+            "id": 26,
+            "title": "IQ Montessori Logic - Phát Triển Toàn Diện Khả Năng Tư Duy Logic Cho Trẻ Từ 3-6 Tuổi",
+            "author": "Quỳnh Hương",
+            "desc": "",
+            "image": "./images/books/daytre/daytre-3.jpg",
+            "price": 89000,
+            "priceSale": 80000,
+            "sale": "10",
+            "soLuong": 1
+        },
+        {
+            "id": 27,
+            "title": "Vô Cùng Tàn Nhẫn Vô Cùng Yêu Thương - Tập 4",
+            "author": "Sara Imas",
+            "desc": "Vô cùng tàn nhẫn vô cùng yêu thương 4 là những chia sẻ của Sara Imas trong việc bồi dưỡng trí tuệ tài chính cho con trẻ",
+            "image": "./images/books/daytre/daytre-4.jpg",
+            "price": 149000,
+            "priceSale": 127000,
+            "sale": "15",
+            "soLuong": 1
+        },
+        {
+            "id": 28,
+            "title": "Được Nuôi Bởi Mẹ, Được Dạy Bởi Cha",
+            "author": "An Nhĩ Tử",
+            "desc": "Mỗi chúng ta, trước khi làm bố mẹ, đều vẫn luôn là một con ngườiTuổi thơ một đi sẽ bao giờ quay trở lại",
+            "image": "./images/books/daytre/daytre-5.jpg",
+            "price": 98000,
+            "priceSale": 83000,
+            "sale": "15",
+            "soLuong": 1
+        },
+        {
+            "id": 29,
+            "title": "Vô Cùng Tàn Nhẫn, Vô Cùng Yêu Thương - Tập 1 (Tái Bản 2021)",
+            "author": "Sara Imas",
+            "desc": "Vô Cùng Tàn Nhẫn Vô Cùng Yêu Thương là cuốn sách nuôi dạy con của một bà mẹ Do Thái sinh ra và lớn lên ở Trung Quốc",
+            "image": "./images/books/daytre/daytre-6.jpg",
+            "price": 189000,
+            "priceSale": 161000,
+            "sale": "15",
+            "soLuong": 1
+        }
+    ],
+    "child": [
+        {
+            "id": 30,
+            "title": "Ehon - Mọt Sách Mogu - Xin Mời, Xin Mời",
+            "author": "Masami Kosaka",
+            "desc": "Một cuốn tranh truyện với hình ảnh dễ thương và nội dung nhẹ nhàng, truyền tải thông điệp sẻ chia sâu sắc",
+            "image": "./images/books/child/child-1.jpg",
+            "price": 47000,
+            "priceSale": 40000,
+            "sale": "15",
+            "soLuong": 1
+        },
+        {
+            "id": 31,
+            "title": "Ehon - Mọt Sách Mogu - Tìm Thấy Mùa Hè Rồi!",
+            "author": "Masami Kosaka",
+            "desc": "Một cuốn tranh truyện với hình ảnh dễ thương về một “mùa hè” quen thuộc đối với các bạn nhỏ ",
+            "image": "./images/books/child/child-2.jpg",
+            "price": 47000,
+            "priceSale": 40000,
+            "sale": "15",
+            "soLuong": 1
+        },
+        {
+            "id": 32,
+            "title": "Ehon - Mọt Sách Mogu - Bạn Vòi Nước Rào Rào",
+            "author": "Hiroyuki Arai",
+            "desc": "Một cuốn tranh truyện Ehon nhỏ bé nhất trong Tủ sách Mogu nói về bạn vòi nước đáng yêu sẽ khiến các bạn nhỏ thích thú",
+            "image": "./images/books/child/child-3.jpg",
+            "price": 43000,
+            "priceSale": 37000,
+            "sale": "14",
+            "soLuong": 1
+        },
+        {
+            "id": 33,
+            "title": "Ehon - Mọt Sách Mogu - Đợi Với, Taxi Ơi!!!",
+            "author": "Toshio Nishimura",
+            "desc": "Một cuốn tranh truyện Ehon thú vị nằm trong nhóm BÉ QUAN SÁT của Tủ sách Mogu",
+            "image": "./images/books/child/child-4.jpg",
+            "price": 47000,
+            "priceSale": 40000,
+            "sale": "15",
+            "soLuong": 1
+        },
+        {
+            "id": 34,
+            "title": "Ehon - Mọt Sách Mogu - Xin Mời, Xin Mời",
+            "author": "Hirotaka Nakagawa",
+            "desc": "Cuốn tranh truyện Ehon thú vị về một ngày làm việc của chú lính cứu hỏa Salsa nằm trong nhóm BÉ LÀM QUEN",
+            "image": "./images/books/child/child-5.jpg",
+            "price": 42000,
+            "priceSale": 36000,
+            "sale": "14"
+        },
+        {
+            "id": 35,
+            "title": "Ehon - Mọt Sách Mogu - Chúng Tớ Ăn Mất Trăng Rồi!",
+            "author": "Mami Suzuki",
+            "desc": "Một cuốn tranh truyện Ehon với hình ảnh các bạn động vật đáng yêu cùng với nội dung vô cùng thú vị",
+            "image": "./images/books/child/child-6.jpg",
+            "price": 56000,
+            "priceSale": 48000,
+            "sale": "14",
+            "soLuong": 1
+        }
+    ],
+    "skill": [
+        {
+            "id": 36,
+            "title": "Bí Quyết Áp Dụng 7 Thói Quen Củạ Bạn Trẻ Thành Đạt (Khổ Nhỏ)",
+            "author": "Sean Covey",
+            "desc": "Cuốn sách nhấn mạnh những gì chúng ta có được trong cuộc sống đều bắt nguồn từ những thói quen của chính mình.",
+            "image": "./images/books/skills/skill-1.jpg",
+            "price": 108000,
+            "priceSale": 92000,
+            "sale": "15",
+            "soLuong": 1
+        },
+        {
+            "id": 37,
+            "title": "Học Thế Nào Bây Giờ? - Hướng Dẫn Trẻ Học Cách Tự Chủ - Dành Cho Học Sinh Tiểu Học",
+            "author": "Grelin",
+            "desc": "Tại sao phải thuộc bảng cửu chương, thuộc từ vựng? Làm thế nào để cải thiện trí nhớ và sự tập trung?",
+            "image": "./images/books/skills/skill-2.jpg",
+            "price": 99000,
+            "priceSale": 79000,
+            "sale": "20",
+            "soLuong": 1
+        },
+        {
+            "id": 38,
+            "title": "Người Nhạy Cảm Trong Thế Giới Vô Cảm",
+            "author": "Quang Đỗ",
+            "desc": "Người nhạy cảm trong thế giới vô cảm” là những chia sẻ của Ilse Sand - một nhà tâm lý học, đồng thời cũng là một mục sư",
+            "image": "./images/books/skills/skill-3.jpg",
+            "price": 85000,
+            "priceSale": 72000,
+            "sale": "15",
+            "soLuong": 1
+        }
+    ],
+    "hotweek": [
+        {
+            "id": 39,
+            "title": "Ehon - Mọt Sách Mogu - Xin Mời, Xin Mời",
+            "author": "Masami Kosaka",
+            "image": "./images/books/bookWeek/bookWeek-1.jpg",
+            "price":null ,
+            "priceSale": 62000,
+            "soLuong": 1
+        },
+        {
+            "id": 40,
+            "title": "Bồ Câu Không Đưa Thư (2022)",
+            "author": "Nguyễn Nhật Ánh",
+            "image": "./images/books/bookWeek/bookWeek-2.jpg",
+            "price":null ,
+            "priceSale": 81000,
+            "soLuong": 1
+        },
+        {
+            "id": 41,
+            "title": "Lucky Luke 3 - Đoàn Lữ Hành",
+            "author": "Goscinny",
+            "image": "./images/books/bookWeek/bookWeek-3.jpg",
+            "price": 24.700,
+            "priceSale": 20000,
+            "soLuong": 1
+        },
+        {
+            "id": 42,
+            "title": "Lucky Luke 50 - Tứ Quái Dalton Mừng Tiệc Cưới",
+            "author": "Masami Kosaka",
+            "image": "./images/books/bookWeek/bookWeek-4.jpg",
+            "price": 26.700,
+            "priceSale": 21.500,
+            "soLuong": 1
+        },
+        {
+            "id": 43,
+            "title": "Lucky Luke 54 - Con Lạc Đà",
+            "author": "",
+            "image": "./images/books/bookWeek/bookWeek-5.jpg",
+            "price": 26.700,
+            "priceSale": 21.500,
+            "soLuong": 1
+        }
+    ],
+    "sachMoiNhap": [
+        {
+            "id": 44,
+            "title": "COMBO DU KÝ VIỆT NAM TRÊN NAM PHONG TẠP CHÍ",
+            "author": "Nguyễn Hữu Sơn biên soạn",
+            "image": "./images/books/sachMoiNhap/sachMoiNhap-1.jpg",
+            "price": 890000,
+            "priceSale": 801000,
+            "soLuong": 1
+        },
+        {
+            "id": 45,
+            "title": "GIÚP EM TÌM HIỂU CHÍNH MÌNH - TÔI YÊU THƯƠNG",
+            "author": "Nguyễn Hữu Sơn biên soạn",
+            "image": "./images/books/sachMoiNhap/sachMoiNhap-2.jpg",
+            "price":null ,
+            "priceSale": 30000,
+            "soLuong": 1
+        },
+        {
+            "id": 46,
+            "title": "GIÚP EM TÌM HIỂU CHÍNH MÌNH - TÔI VÀ YOGA",
+            "author": "Nguyễn Hữu Sơn biên soạn",
+            "image": "./images/books/sachMoiNhap/sachMoiNhap-3.jpg",
+            "price":null ,
+            "priceSale": 30000,
+            "soLuong": 1
+        },
+        {
+            "id": 47,
+            "title": "GIÚP EM TÌM HIỂU CHÍNH MÌNH - TÔI LÀ DUY NHẤT",
+            "author": "Nguyễn Hữu Sơn biên soạn",
+            "image": "./images/books/sachMoiNhap/sachMoiNhap-4.jpg",
+            "price":null ,
+            "priceSale": 30000,
+            "soLuong": 1
+        },
+        {
+            "id": 48,
+            "title": "GIÚP EM TÌM HIỂU CHÍNH MÌNH - TÔI LÀ ĐIỂM KHỞI ĐẦU",
+            "author": "Nguyễn Hữu Sơn biên soạn",
+            "image": "./images/books/sachMoiNhap/sachMoiNhap-5.jpg",
+            "price":null ,
+            "priceSale": 30000,
+            "soLuong": 1
+        },
+        {
+            "id": 49,
+            "title": "GIÚP EM TÌM HIỂU CHÍNH MÌNH - TÔI LÀ CON NGƯỜI",
+            "author": "Nguyễn Hữu Sơn biên soạn",
+            "image": "./images/books/sachMoiNhap/sachMoiNhap-6.jpg",
+            "price":null ,
+            "priceSale": 30000,
+            "soLuong": 1
+        },
+        {
+            "id": 50,
+            "title": "GIÚP EM TÌM HIỂU CHÍNH MÌNH - TÔI CAN ĐẢM",
+            "author": "Nguyễn Hữu Sơn biên soạn",
+            "image": "./images/books/sachMoiNhap/sachMoiNhap-7.jpg",
+            "price":null ,
+            "priceSale": 30000,
+            "soLuong": 1
+        },
+        {
+            "id": 51,
+            "title": "CÁNH TƯ",
+            "author": "Nguyễn Hữu Sơn biên soạn",
+            "image": "./images/books/sachMoiNhap/sachMoiNhap-8.jpg",
+            "price": 315000,
+            "priceSale": 284000,
+            "soLuong": 1
+        },
+        {
+            "id": 52,
+            "title": "Tiếng Thét Câm Lặng",
+            "author": "Nguyễn Hữu Sơn biên soạn",
+            "image": "./images/books/sachMoiNhap/sachMoiNhap-9.jpg",
+            "price": 250000,
+            "priceSale": 225000,
+            "soLuong": 1
+        }
+    ],
+    "keChoBe": [
+        {
+            "id": 53,
+            "title": "10 Phút Mẹ Kể Con Nghe Trước Giờ Ngủ - Tình Yêu Thương",
+            "author": "Tống Ca",
+            "image": "./images/books/keChoBe/keChoBe-1.jpg",
+            "price": 48000,
+            "priceSale": 15000,
+            "soLuong": 1
+        },
+        {
+            "id": 54,
+            "title": "10 Phút Mẹ Kể Con Nghe Trước Giờ Ngủ - Thông Minh",
+            "author": "Tống Ca",
+            "image": "./images/books/keChoBe/keChoBe-1.jpg",
+            "price": 48000,
+            "priceSale": 15000,
+            "soLuong": 1
+        }
+    ]
+}

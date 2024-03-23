@@ -1,0 +1,70 @@
+[
+    {
+        "id": 1,
+        "title": "Ehon - Mọt Sách Mogu - Xin Mời, Xin Mời",
+        "author": "Masami Kosaka",
+        "desc": "Một cuốn tranh truyện với hình ảnh dễ thương và nội dung nhẹ nhàng, truyền tải thông điệp sẻ chia sâu sắc",
+        "image": "./images/books/child/child-1.jpg",
+        "price": "47.000",
+        "priceSale": "40.000",
+        "sale": "15",
+        "soLuong": 1
+
+    },
+    {
+        "id": 2,
+        "title": "Ehon - Mọt Sách Mogu - Tìm Thấy Mùa Hè Rồi!",
+        "author": "Masami Kosaka",
+        "desc": "Một cuốn tranh truyện với hình ảnh dễ thương về một “mùa hè” quen thuộc đối với các bạn nhỏ ",
+        "image": "./images/books/child/child-2.jpg",
+        "price": "47.000",
+        "priceSale": "40.000",
+        "sale": "15",
+        "soLuong": 1
+
+    },
+    {
+        "id": 3,
+        "title": "Ehon - Mọt Sách Mogu - Bạn Vòi Nước Rào Rào",
+        "author": "Hiroyuki Arai",
+        "desc": "Một cuốn tranh truyện Ehon nhỏ bé nhất trong Tủ sách Mogu nói về bạn vòi nước đáng yêu sẽ khiến các bạn nhỏ thích thú",
+        "image": "./images/books/child/child-3.jpg",
+        "price": "43.000",
+        "priceSale": "37.000",
+        "sale": "14",
+        "soLuong": 1
+    },
+    {
+        "id": 4,
+        "title": "Ehon - Mọt Sách Mogu - Đợi Với, Taxi Ơi!!!",
+        "author": "Toshio Nishimura",
+        "desc": "Một cuốn tranh truyện Ehon thú vị nằm trong nhóm BÉ QUAN SÁT của Tủ sách Mogu",
+        "image": "./images/books/child/child-4.jpg",
+        "price": "47.000",
+        "priceSale": "40.000",
+        "sale": "15",
+        "soLuong": 1
+    },
+    {
+        "id": 5,
+        "title": "Ehon - Mọt Sách Mogu - Xin Mời, Xin Mời",
+        "author": "Hirotaka Nakagawa",
+        "desc": "Cuốn tranh truyện Ehon thú vị về một ngày làm việc của chú lính cứu hỏa Salsa nằm trong nhóm BÉ LÀM QUEN",
+        "image": "./images/books/child/child-5.jpg",
+        "price": "42.000",
+        "priceSale": "36.000",
+        "sale": "14"
+    },
+    {
+        "id": 6,
+        "title": "Ehon - Mọt Sách Mogu - Chúng Tớ Ăn Mất Trăng Rồi!",
+        "author": "Mami Suzuki",
+        "desc": "Một cuốn tranh truyện Ehon với hình ảnh các bạn động vật đáng yêu cùng với nội dung vô cùng thú vị",
+        "image": "./images/books/child/child-6.jpg",
+        "price": "56.000",
+        "priceSale": "48.000",
+        "sale": "14",
+        "soLuong": 1
+    },
+]
+]

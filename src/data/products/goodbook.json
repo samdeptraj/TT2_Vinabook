@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "title": "Người nói đạo lý thường sống khá giả",
+        "author": "Lê Bích",
+        "desc": "Lê Bích - Nhân vật ảo với chiếc bụng phệ, rốn lồi, khuôn mặt luôn tỏ vẻ tư lự, trên thông thiên văn, dưới tường địa lý, tam giáo, cửu lưu, tứ thư, ngũ kinh, tinh thần yêu nước trung trinh",
+        "image": "./images/books/newBook/newBook-1.jpg",
+        "price": "169.000",
+        "priceSale": "135.000",
+        "sale": "20",
+        "soLuong": 1
+    },
+    {
+        "id": 2,
+        "title": "Ngày Mai, Ngày Mai, Và Ngày Mai Nữa",
+        "author": "Gabrielle Zevin",
+        "desc": "Hết sức tráng lệ. Bằng bút pháp tuyệt mỹ và sâu sắc, Gabrielle Zevin đã phác họa nên vẻ đẹp, sự bền bỉ và mong manh của tình yêu cùng sự sáng tạo của con người. Ngày mai, ngày mai, và ngày mai nữa là một trong những cuốn sách hay nhất tôi từng đọc.”– John Green",
+        "image": "./images/books/newBook/newBook-2.jpg",
+        "price": "259.000",
+        "priceSale": "207.000",
+        "sale": "20",
+        "soLuong": 1
+    }
+]

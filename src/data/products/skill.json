@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "title": "Bí Quyết Áp Dụng 7 Thói Quen Củạ Bạn Trẻ Thành Đạt (Khổ Nhỏ)",
+        "author": "Sean Covey",
+        "desc": "Cuốn sách nhấn mạnh những gì chúng ta có được trong cuộc sống đều bắt nguồn từ những thói quen của chính mình.",
+        "image": "./images/books/skill/skill-1.jpg",
+        "price": "108.000",
+        "priceSale": "92.000",
+        "sale": "15",
+        "soLuong": 1
+    },
+    {
+        "id": 2,
+        "title": "Học Thế Nào Bây Giờ? - Hướng Dẫn Trẻ Học Cách Tự Chủ - Dành Cho Học Sinh Tiểu Học",
+        "author": "Grelin",
+        "desc": "Tại sao phải thuộc bảng cửu chương, thuộc từ vựng? Làm thế nào để cải thiện trí nhớ và sự tập trung?",
+        "image": "./images/books/skill/skill-2.jpg",
+        "price": "99.000",
+        "priceSale": "79.000",
+        "sale": "20",
+        "soLuong": 1
+    },
+    {
+        "id": 3,
+        "title": "Người Nhạy Cảm Trong Thế Giới Vô Cảm",
+        "author": "Quang Đỗ",
+        "desc": "Người nhạy cảm trong thế giới vô cảm” là những chia sẻ của Ilse Sand - một nhà tâm lý học, đồng thời cũng là một mục sư",
+        "image": "./images/books/skill/skill-3.jpg",
+        "price": "85.000",
+        "priceSale": "72.000",
+        "sale": "15",
+        "soLuong": 1
+    },
+]

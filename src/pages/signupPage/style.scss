@@ -1,0 +1,30 @@
+.mySignUp {
+    ul {
+        li {
+            a{
+                color: black;
+            }
+        }
+    }
+
+    .mySignUp-colLeft {
+        h4 {
+            color: $green-2;
+            border-bottom: 1px dashed $gray-1;
+        }
+
+        .form-group {
+            label {
+                font-size: $pd-3 - 1;
+            }
+        }
+    }
+    .mySignUp-colRight{
+        background-color: $gray-6;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+}

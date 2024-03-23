@@ -1,0 +1,67 @@
+[
+    {
+        "id": 1,
+        "title": "Mong Mẹ Hãy Yêu Lấy Chính Mình",
+        "author": "Jang Hae Joo",
+        "desc": "",
+        "image": "./images/books/vanhoc/vanhoc-1.jpg",
+        "price": "99.000",
+        "priceSale": "84.000",
+        "sale": "15"
+    },
+    {
+        "id": 2,
+        "title": "Mọi Chuyện Đều Là Sự An Bài Tốt Nhất",
+        "author": "Đại Sư Tinh Vân",
+        "desc": "",
+        "image": "./images/books/vanhoc/vanhoc-2.jpg",
+        "price": "129.000",
+        "priceSale": "110.000",
+        "sale": "15",
+        "soLuong": 1
+    },
+    {
+        "id": 3,
+        "title": "Thương",
+        "author": "Nhiều tác giả",
+        "desc": "Em nói em từ bỏSao em lại đau lòng?Em nói em từ bỏSao em còn trông mong?",
+        "image": "./images/books/vanhoc/vanhoc-3.jpg",
+        "price": "75.000",
+        "priceSale": "64.000",
+        "sale": "15",
+        "soLuong": 1
+    },
+    {
+        "id": 4,
+        "title": "Càng Kỷ Luật, Càng Tự Do",
+        "author": "Ca Tây",
+        "desc": "KỶ LUẬT vốn là ván cờ bạn phải tự đấu với chính mình. Thắng - bạn sẽ có được “bản năng của người mạnh mẽ nhất”, đó là sự tự kiểm soát bản thân. Thua - bạn mãi sống trong cảm giác tạm bợ, nuối tiếc.",
+        "image": "./images/books/vanhoc/vanhoc-4.jpg",
+        "price": "109.000",
+        "priceSale": "93.000",
+        "sale": "15",
+        "soLuong": 1
+    },
+    {
+        "id": 5,
+        "title": "Càng Bình Tĩnh Càng Hạnh Phúc",
+        "author": "Vãn Tình",
+        "desc": "",
+        "image": "./images/books/vanhoc/vanhoc-5.jpg",
+        "price": "139.000",
+        "priceSale": "118.000",
+        "sale": "15",
+        "soLuong": 1
+    },
+    {
+        "id": 6,
+        "title": "999 Lá Thư Gửi Cho Chính Mình - Tô Màu Cuộc Sống",
+        "author": "Miêu Công Tử",
+        "desc": "Chúng mình đều biết những sắc màu của cuộc sống đều bắt nguồn từ những điều bình dị và thường nhật nhất xung quanh mà ta vẫn thường tiếp xúc mỗi ngày",
+        "image": "./images/books/vanhoc/vanhoc-6.jpg",
+        "price": "99.000",
+        "priceSale": "84.000",
+        "sale": "15",
+        "soLuong": 1
+    },
+]

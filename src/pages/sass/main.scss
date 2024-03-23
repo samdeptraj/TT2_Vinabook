@@ -1,0 +1,31 @@
+// helper
+@import './Helpers/variable'; //variable
+@import './Helpers/mixin'; //function
+
+// vendor ...
+// base
+@import './Base/reset';
+@import './Base/customize';
+// layout
+@import './Layouts/header';
+//main style
+@import '../layouts/Main/style.scss';
+// footer style
+@import '../layouts/footer/style.scss';
+// --------
+@import './Layouts/footer';
+// component
+@import './Component/button';
+@import './Component/boxSaleOf';
+@import './Component/priceAndSale';
+@import './Component/editStyle';
+
+// page
+@import './Pages/home'; // page
+@import '../signupPage/style.scss'; // signUP
+@import '../detailProductBook/style.scss'; // detailProduct
+@import '../cartPage/style.scss'; //cart
+@import '../news/style.scss'; //news
+@import '../categoryPage/style.scss';
+// theme
+// @import './Theme/Dark/'

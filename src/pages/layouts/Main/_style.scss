@@ -1,0 +1,123 @@
+.myNewBook {
+    .myNewBook-container {
+        background-color: #F26C63;
+        color: white;
+
+        .myNewBook-divImg1 {
+            padding: 20px;
+
+            .myNewBook-img-1 {
+                box-shadow: 0px 0px 12px 3px rgba(117, 117, 117, 0.583);
+            }
+        }
+    }
+
+    .myNewBook__fontSize {
+
+        font-size: 16px;
+
+        small {
+            text-decoration-line: underline;
+        }
+
+        .myNewBook__border {
+            padding-bottom: 20px;
+            border-bottom: 1px dashed white;
+        }
+    }
+}
+
+.myHotSaleWeek {
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            .myCard {
+                border: none;
+
+                img {
+                    width: 80%;
+                }
+
+                .my-card-body {
+                    padding: 0;
+
+                    a {
+                        color: black;
+                        font-size: 17px;
+                    }
+
+                    .my-card-body-author {
+                        font-size: 15px;
+                        color: gray;
+                    }
+
+                    .my-card-body-price {
+                        font-size: 18px;
+                        color: #f03737;
+
+                        &.price-off {
+                            text-decoration: line-through;
+                            color: #777777;
+                            font-size: 16px;
+                        }
+                    }
+
+                    .my-card-body-price-sale {
+                        font-size: 18px;
+                        color: #f03737;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.myHotSaleBook {
+    .row{
+        .myHotSaleBook--colorLink{
+            color: $green-3;
+        }
+    }
+    .myCard-body {
+        padding: 0;
+        margin-left: 10px;
+
+        .myCard-body--border {
+            border-bottom: 1px solid $gray-1;
+            a{
+                color: black;
+                &:hover{
+                    color: $green-3;
+                }
+            }
+            h5 {
+                margin: 0;
+            }
+        }
+    }
+    .myHotSaleBook-link{
+        color: black;
+        text-decoration: none;
+    }
+}
+// author
+.myNewBook {
+    &.myAuthorBook {
+        .myNewBook-container {
+            background-color: $white-1;
+            color: black;
+            .myAuthorBook-cardFooter{
+                .myAuthorBook-d1{
+                    a{
+                        color: black;
+                        &:hover{
+                            color: $green-3;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

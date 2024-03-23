@@ -1,0 +1,24 @@
+.borderBottom{
+    border-bottom: 1px dashed $gray-1;
+    padding-bottom: 15px;
+}
+.texta{
+    color: $green-2;
+    &:hover{
+        color: $green-2;
+    }
+}
+.textGreen{
+    color: $green-2;
+}
+.textGray{
+    color: $gray-3;
+}
+.textPrice-18{
+    color: $red-3;
+    font-size: $fz-4 - 2;
+}
+.textPrice-15{
+    color: $red-3;
+    font-size: $fz-3;
+}

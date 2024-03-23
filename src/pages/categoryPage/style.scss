@@ -1,0 +1,27 @@
+.myCategory {
+    a{
+        color: black;
+        font-size: $fz-3;
+    }
+    .myCategory-price {
+        p {
+            margin-bottom: 0;
+        }
+        .myCategory-price-origin{
+            text-decoration: line-through;
+        }
+        .myCategory-price-sale{
+            color: $red-3;
+        }
+    }
+    .myCategory-salePercent{
+        position: relative;
+        p{
+            background-color: $red-2;
+            padding: $pd-1;
+            border-radius: 5px;
+            bottom: -15%;
+            right: 20%;
+        }
+    }
+}

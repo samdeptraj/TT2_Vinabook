@@ -1,0 +1,146 @@
+@use "sass:map";
+@import '../../../../sass/Helpers/variable';
+
+.myHeaderMain {
+    nav {
+
+        align-items: center;
+
+        .col-6 {
+            form {
+                margin-right: 0;
+                width: 100%;
+
+                i {
+                    margin-left: 3%;
+                    font-size: 17px;
+                }
+
+                input {
+                    width: 100%;
+                    border-radius: 20px;
+                    padding: 0 80px 0 50px;
+                }
+
+                button {
+                    border-radius: 20px;
+                    right: 0;
+                    background-color: map-get($map: $theme-colors, $key: "green-1");
+                    color: white;
+                }
+            }
+        }
+
+        .header-right {
+            ul {
+                list-style: none;
+                padding: 0;
+                align-items: center;
+                margin: 0;
+
+                li {
+                    padding: 0;
+                    border: none;
+
+                    i {
+                        border-radius: 50%;
+                        border: 1px solid map-get($map: $theme-colors, $key: "green-1");
+                        padding: 10px;
+                        font-size: 20px;
+                        color: map-get($map: $theme-colors, $key: "green-1");
+                    }
+
+                    &:last-child {
+                        a {
+                            margin-right: 10px;
+                            text-decoration: none;
+                            display: block;
+                            color: black;
+                            margin-left: 5px;
+                            line-height: 35px;
+
+                            &:hover {
+                                color: $green-3;
+                            }
+                        }
+
+                    }
+
+                    &.header-right-cart {
+                        &:hover {
+                            .header-right-cartDiv {
+                                display: block;
+                            }
+                        }
+
+                        .header-right-cartDiv {
+                            display: none;
+                            z-index: 100;
+
+                            .header-right-cartDiv-child1 {
+                                width: 400px;
+                                right: 50%;
+                                padding: 20px;
+
+                                .card-total {
+                                    span {
+                                        font-weight: bold;
+                                        font-size: $fz-3 + 3;
+                                    }
+                                }
+
+                                .header-right-cartDiv-child1-2 {
+                                    &:hover {
+                                        background-color: $light-yellow-1;
+                                    }
+
+                                    .cartDiv-child1-2-btn {
+                                        background-color: transparent;
+                                        border: none;
+
+                                        .header-right-cartDiv-child1-2-btnClose {
+                                            background-color: $green-3;
+                                            color: white;
+                                            border-radius: 50%;
+                                            border: none;
+                                            margin-top: 100%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .header-right-sign {
+                button {
+                    &:hover {
+                        background-color: $green-3;
+                        color: white;
+                    }
+                }
+
+                .myDialog {
+                    .myDialog-header {
+                        background-color: $green-2;
+                        color: white;
+
+                        span {
+                            color: white;
+                        }
+                    }
+
+                    .myDialog-form {
+                        padding: 35px;
+
+                        label {
+                            font-size: 14px;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}

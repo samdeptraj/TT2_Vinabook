@@ -1,0 +1,68 @@
+[
+    {
+        "id": 1,
+        "title": "Tạp chí Forbes - Số 109 (Tháng 9/2022)",
+        "author": "Nhiều tác giả",
+        "desc": "12tháng trước cả Việt Nam căng mình đối phó với đại dịch COVID-19. TP.HCM và vùng phụ cận bị tổn thương nặng nề",
+        "image": "./images/books/magazine/magazine-1.jpg",
+        "price": "95.000",
+        "priceSale": "90.000",
+        "sale": "5",
+        "soLuong": 1
+    },
+    {
+        "id": 2,
+        "title": "Tạp chí Forbes - Số 108 (Tháng 8/2022)",
+        "author": "Nhiều tác giả",
+        "desc": "Tạp chí Forbes Việt Nam số 108: Danh sách 25 thương hiệu công ty dẫn đầu lĩnh vực F&B",
+        "image": "./images/books/magazine/magazine-2.jpg",
+        "price": "95.000",
+        "priceSale": "90.000",
+        "sale": "5",
+        "soLuong": 1
+    },
+    {
+        "id": 3,
+        "title": "Tạp chí Forbes - Số 107 (Tháng 7/2022)",
+        "author": "Nhiều tác giả",
+        "desc": "Forbes Việt Nam cung cấp những thông tin và góc nhìn sâu sắc về doanh nghiệp và môi trường kinh doanh",
+        "image": "./images/books/magazine/magazine-3.jpg",
+        "price": "95.000",
+        "priceSale": "",
+        "sale": "",
+        "soLuong": 1
+    },
+    {
+        "id": 4,
+        "title": "Forbes Việt Nam - Số 106 (Tháng 6/2022)",
+        "author": "Nhiều tác giả",
+        "desc": "Forbes Việt Nam cung cấp những thông tin và góc nhìn sâu sắc về doanh nghiệp và môi trường kinh doanh tại Việt Nam",
+        "image": "./images/books/magazine/magazine-4.jpg",
+        "price": "95.000",
+        "priceSale": "90.000",
+        "sale": "5",
+        "soLuong": 1
+    },
+    {
+        "id": 5,
+        "title": "Forbes Việt Nam - Số 105 (Tháng 5/2022)",
+        "author": "Nhiều tác giả",
+        "desc": "Forbes Việt Nam cung cấp những thông tin và góc nhìn sâu sắc về doanh nghiệp và môi trường kinh doanh tại Việt Nam",
+        "image": "./images/books/magazine/magazine-5.jpg",
+        "price": "95.000",
+        "priceSale": "90.000",
+        "sale": "5",
+        "soLuong": 1
+    },
+    {
+        "id": 6,
+        "title": "Forbes Việt Nam - Số 104 (Tháng 4/2022)",
+        "author": "Nhiều tác giả",
+        "desc": "Tạp chí Forbes Việt NamẤN PHẨM TIẾNG VIỆT CỦA TẠP CHÍ KINH DOANH HÀNG ĐẦUĐÃ CÓ MẶT TRÊN HƠN 40 QUỐC GIA",
+        "image": "./images/books/magazine/magazine-6.jpg",
+        "price": "95.000",
+        "priceSale": "90.000",
+        "sale": "5",
+        "soLuong": 1
+    },
+]
