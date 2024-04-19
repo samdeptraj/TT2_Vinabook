@@ -50,10 +50,10 @@ const renderUserRouter = () => {
   ];
   return (
     <MasterLayout>
-      <ScrollTop/>
+      <ScrollTop />
       <Routes>
         {userRouter.map((item, key) => (
-          <Route key={key} path={item.path} element={item.component}></Route>
+          <Route key={key} path={item.path} element={item.component} />
         ))}
       </Routes>
     </MasterLayout>
