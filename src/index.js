@@ -1,17 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 // import App from './App';
 import reportWebVitals from "./reportWebVitals";
-import RouterCustom from "./router";
+import RouterCustom from "./router/routerUser";
 import { Provider } from "react-redux";
 import store from "./hooks/reducer/store";
+import RouterCustomAdmin from "./router/routerAdmin";
+import Home from "./components/admin/home/Home";
+import HomePage from "./pages/homePage";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <RouterCustom />
+      <Routes>
+        <RouterCustom />
+        <RouterCustomAdmin />
+      </Routes>
+
     </BrowserRouter>
   </Provider>
 );

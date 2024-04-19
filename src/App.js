@@ -3,8 +3,8 @@ import './pages/sass/main.scss'
 function App() {
   return (
     <div className="App">
-      <header>
-      </header>
+      {/* <header>
+      </header> */}
     </div>
   );
 }
