@@ -8,6 +8,7 @@ export const ROUTERS = {
   NEWSDETAIL: "tin-tuc-chi-tiet",
   NEWSPAGE: "trang-tin-tuc-chi-tiet",
   CATEGORY: "danh-muc-san-pham",
+  TAIKHOAN: 'account',
   NOTFOUND: '*'
 };
 export const ROUTERS_ADMIN = {

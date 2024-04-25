@@ -1,10 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./style.scss";
 import { ROUTERS } from "../../../../../utils/router";
 import { useDispatch, useSelector } from "react-redux";
-import { actionDeleteProduct } from "../../../../../hooks/Action";
+import { actionDeleteProduct } from "../../../../../redux/actions/Action";
+import TaiKhoan from "./TaiKhoan";
+
 export default function HeaderMain() {
+  const navigate = useNavigate();
   let { productCart } = useSelector((state) => state.ProductsReducer);
   let dispatch = useDispatch();
   const totalPrice = () => {
@@ -33,7 +36,7 @@ export default function HeaderMain() {
               </div>
             </div>
             <div className="card-footer cartDiv-child1-2-btn">
-              <button className=" header-right-cartDiv-child1-2-btnClose" onClick={()=>{
+              <button className=" header-right-cartDiv-child1-2-btnClose" onClick={() => {
                 dispatch(actionDeleteProduct(item))
               }}>
                 X
@@ -44,6 +47,39 @@ export default function HeaderMain() {
       );
     });
   };
+  const renderActionAccount = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      return (
+        <>
+          <div className="header-right-sign">
+            <button
+              type="button"
+              className="btn"
+              data-toggle="modal"
+              data-target="#modalLogin"
+            >
+              Đăng nhập
+            </button>
+          </div>
+          <Link to={ROUTERS.SIGNUP}>Đăng ký</Link>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <Link to={ROUTERS.TAIKHOAN}>Tài khoản</Link>
+          <div className="header-right-sign">
+            <button className="btn" onClick={() => handleLogout()}>Đăng xuất</button>
+          </div>
+        </>
+      );
+    }
+  }
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate(ROUTERS.HOME)
+  }
   return (
     <div className="container mt-3 mb-3 myHeaderMain">
       <nav className="navbar navbar-expand-lg navbar-light row">
@@ -114,137 +150,7 @@ export default function HeaderMain() {
               </div>
             </li>
             <li className="d-flex">
-              {/* modal */}
-              <div className="header-right-sign">
-                <button
-                  type="button"
-                  className="btn"
-                  data-toggle="modal"
-                  data-target="#exampleModal"
-                >
-                  Đăng nhập
-                </button>
-                <div
-                  className="modal fade"
-                  id="exampleModal"
-                  tabIndex={-1}
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-                >
-                  <div className="modal-dialog modal-dialog-centered myDialog">
-                    <div className="modal-content">
-                      <div className="modal-header myDialog-header">
-                        <h5 className="modal-title" id="exampleModalLabel">
-                          Đăng nhập
-                        </h5>
-                        <button
-                          type="button"
-                          className="close"
-                          data-dismiss="modal"
-                          aria-label="Close"
-                        >
-                          <span aria-hidden="true">×</span>
-                        </button>
-                      </div>
-                      <div className="modal-body">
-                        <form className="container myDialog-form pb-0">
-                          <div className="form-group">
-                            <div className="row align-items-center">
-                              <div className="col-3">
-                                <label htmlFor="exampleInputEmail1">
-                                  Email*
-                                </label>
-                              </div>
-                              <div className="col-9">
-                                <input
-                                  type="email"
-                                  className="form-control"
-                                  id="exampleInputEmail1"
-                                  aria-describedby="emailHelp"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <div className="form-group">
-                            <div className="row align-items-center">
-                              <div className="col-3">
-                                <label htmlFor="exampleInputPassword1">
-                                  Mật khẩu*
-                                </label>
-                              </div>
-                              <div className="col-9">
-                                <input
-                                  type="password"
-                                  className="form-control"
-                                  id="exampleInputPassword1"
-                                />
-                              </div>
-                            </div>
-                            <div className="d-flex justify-content-between">
-                              <div className="form-group form-check mt-3">
-                                <input
-                                  type="checkbox"
-                                  className="form-check-input"
-                                  id="exampleCheck1"
-                                />
-                                <label
-                                  className="form-check-label"
-                                  htmlFor="exampleCheck1"
-                                >
-                                  Ghi nhớ thông tin
-                                </label>
-                              </div>
-                              <a href="/#" className="mt-2">
-                                Quên mật khẩu?
-                              </a>
-                            </div>
-                            <button type="submit" className="btn btn-success">
-                              Đăng nhập
-                            </button>
-                            <div>
-                              <p>
-                                Chưa có tài khoản vui lòng{" "}
-                                <span className="d-inline-block">
-                                  <a href="/#" className="text-primary">
-                                    ĐĂNG KÝ
-                                  </a>
-                                </span>
-                              </p>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                      <div className="modal-footer d-flex flex-column">
-                        <div className="w-100 pl-4 pb-3">
-                          Hoặc đăng nhập bằng
-                        </div>
-                        <div className="row">
-                          <div className="col-6">
-                            <a href="/#" style={{ height: "50px" }}>
-                              <img
-                                className="w-100 h-75"
-                                src="./images/header/log/google_signin_dark.png"
-                                alt=""
-                              />
-                            </a>
-                          </div>
-                          <div className="col-6">
-                            <a href="/#" style={{ height: "50px" }}>
-                              <img
-                                className="w-100 h-75"
-                                src="./images/header/log/facebook_signin_dark.png"
-                                alt=""
-                              />
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/*  */}
-              <Link to={ROUTERS.SIGNUP}>Đăng ký</Link>
+              {renderActionAccount()}
             </li>
           </ul>
         </div>
@@ -252,9 +158,4 @@ export default function HeaderMain() {
       </nav>
     </div>
   );
-}
-{
-  /* 
-<a href="/#"></a> 
-*/
 }

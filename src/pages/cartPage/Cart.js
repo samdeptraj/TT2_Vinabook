@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { actionDeleteProduct, actionTangGiamProduct } from "../../hooks/Action";
+import { actionDeleteProduct, actionTangGiamProduct } from "../../redux/actions/Action";
 export default function Cart() {
   let { productCart } = useSelector((state) => state.ProductsReducer);
   let dispatch = useDispatch();

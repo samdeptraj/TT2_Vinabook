@@ -6,21 +6,14 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import RouterCustom from "./router/routerUser";
 import { Provider } from "react-redux";
-import store from "./hooks/reducer/store";
-import RouterCustomAdmin from "./router/routerAdmin";
-import Home from "./components/admin/home/Home";
-import HomePage from "./pages/homePage";
+import store from "./redux/configStore";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <Routes>
-        <RouterCustom />
-        <RouterCustomAdmin />
-      </Routes>
-
-    </BrowserRouter>
-  </Provider>
+  <BrowserRouter>
+    <Provider store={store}>
+      <RouterCustom />
+    </Provider>
+  </BrowserRouter>
 );
 export default store;
 // If you want to start measuring performance in your app, pass a function

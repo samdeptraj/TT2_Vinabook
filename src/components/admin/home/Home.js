@@ -1,86 +1,51 @@
-import React, { useState } from 'react';
-import {
-    DesktopOutlined,
-    FileOutlined,
-    PieChartOutlined,
-    TeamOutlined,
-    UserOutlined,
-} from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import React, { useEffect, useState } from 'react'
+import Dashboard from './Dashboard'
+import DashBoard2 from './DashBoard2'
+import { Link, useNavigate } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
+
 export default function Home() {
-    const { Header, Content, Footer, Sider } = Layout;
-    function getItem(label, key, icon, children) {
-        return {
-            key,
-            icon,
-            children,
-            label,
-        };
-    }
-    const items = [
-        getItem('Option 1', '1', <PieChartOutlined />),
-        getItem('Option 2', '2', <DesktopOutlined />),
-        getItem('User', 'sub1', <UserOutlined />, [
-            getItem('Tom', '3'),
-            getItem('Bill', '4'),
-            getItem('Alex', '5'),
-        ]),
-        getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-        getItem('Files', '9', <FileOutlined />),
-    ];
-    const [collapsed, setCollapsed] = useState(false);
-    const {
-        token: { colorBgContainer, borderRadiusLG },
-    } = theme.useToken();
-    return (
-        <div> <Layout
-            style={{
-                minHeight: '100vh',
-            }}
-        >
-            <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-                <div className="demo-logo-vertical" />
-                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
-            </Sider>
-            <Layout>
-                <Header
-                    style={{
-                        padding: 0,
-                        background: colorBgContainer,
-                    }}
-                />
-                <Content
-                    style={{
-                        margin: '0 16px',
-                    }}
-                >
-                    <Breadcrumb
-                        style={{
-                            margin: '16px 0',
-                        }}
-                    >
-                        <Breadcrumb.Item>User</Breadcrumb.Item>
-                        <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                    </Breadcrumb>
-                    <div
-                        style={{
-                            padding: 24,
-                            minHeight: 360,
-                            background: colorBgContainer,
-                            borderRadius: borderRadiusLG,
-                        }}
-                    >
-                        Bill is a cat.
+    const [auth, setAuth] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/dang-ky-tai-khoan')
+        } else {
+            const decodedToken = jwtDecode(token); // Correct function name
+            if (decodedToken.type === 'admin') {
+                setAuth(true);
+            }
+        }
+    }, [navigate, setAuth]); // Add dependencies to useEffect
+
+    if (auth === false) {
+        return (
+            <div className='container-fluid' style={{ height: '100vh' }}>
+                <div className='row'>
+                    <div className='col-12 bg-light' >
+                        <h1 className='text-center text-danger'>Bạn không có quyền truy cập!</h1>
+                        <p className='text-center'><Link to={'/'} style={{ textDecoration: 'none' }}>Quay trở lại</Link></p>
                     </div>
-                </Content>
-                <Footer
-                    style={{
-                        textAlign: 'center',
-                    }}
-                >
-                    Ant Design ©{new Date().getFullYear()} Created by Ant UED
-                </Footer>
-            </Layout>
-        </Layout></div>
-    )
+                </div>
+            </div>
+        )
+    } else {
+        return (
+            <div className='container-fluid' style={{ height: '100vh' }}>
+                <div className='row'>
+                    <div className='col-2 bg-light' >
+                        <Dashboard />
+                    </div>
+                    <div className='col-10 bg-light'>
+                        <div className='bg-success p-3 mb-3'>
+                            <button className='btn btn-btn-outline-dark'>Đăng xuất</button>
+                        </div>
+                        <DashBoard2 />
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }

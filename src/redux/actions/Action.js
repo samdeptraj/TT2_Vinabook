@@ -1,9 +1,5 @@
-import {
-  ADD_CART,
-  DELETE_PRODUCT,
-  PRODUCT_DETAIL,
-  REDUCE_AMOUNT_PRODUCT,
-} from "./Type";
+import { ADD_CART, DELETE_PRODUCT, PRODUCT_DETAIL, REDUCE_AMOUNT_PRODUCT } from "../types/Type";
+
 
 export const actionProductDetail = (payload) => {
   return {

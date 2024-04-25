@@ -4,7 +4,7 @@ import "../../../sass/main.scss";
 import { ROUTERS } from "../../../../utils/router";
 import books from "../../../../data/products/books.json";
 import { useDispatch } from "react-redux";
-import { actionProductDetail } from "../../../../hooks/Action";
+import { actionProductDetail } from "../../../../redux/actions/Action";
 export default function ProductMain(props) {
   let dispatch = useDispatch();
   const hanldDetail = (item) => {

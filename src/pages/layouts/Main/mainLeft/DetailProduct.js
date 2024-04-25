@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { actionAddCart } from "../../../../hooks/Action";
+import { actionAddCart } from "../../../../redux/actions/Action";
 export default function DetailProduct() {
   let { product } = useSelector((state) => state.ProductsReducer); //thay the mapStateToProps
   let dispatch = useDispatch();

@@ -1,6 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../sass/main.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { SIGNUP } from "../../redux/saga/types/NguoiDung.types";
 export default function SignUp() {
+  let notifySignUp = useSelector(state => state.NguoiDungReducer.notifySignUp);
+  const notifyErrorEmail = useSelector(state => state.NguoiDungReducer.notifyErrorEmail);
+  const [state, setState] = useState({
+    values: {
+    },
+    errors: {
+      ho: '',
+      ten: '',
+      email: '',
+      password: '',
+      repassword: ''
+    }
+  });
+  const dispatch = useDispatch();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    let newValues = { ...state.values };
+    let newErrors = { ...state.errors };
+    let error = {}; // Khởi tạo error là null
+    if (name !== 'repassword') {
+      newValues = { ...state.values, [name]: value };
+    }
+    if (value.trim() === '') {
+      error = { ...state.errors, [name]: `${name} không được để trống` };
+    } else {
+      delete newErrors[name]; // Xóa lỗi nếu mật khẩu đã được nhập
+    }
+    if (name === 'password') {
+      const passwordValue = value;
+      const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+      if (!passwordRegex.test(passwordValue)) {
+        error = { ...state.errors, [name]: "Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt" };
+      }
+    }
+    if (name === 'repassword') {
+      const repasswordValue = value;
+      if (newValues.password !== repasswordValue) {
+        error = { ...state.errors, [name]: "Mật khẩu không khớp" };
+      } else {
+        delete newErrors[name]; // Xóa lỗi nếu mật khẩu trùng khớp
+      }
+    }
+
+    setState({
+      values: newValues,
+      errors: error // Cập nhật trạng thái lỗi
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: SIGNUP,
+      data: state.values
+    })
+  }
+  
+  useEffect(() => {
+    return () => {
+        notifySignUp = ""; // Cleanup logic
+    };
+}, []); 
   return (
     <div className="container mt-5">
       <div className="mySignUp">
@@ -14,21 +77,43 @@ export default function SignUp() {
         </ul>
         <h4>Chưa có tài khoản? Đăng ký ngay</h4>
         <hr />
+        <h5 className="text-success">{notifySignUp}</h5>
         <div className="row border mb-5">
           <div className="col-7 p-4 mySignUp-colLeft">
-            <h4 className="mb-4">ĐĂNG KÝ TÀI KHOẢN</h4>
+            <h4 className="mb-4 text-dark">ĐĂNG KÝ TÀI KHOẢN</h4>
             <form>
               <div className="form-group row">
-                <label htmlFor="name" className="col-sm-3 col-form-label">
-                  Họ và Tên <span className="text-danger">*</span>
+                <label htmlFor="ho" className="col-sm-3 col-form-label">
+                  Họ <span className="text-danger">*</span>
                 </label>
                 <div className="col-sm-9">
                   <input
                     type="text"
-                    className="form-control"
-                    name="name"
-                    placeholder="Họ và Tên"
+                    className="form-control invalid-ho"
+                    name="ho"
+                    placeholder="Họ"
+                    onChange={handleChange}
                   />
+                  <div id="" className="invalid-ho text-danger">
+                    {state.errors.ho}
+                  </div>
+                </div>
+              </div>
+              <div className="form-group row">
+                <label htmlFor="ten" className="col-sm-3 col-form-label">
+                  Tên <span className="text-danger">*</span>
+                </label>
+                <div className="col-sm-9">
+                  <input
+                    type="text"
+                    className="form-control invalid-ten "
+                    name="ten"
+                    placeholder="Tên"
+                    onChange={handleChange}
+                  />
+                  <div id="" className="invalid-ten text-danger">
+                    {state.errors.ten}
+                  </div>
                 </div>
               </div>
               <div className="form-group row">
@@ -38,10 +123,15 @@ export default function SignUp() {
                 <div className="col-sm-9">
                   <input
                     type="email"
-                    className="form-control"
-                    id="inputEmail3"
+                    className="form-control invalid-email"
+                    id="email"
                     name="email"
+                    onChange={handleChange}
                   />
+                  <div id="" className="invalid-email text-danger">
+                    {state.errors.email}
+                    {notifySignUp?"":notifyErrorEmail}
+                  </div>
                 </div>
               </div>
               <div className="form-group row">
@@ -51,15 +141,19 @@ export default function SignUp() {
                 <div className="col-sm-9">
                   <input
                     type="password"
-                    className="form-control"
-                    id="inputEmail3"
+                    className="form-control invalid-password"
+                    id="password"
                     name="password"
+                    onChange={handleChange}
                   />
+                  <div id="" className="invalid-password text-danger">
+                    {state.errors.password}
+                  </div>
                 </div>
               </div>
               <div className="form-group row">
                 <label
-                  htmlFor="re-password"
+                  htmlFor="repassword"
                   className="col-sm-3 col-form-label"
                 >
                   Xác nhận mật khẩu <span className="text-danger">*</span>
@@ -67,14 +161,21 @@ export default function SignUp() {
                 <div className="col-sm-9">
                   <input
                     type="password"
-                    className="form-control"
-                    id="inputEmail3"
-                    name="re-password"
+                    className="form-control invalid-repassword"
+                    id="repassword"
+                    name="repassword"
+                    onChange={handleChange}
                   />
+                  <div id="" className="invalid-repassword text-danger">
+                    {state.errors.repassword}
+                  </div>
                 </div>
               </div>
+              <div className="col-md-3 mb-3">
 
-              <div className="form-group row">
+              </div>
+
+              {/* <div className="form-group row">
                 <label
                   htmlFor="inputPassword3"
                   className="col-sm-3 col-form-label"
@@ -88,7 +189,7 @@ export default function SignUp() {
                     id="inputPassword3"
                   />
                 </div>
-              </div>
+              </div> */}
               <fieldset className="form-group row">
                 <legend className="col-form-label col-sm-3 float-sm-left pt-0">
                   Giới tính <span className="text-danger">*</span>
@@ -121,7 +222,7 @@ export default function SignUp() {
                   </div>
                 </div>
               </fieldset>
-              <div className="form-group row">
+              {/* <div className="form-group row">
                 <label htmlFor="capcha" className="col-sm-3 col-form-label">
                   Mã xác nhận <span className="text-danger">*</span>
                 </label>
@@ -133,11 +234,11 @@ export default function SignUp() {
                     name="capcha"
                   />
                 </div>
-              </div>
+              </div> */}
               <div className="form-group row">
                 <div className="col-sm-9">
-                  <button type="submit" className="btn btn-success">
-                    Sign in
+                  <button type="submit" className="btn btn-success" onClick={(e) => handleSubmit(e)}>
+                    Đăng ký
                   </button>
                 </div>
               </div>
