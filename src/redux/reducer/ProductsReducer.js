@@ -1,6 +1,8 @@
 const stateDefault = {
   product: {},
   productCart: [],
+  sanPhamUpdate: {}
+
 };
 const ProductsReducer = (state = stateDefault, action) => {
   switch (action.type) {
@@ -43,12 +45,15 @@ const ProductsReducer = (state = stateDefault, action) => {
           soLuong: action.tangGiam
             ? productCartTangGiam[index].soLuong + 1
             : productCartTangGiam[index].soLuong <= 1
-            ? productCartTangGiam[index].soLuong
-            : productCartTangGiam[index].soLuong - 1,
+              ? productCartTangGiam[index].soLuong
+              : productCartTangGiam[index].soLuong - 1,
         };
       }
       console.log("productCartTangGiam: ", productCartTangGiam);
       return { ...state, productCart: productCartTangGiam };
+    }
+    case "UPDATE_SANPHAM_RDC": {
+      return { ...state, sanPhamUpdate: action.data };
     }
     default:
       return { ...state };

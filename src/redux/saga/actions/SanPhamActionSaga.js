@@ -15,10 +15,14 @@ export function* actionGetAllSanPhamAPI() {
 }
 // create
 function* createSanPhamAPI(action) {
-    yield console.log('action: ', action);
+    yield console.log('actions: ', action);
     try {
-        let result = yield call(() => sanPhamServices.createSanPhamAPIService());
-
+        let result = yield call(() => sanPhamServices.createSanPhamAPIService(action.data));
+        if (result.status === 201) {
+            yield put({
+                type: GET_ALL_SAN_PHAM
+            })
+        }
     } catch (error) {
         console.log('error: ', error);
 
@@ -27,17 +31,41 @@ function* createSanPhamAPI(action) {
 export function* actionCreateSanPhamAPI() {
     yield takeEvery(CREATE_SAN_PHAM, createSanPhamAPI)
 }
-// upload img
-function* uploadImageSanPhamAPI(action) {
-    yield console.log('action: ', action);
+// delete
+function* deleteSanPhamAPI(action) {
+    yield console.log('actions: ', action);
     try {
-        let result = yield call(() => sanPhamServices.uploadImageSanPhamAPIService(action.data));
-
+        let result = yield call(() => sanPhamServices.deleteSanPhamAPIService(action.data));
+        if (result.status === 200) {
+            yield put({
+                type: GET_ALL_SAN_PHAM
+            })
+        }
     } catch (error) {
         console.log('error: ', error);
 
     }
 }
-export function* actionUploadImageSanPhamAPI() {
-    yield takeEvery("UPLOAD_IMAGE_SANPHAM", uploadImageSanPhamAPI)
+export function* actionDeleteSanPhamAPI() {
+    yield takeEvery("DELETE_SANPHAM", deleteSanPhamAPI)
+}
+// update
+function* updateSanPhamAPI(action) {
+    yield console.log('actions: ', action);
+    const { formData, id } = action.data
+    try {
+        let result = yield call(() => sanPhamServices.updateSanPhamAPIService(formData, id));
+        console.log('result: ', result);
+        if (result.status === 200) {
+            yield put({
+                type: GET_ALL_SAN_PHAM
+            })
+        }
+    } catch (error) {
+        console.log('error: ', error);
+
+    }
+}
+export function* actionUpdateSanPhamAPI() {
+    yield takeEvery("UPDATE_SANPHAM", updateSanPhamAPI)
 }

@@ -1,25 +1,37 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { DOMAIN } from '../utils/const/services.const'
 
 export default class SanPhamServices {
   getAllSanPhamAPIService = () => {
     return axios({
-      url: 'http://localhost:3000/admin/san-pham',
+      url: `${DOMAIN}/admin/san-pham`,
       method: 'GET'
     })
   }
   createSanPhamAPIService = (data) => {
     return axios({
-      url: 'http://localhost:3000/admin/san-pham/',
+      url: `${DOMAIN}/admin/san-pham/`,
       method: 'POST',
-      data
+      data: data,
+      headers: { token: localStorage.getItem('token') }
     })
   }
-  uploadImageSanPhamAPIService = (data) => {
+  deleteSanPhamAPIService = (id) => {
     return axios({
-      url: `http://localhost:3000/admin/san-pham/${data}`,
-      method: 'POST',
-      data
+      url: `${DOMAIN}/admin/san-pham/${id}`,
+      method: 'DELETE',
+      data: id,
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
+  }
+  updateSanPhamAPIService = (formData, id) => {
+    return axios({
+      url: `${DOMAIN}/admin/san-pham/${id}`,
+      method: 'PUT',
+      data: formData,
     })
   }
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_ALL_SAN_PHAM } from '../../../redux/saga/types/sanPham.types';
 import ModalAddSP from './modal/ModalAddSP';
+import ModalUpdateSP from './modal/ModalUpdateSP';
 
 export default function DonHang() {
     const dispatch = useDispatch();
@@ -13,49 +14,44 @@ export default function DonHang() {
         });
     }, [dispatch]);
 
-    const handleUploadImage = (id, file) => {
-        const formData = new FormData();
-        formData.append('image', file);
-
+    const handleUpdate = (sanPham)=>{
         dispatch({
-            type: "UPLOAD_IMAGE_SANPHAM",
-            data: { id, formData }
-        });
-    };
-
+            type: "UPDATE_SANPHAM_RDC",
+            data: sanPham
+        })
+    }
     const renderSanPham = () => {
         return listSanPham.map(item => {
-            const link = `/san-pham/${item.id}`;
             return (
                 <tr key={item.id}>
                     <td>{item.id}</td>
-                    <td>{item.tenSp}</td>
-                    <td style={{ width: '50px' }}>
-                        {item.avatar ? <img src={item.avatar} alt="" style={{ width: '40%' }} /> :
-                            <form action={link} method="post" encType="multipart/form-data">
-                               <input type="file" name="image" onChange={(e) => handleUploadImage(item.id, e.target.files[0])} />
-                                <br />
-                                <button className='btn btn-outline-primary mt-1' type='button'>Đăng ảnh</button>
-                            </form>
-                        }
+                    <td>{item.tenSp.length < 50 ? item.tenSp : item.tenSp.slice(0, 50) + "..."}</td>
+                    <td style={{ width: '150px' }}>
+                        <img src={item.image} alt="" style={{ width: '100%' }} />
                     </td>
                     <td>{item.giaGoc}</td>
                     <td>{item.giaSale}</td>
                     <td style={{ width: '120px' }}>{item.soLuong}</td>
                     <td>
-                        <button className='btn btn-primary mr-2'><i className="fa-solid fa-pen-to-square"></i></button>
-                        <button className='btn btn-danger'><i className="fa-solid fa-trash"></i></button>
+                        <button className='btn btn-primary mr-2' onClick={()=> handleUpdate(item)} data-toggle="modal" data-target="#modalUpdateSP" type='button'><i className="fa-solid fa-pen-to-square"></i></button>
+                        <button className='btn btn-danger' onClick={() => handleDelete(item.id)} type='button'><i className="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
             );
         });
     };
-
+    const handleDelete = (id) => {
+        dispatch({
+            type: "DELETE_SANPHAM",
+            data: id
+        })
+    }
     return (
         <div>
             <ModalAddSP />
+            <ModalUpdateSP/>
             <h4 className='text-center mb-4'>Quản lý sản phẩm</h4>
-            <table className="table" >
+            <table className="table  table-bordered" >
                 <thead>
                     <tr>
                         <th scope="col"></th>
@@ -63,7 +59,7 @@ export default function DonHang() {
                         <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col"></th>
-                        <th scope="col">
+                        <th scope="col" colSpan={2}>
                             <button className='btn btn-success' data-toggle="modal" data-target="#exampleModal" type='button'>Thêm mới</button>
                         </th>
                     </tr>

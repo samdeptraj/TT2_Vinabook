@@ -3,7 +3,10 @@ import { SIGNUP_ERROR_EMAIL, SIGNUP_SAGA } from "../types/NguoiDung.types";
 const initialState = {
     notifySignUp: '',
     notifyErrorEmail: '',
-    notifyErrorLogin: ''
+    notifyErrorLogin: '',
+    listUser: [],
+    user: {},
+    notifyUpdateUserSuccess: ""
 }
 
 const NguoiDungReducer = (state = initialState, action) => {
@@ -18,6 +21,17 @@ const NguoiDungReducer = (state = initialState, action) => {
             }
         case "ERROR_LOGIN": {
             return { ...state, notifyErrorLogin: action.data }
+        }
+        case "GET_ALL_USER_SAGA": {
+
+            return { ...state, listUser: action.data }
+        }
+        case "UPDATE_USER_RDC": {
+
+            return { ...state, user: action.data }
+        }
+        case "NOTIFY_UPDATE_SAGA": {
+            return { ...state, notifyUpdateUser: action.data }
         }
         default:
             return { ...state }

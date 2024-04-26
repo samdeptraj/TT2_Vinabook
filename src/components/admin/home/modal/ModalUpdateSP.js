@@ -1,16 +1,26 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { CREATE_SAN_PHAM } from '../../../../redux/saga/types/sanPham.types';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
-export default function ModalAddSP() {
+export default function ModalUpdateSP() {
+    const sanPhamUpdate = useSelector(state => state.ProductsReducer.sanPhamUpdate);
     const dispatch = useDispatch();
     const [state, setState] = useState({
         value: {
             tenSp: "",
             giaGoc: "",
-            giaSale: ""
+            giaSale: "",
         }
     })
+    useEffect(() => {
+        setState({
+            value: {
+                ...state.value,
+                tenSp: sanPhamUpdate.tenSp,
+                giaGoc: sanPhamUpdate.giaGoc,
+                giaSale: sanPhamUpdate.giaSale
+            }
+        })
+    }, [sanPhamUpdate])
     const [file, setFile] = useState("");
     const changeInput = (e) => {
         const { name, value } = e.target;
@@ -28,28 +38,28 @@ export default function ModalAddSP() {
     const handleChangeImg = (file) => {
         console.log(file);
         setFile(file);
-
     }
-    const addSp = () => {
+    const updateSP = () => {
+        const id = sanPhamUpdate.id;
         let formData = new FormData();
         formData.append("image", file);
         formData.append("tenSp", state.value.tenSp);
         formData.append("giaGoc", state.value.giaGoc);
         formData.append("giaSale", state.value.giaSale);
         dispatch({
-            type: CREATE_SAN_PHAM,
-            data: formData
+            type: "UPDATE_SANPHAM",
+            data: { formData, id }
         })
     }
     return (
         <div>
 
             {/* Modal */}
-            <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="modalUpdateSP" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog ">
                     <div className="modal-content " style={{ width: '600px' }}>
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Thêm mới sản phẩm</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Cập nhập sản phẩm</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -59,7 +69,7 @@ export default function ModalAddSP() {
                                 <div className="form-group row">
                                     <label htmlFor="tenSp" className="col-sm-3 col-form-label">Tên sản phẩm</label>
                                     <div className="col-sm-9">
-                                        <input type="text" className="form-control" name='tenSp' id="tenSp" onChange={changeInput} />
+                                        <input type="text" className="form-control" name='tenSp' id="tenSp" onChange={changeInput} value={state.value.tenSp} />
                                     </div>
                                 </div>
                                 <div className="form-group row">
@@ -71,13 +81,13 @@ export default function ModalAddSP() {
                                 <div className="form-group row">
                                     <label htmlFor="giaGoc" className="col-sm-3 col-form-label">Giá gốc</label>
                                     <div className="col-sm-9">
-                                        <input type="text" className="form-control" name='giaGoc' id="giaGoc" onChange={changeInput} />
+                                        <input type="text" className="form-control" name='giaGoc' id="giaGoc" onChange={changeInput} value={state.value.giaGoc} />
                                     </div>
                                 </div>
                                 <div className="form-group row">
                                     <label htmlFor="giaSale" className="col-sm-3 col-form-label">Giá Sale</label>
                                     <div className="col-sm-9">
-                                        <input type="text" className="form-control" name='giaSale' id="giaSale" onChange={changeInput} />
+                                        <input type="text" className="form-control" name='giaSale' id="giaSale" onChange={changeInput} value={state.value.giaSale} />
                                     </div>
                                 </div>
 
@@ -85,7 +95,7 @@ export default function ModalAddSP() {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={() => addSp()}>Thêm</button>
+                            <button type="button" className="btn btn-primary" onClick={() => updateSP()}>Update</button>
                         </div>
                     </div>
                 </div>

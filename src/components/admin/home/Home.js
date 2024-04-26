@@ -14,7 +14,7 @@ export default function Home() {
             navigate('/dang-ky-tai-khoan')
         } else {
             const decodedToken = jwtDecode(token); // Correct function name
-            if (decodedToken.type === 'admin') {
+            if (decodedToken.quyenHan === 'admin') {
                 setAuth(true);
             }
         }
