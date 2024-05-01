@@ -9,8 +9,13 @@ export const ROUTERS = {
   NEWSPAGE: "trang-tin-tuc-chi-tiet",
   CATEGORY: "danh-muc-san-pham",
   TAIKHOAN: 'account',
+  THANHTOAN: 'thanh-toan',
+  KIEMTRATHANHTOAN: 'thanh-toan-check',
+  DONHANGCUATOI: 'don-hang-cua-toi',
   NOTFOUND: '*'
 };
 export const ROUTERS_ADMIN = {
-  HOME: '/admin/home'
+  HOME: '/admin/home',
+  UPDATE_CHITIET_SP: '/admin/update-chi-tiet-san-pham/',
+  ADD_CHITIET_SP: '/admin/add-chi-tiet-san-pham/'
 }

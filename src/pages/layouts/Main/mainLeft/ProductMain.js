@@ -2,22 +2,18 @@ import React, { useReducer } from "react";
 import { Link } from "react-router-dom";
 import "../../../sass/main.scss";
 import { ROUTERS } from "../../../../utils/router";
-import books from "../../../../data/products/books.json";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actionProductDetail } from "../../../../redux/actions/Action";
 export default function ProductMain(props) {
   let dispatch = useDispatch();
-  const hanldDetail = (item) => {
-    dispatch(actionProductDetail(item));
-  };
+  const { data } = props;
   const renderProducts = () => {
-    return books[props.typeBook].map((item) => {
+    return data.map((item) => {
       return (
         <div className="col-4 p-2">
           <Link
-            to={ROUTERS.DETAIL}
+            to={`${ROUTERS.DETAIL}?tenSp=${encodeURIComponent(item.tenSp)}`}
             className="myHotSaleBook-link"
-            onClick={() => hanldDetail(item)}
           >
             <div
               className="card mb-3 p-3"
@@ -31,25 +27,25 @@ export default function ProductMain(props) {
                   <div className="card-body myCard-body">
                     <div className="myCard-body--border">
                       <h6 className="card-title">
-                        {item.title.length > 15
-                          ? item.title.substring(0, 15) + "..."
-                          : item.title}
+                        {item.tenSp.length > 15
+                          ? item.tenSp.substring(0, 15) + "..."
+                          : item.tenSp}
                       </h6>
-                      <p className="card-text pb-2">{item.author}</p>
+                      <p className="card-text pb-2">{item.tacGia}</p>
                     </div>
                     <p className="card-text pt-2 pb-2">
-                      {item.desc.length > 15
-                        ? item.desc.substring(0, 60) + "..."
-                        : item.desc}
+                      {item.gioiThieuSach.length > 15
+                        ? item.gioiThieuSach.substring(0, 60) + "..."
+                        : item.gioiThieuSach}
                     </p>
                   </div>
                 </div>
               </div>
               <div className="mySale">
-                <p id="boxSaleOf">{item.sale}%</p>
+                <p id="boxSaleOf">{Math.round(((Number(item.giaGoc) - Number(item.giaSale)) / Number(item.giaGoc)) * 100)}%</p>
                 <div className="mySale-price-container">
-                  <p className="mySale-price">{item.price} ₫</p>
-                  <p className="mySale-price-sale">{item.priceSale} ₫</p>
+                  <p className="mySale-price">{Number(item.giaGoc).toLocaleString()} ₫</p>
+                  <p className="mySale-price-sale">{Number(item.giaSale).toLocaleString()} ₫</p>
                 </div>
               </div>
             </div>
@@ -62,7 +58,7 @@ export default function ProductMain(props) {
     <div className="myHotSaleBook">
       <div className="row">
         <div className="col-6">
-          <h5>{props.type}</h5>
+          <h5>{data[0] ? data[0].tenDanhMuc : ""}</h5>
         </div>
         <div className="col-6 text-right">
           <a href="/#" className="myHotSaleBook--colorLink">

@@ -8,7 +8,6 @@ function redirectToHome() {
 function* loginAPI(action) {
     try {
         const result = yield call(() => nguoiDungServices.login(action.data));
-        console.log('result: ', result);
         localStorage.setItem('token', result.data.token);
         if (result.data.token) {
             redirectToHome();

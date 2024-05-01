@@ -1,9 +1,34 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actionAddCart } from "../../../../redux/actions/Action";
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 export default function DetailProduct() {
-  let { product } = useSelector((state) => state.ProductsReducer); //thay the mapStateToProps
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const sanPhamDetail = useSelector(state => state.ChiTietSPReducerSaga.sanPhamDetail);
+  console.log('sanPhamDetail: ', sanPhamDetail);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const tenSp = searchParams.get("tenSp");
+  // get token
+  const token = localStorage.getItem('token');
+  const decodeToken = jwtDecode(token);
+  useEffect(() => {
+    dispatch({
+      type: "SAN_PHAM_GET_DETAIL_USER",
+      data: tenSp
+    });
+  }, [tenSp])
+  const addCart = () => {
+    dispatch({
+      type: "ADD_SAN_PHAM_CART",
+      data: {
+        maSanPham: sanPhamDetail.maSanPham,
+        maNguoiDung: decodeToken.maNguoiDung
+      }
+    });
+  }
   const renderBookDetail = () => {
     return (
       <div className="row">
@@ -11,16 +36,16 @@ export default function DetailProduct() {
           <div className="card mb-3 border-0">
             <div className="row no-gutters">
               <div className="col-md-4">
-                <img className="w-100" src={product.image} alt="..." />
+                <img className="w-100" src={sanPhamDetail.image} alt="..." />
               </div>
               <div className="col-md-8">
                 <div className="card-body pt-0">
-                  <h4 className="card-title">{product.title}</h4>
-                  <p className="card-text">Tác giả: {product.author}</p>
+                  <h4 className="card-title">{sanPhamDetail.tenSp}</h4>
+                  <p className="card-text">Tác giả: {sanPhamDetail.tacGia}</p>
                   <p className="card-text">Nhà xuất bản: Nxb Hội Nhà Văn</p>
                   <p className="card-text">Nhà phát hành: Nhã Nam</p>
                   <p className="card-text borderBottom">
-                    {product.desc}
+                    {sanPhamDetail.gioiThieuSach}
                     <br />
                     <a href="/#">Xem thêm</a>
                   </p>
@@ -51,15 +76,15 @@ export default function DetailProduct() {
               <ul className="borderBottom myDetailProduct-ulRight">
                 <li className="li-1">
                   <p>Giá bìa</p>
-                  <p>{product.price} ₫</p>
+                  <p>{Number(sanPhamDetail.giaGoc).toLocaleString()} ₫</p>
                 </li>
                 <li className="li-2">
                   <p>Giá bán</p>
-                  <p>{product.priceSale} ₫</p>
+                  <p>{Number(sanPhamDetail.giaSale).toLocaleString()} ₫</p>
                 </li>
                 <li className="li-3">
                   <p>Tiết kiệm</p>
-                  <p className="texta">?0.000 ₫ ({product.sale}%)</p>
+                  <p className="texta">{(Number(sanPhamDetail.giaGoc) - Number(sanPhamDetail.giaSale)).toLocaleString()} ₫ ({Math.round(((Number(sanPhamDetail.giaGoc) - Number(sanPhamDetail.giaSale)) / Number(sanPhamDetail.giaGoc)) * 100)}%)</p>
                 </li>
                 <li className="li-4">
                   <p>Chất lượng sách</p>
@@ -75,9 +100,7 @@ export default function DetailProduct() {
               </small>
               <button
                 className="btn btn-warning w-100 mt-4"
-                onClick={() => {
-                  dispatch(actionAddCart(product));
-                }}
+                onClick={() => addCart()}
               >
                 <i class="fa-solid fa-cart-shopping"></i> MUA NGAY
               </button>
@@ -217,25 +240,8 @@ export default function DetailProduct() {
                 role="tabpanel"
                 aria-labelledby="home-tab"
               >
-                <h4>Hippi - Những Kẻ Lãng Du</h4>
-                <p className="mt-4">Hippi - Những Kẻ Lãng Du</p>
-                <p>
-                  Hippie – Những kẻ lãng du đưa ta đến với những con người hoàn
-                  toàn xa lạ, với những mục đích khác nhau nhưng cùng hướng đến
-                  vùng đất xa xôi Nepal trên con đường mòn hippie huyền thoại.
-                  Trong hành trình đó, chàng trai Brazil tên Paulo gầy gò có
-                  chòm râu dê và mái tóc dài bồng bềnh, mơ ước trở thành nhà văn
-                  đã gặp gỡ Karla, cô gái Hà Lan ở độ tuổi đôi mươi đang tìm
-                  kiếm bạn đồng hành cho chuyến đi.
-                </p>
-                <p>
-                  Sau khi gặp nhau ở Amsterdam, cô thuyết phục Paulo cùng cô lên
-                  chiếc Xe buýt Diệu kỳ đi từ Amsterdam đến Istanbul và qua
-                  Trung Á đến Kathmandu. Khi cùng nhau bắt đầu cuộc hành trình
-                  này, Paulo và Karla đã khám phá ra mối tình đánh thức họ ở mọi
-                  phương diện, đồng thời dẫn đến những lựa chọn và quyết định sẽ
-                  định hướng cho cuộc sống của họ sau này.
-                </p>
+                <h4>{sanPhamDetail.tenSp}</h4>
+                <p className="mt-3">{sanPhamDetail.gioiThieuSach}</p>
                 <p>Mời bạn đón đọc.</p>
               </div>
               <div
@@ -248,45 +254,37 @@ export default function DetailProduct() {
                 <ul className="myDetailProduct-ulDetail">
                   <li>
                     <p>Tác giả:</p>
-                    <p className="pl-3"> Paulo Coelho , Trần Hải Đức</p>
+                    <p className="pl-3"> {sanPhamDetail.tacGia}</p>
                   </li>
                   <li>
                     <p>Nhà phát hành:</p>
                     <p className="pl-3">
-                      <a href="/#"> Nhã Nam</a>
+                      <a href="/#"> {sanPhamDetail.tenNCC}</a>
                     </p>
                   </li>
                   <li>
                     <p>Khối lượng:</p>
-                    <p className="pl-3"> 500.00 gam</p>
+                    <p className="pl-3"> {sanPhamDetail.trongLuong} </p>
                   </li>
                   <li>
-                    <p>Định dạng:</p>
-                    <p className="pl-3"> Bìa mềm</p>
+                    <p>Hình thức:</p>
+                    <p className="pl-3">{sanPhamDetail.hinhThuc}</p>
                   </li>
                   <li>
-                    <p>Ngày phát hành:</p>
-                    <p className="pl-3"> 2024</p>
+                    <p>Năm xuất bản:</p>
+                    <p className="pl-3">{sanPhamDetail.namXb} </p>
                   </li>
                   <li>
                     <p>Nhà xuất bản:</p>
-                    <p className="pl-3"> Nxb Hội Nhà Văn</p>
-                  </li>
-                  <li>
-                    <p>Mã Sản phẩm:</p>
-                    <p className="pl-3"> 8935235240483</p>
-                  </li>
-                  <li>
-                    <p>Ngôn ngữ:</p>
-                    <p className="pl-3"> Tiếng Việt</p>
+                    <p className="pl-3"> {sanPhamDetail.nxb}</p>
                   </li>
                   <li>
                     <p>Kích thước:</p>
-                    <p className="pl-3"> 20.5 x 14 cm</p>
+                    <p className="pl-3"> {sanPhamDetail.kichThuocBaoBi}</p>
                   </li>
                   <li>
                     <p>Số trang:</p>
-                    <p className="pl-3"> 368</p>
+                    <p className="pl-3">{sanPhamDetail.trongLuong} </p>
                   </li>
                 </ul>
               </div>

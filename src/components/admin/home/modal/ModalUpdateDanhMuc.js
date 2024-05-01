@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function ModalUpdateDanhMuc() {
     const danhMucUpdate = useSelector(state => state.DanhMucReducerSaga.danhMucUpdate);
-    console.log('danhMucUpdate: ', danhMucUpdate);
     const dispatch = useDispatch();
     const [state, setState] = useState({
         tenDanhMuc: ""
@@ -23,7 +22,6 @@ export default function ModalUpdateDanhMuc() {
         setState(newValue)
     }
     const updateDM = () => {
-        console.log(state);
         dispatch({
             type: "UPDATE_DANH_MUC",
             data: {

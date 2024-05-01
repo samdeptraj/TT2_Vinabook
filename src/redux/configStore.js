@@ -5,6 +5,9 @@ import ProductsReducer from './reducer/ProductsReducer';
 import DonHangReducerSaga from './saga/reducers/DonHangReducerSaga';
 import NguoiDungReducer from './saga/reducers/NguoiDungReducer';
 import DanhMucReducerSaga from './saga/reducers/DanhMucReducerSaga';
+import ChiTietSPReducerSaga from './saga/reducers/ChiTietSPReducerSaga';
+import GioHangReducerSaga from './saga/reducers/GioHangReducerSaga';
+import HoaDonDatHangReducersSaga from './saga/reducers/HoaDonDatHangReducersSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 // Combine your reducers
@@ -13,7 +16,10 @@ const rootReducer = combineReducers({
     ProductsReducer,
     DonHangReducerSaga,
     NguoiDungReducer,
-    DanhMucReducerSaga
+    DanhMucReducerSaga,
+    ChiTietSPReducerSaga,
+    GioHangReducerSaga,
+    HoaDonDatHangReducersSaga
 });
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 // Run the root saga

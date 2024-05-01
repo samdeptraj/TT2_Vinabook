@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./style.scss";
 import { ROUTERS } from "../../../../../utils/router";
@@ -8,18 +8,24 @@ import TaiKhoan from "./TaiKhoan";
 
 export default function HeaderMain() {
   const navigate = useNavigate();
-  let { productCart } = useSelector((state) => state.ProductsReducer);
+  let listSanPhamCart = useSelector((state) => state.GioHangReducerSaga.listSanPhamCart);
   let dispatch = useDispatch();
   const totalPrice = () => {
-    return productCart.reduce((acc, curr) => {
-      let price = curr.priceSale ? curr.priceSale : curr.price;
-      return acc + curr.soLuong * price;
+    return listSanPhamCart.reduce((acc, curr) => {
+      let price = curr.giaSale ? curr.giaSale : curr.giaGoc;
+      return acc + (curr.soLuongSpGioHang * price);
     }, 0);
   };
+  const handleDeleteSp = (id, maNguoiDung) => {
+    dispatch({
+      type: "DELETE_SAN_PHAM_GIO_HANG_USER",
+      data: { id, maNguoiDung }
+    })
+  }
   const renderProductCart = () => {
-    return productCart.map((item) => {
+    return listSanPhamCart.slice(0, 5).map(item => {
       return (
-        <div className="row no-gutters header-right-cartDiv-child1-2">
+        <div className="row no-gutters header-right-cartDiv-child1-2 mb-1">
           <div className="col-md-2">
             <img className="w-100" src={item.image} alt="..." />
           </div>
@@ -28,25 +34,24 @@ export default function HeaderMain() {
               <h6 className="card-title">{item.title}</h6>
               <div className="d-flex">
                 <p className="card-text bookCart-amount mr-3">
-                  {item.soLuong} x{" "}
+                  {item.soLuongSpGioHang} x{" "}
                 </p>
                 <p className="card-text bookCart-amount text-danger">
-                  {(item.priceSale ? item.priceSale : item.price).toLocaleString()} ₫
+                  {Number(item.giaSale ? item.giaSale : item.giaGoc).toLocaleString()} ₫
                 </p>
               </div>
             </div>
             <div className="card-footer cartDiv-child1-2-btn">
-              <button className=" header-right-cartDiv-child1-2-btnClose" onClick={() => {
-                dispatch(actionDeleteProduct(item))
-              }}>
+              <button className=" header-right-cartDiv-child1-2-btnClose"
+                onClick={() => handleDeleteSp(item.id, item.maNguoiDung)}>
                 X
               </button>
             </div>
           </div>
-        </div>
+        </div >
       );
-    });
-  };
+    })
+  }
   const renderActionAccount = () => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -121,13 +126,23 @@ export default function HeaderMain() {
         <div className="col-3 header-right">
           <ul className="d-flex">
             <li className="mr-3 position-relative header-right-cart">
-              <a href="/#">
+              <Link
+                to={"/" + ROUTERS.CART}
+                style={{ color: "black", textDecoration: "none" }}
+              >
                 <i className="fa-solid fa-cart-shopping"></i>
-              </a>
+
+              </Link>
               <div className="position-absolute header-right-cartDiv">
                 <ul>
                   <div className="card mb-3 header-right-cartDiv-child1">
                     <li>{renderProductCart()}</li>
+                    <li> <Link
+                      to={"/" + ROUTERS.CART}
+                      style={{ color: "black", textDecoration: "none" }}
+                    >
+                      Xem trong giỏ...
+                    </Link></li>
                     <div className="card-footer card-total d-flex justify-content-between">
                       <p>
                         Tổng cộng:
@@ -138,7 +153,7 @@ export default function HeaderMain() {
                       </p>
                       <button className="btn btn-warning">
                         <Link
-                          to={ROUTERS.CART}
+                          to={"/" + ROUTERS.CART}
                           style={{ color: "black", textDecoration: "none" }}
                         >
                           Xem giỏ hàng

@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProductMain from "./ProductMain";
-
+import { useSelector } from "react-redux";
 export default function HotSaleBook() {
-  const typeBook = "hotbooks";
+  const listSanPhamUser = useSelector(state => state.DonHangReducerSaga.listSanPhamUser);
+  const data = listSanPhamUser.filter(item => item.tenDanhMuc === "Sách bán chạy");
   return (
     <div>
-      <ProductMain typeBook={typeBook} type="Sách Bán Chạy"/>
+      <ProductMain data={data} />
     </div>
   );
 }

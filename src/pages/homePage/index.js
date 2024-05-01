@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import MainBanner from "../layouts/Main/MainBanner";
 import HotSaleWeek from "../layouts/Main/mainRight/HotSaleWeek";
 import HotSaleBook from "../layouts/Main/mainLeft/HotSaleBook";
@@ -13,7 +13,14 @@ import SkillBook from "../layouts/Main/mainLeft/SkillBook";
 import LearnChildBook from "../layouts/Main/mainLeft/LearnChildBook";
 import NewBookGood from "../layouts/Main/mainLeft/NewBookGood";
 import SachMoiNhap from "../layouts/Main/mainRight/SachMoiNhap";
+import { useDispatch, useSelector } from "react-redux";
 function HomePage() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({
+      type: "GET_ALL_SAN_PHAM_USER"
+    })
+  }, [])
   return (
     <div>
       <MainBanner />
@@ -28,12 +35,12 @@ function HomePage() {
             <AuthorBook />
             <MagazineBook />
             <LearnChildBook />
-            <SachThieuNhi />
+            {/* <SachThieuNhi /> */}
             <SkillBook />
           </div>
           <div className="col-3">
             <HotSaleWeek />
-            <SachMoiNhap/>
+            <SachMoiNhap />
             <BannerQc />
           </div>
         </div>

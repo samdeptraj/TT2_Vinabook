@@ -4,7 +4,6 @@ import { LOGIN } from '../../redux/saga/types/NguoiDung.types';
 
 export default function ModalSignin() {
     const notifyErrorLogin = useSelector(state => state.NguoiDungReducer.notifyErrorLogin);
-    console.log('notifyErrorLogin: ', notifyErrorLogin);
     const dispatch = useDispatch();
     const [state, setState] = useState({
         values: {

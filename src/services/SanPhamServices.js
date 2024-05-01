@@ -9,6 +9,12 @@ export default class SanPhamServices {
       method: 'GET'
     })
   }
+  getAllSanPhamAPIServiceUser = () => {
+    return axios({
+      url: `${DOMAIN}/admin/san-pham/user`,
+      method: 'GET'
+    })
+  }
   createSanPhamAPIService = (data) => {
     return axios({
       url: `${DOMAIN}/admin/san-pham/`,

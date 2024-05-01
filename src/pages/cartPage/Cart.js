@@ -1,23 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { actionDeleteProduct, actionTangGiamProduct } from "../../redux/actions/Action";
+import { jwtDecode } from "jwt-decode";
 export default function Cart() {
-  let { productCart } = useSelector((state) => state.ProductsReducer);
   let dispatch = useDispatch();
+  let listSanPhamCart = useSelector((state) => state.GioHangReducerSaga.listSanPhamCart);
+  const token = localStorage.getItem('token');
+  const decodeToken = jwtDecode(token);
+  useEffect(() => {
+    dispatch({
+      type: "GET_ALL_SP_GIO_HANG",
+      data: decodeToken.maNguoiDung
+    })
+  }, [])
   const totalAmount = () => {
-    const totalAmount = productCart.reduce((curr, acc) => {
-      return curr + acc.soLuong;
+    const totalAmount = listSanPhamCart.reduce((curr, acc) => {
+      return curr + acc.soLuongSpGioHang;
     }, 0);
     return totalAmount;
   };
   const calTotalPrice = () => {
-    return productCart.reduce((curr, acc) => {
-      let price = acc.priceSale ? acc.priceSale : acc.price;
-      return curr + acc.soLuong * price;
+    return listSanPhamCart.reduce((curr, acc) => {
+      let giaSp = acc.giaSale ? acc.giaSale : acc.giaGoc;
+      return curr + acc.soLuongSpGioHang * Number(giaSp);
     }, 0);
   };
+  const handleTangGiamSoLuong = (maSanPham, maNguoiDung, type) => {
+    dispatch({
+      type: "UPDATE_SO_LUONG_SAN_PHAM",
+      data: { maSanPham, maNguoiDung, type }
+    })
+  }
+  const handleDeleteSp = (id, maNguoiDung) => {
+    dispatch({
+      type: "DELETE_SAN_PHAM_GIO_HANG_USER",
+      data: { id, maNguoiDung }
+    })
+  }
   const renderProduct = () => {
-    return productCart.map((item) => {
+    return listSanPhamCart.map((item) => {
       return (
         <div className="d-flex justify-content-between align-items-center mt-3">
           <div className="row no-gutters w-50">
@@ -30,23 +51,19 @@ export default function Cart() {
                 <div className="d-flex">
                   <button
                     className="btn mr-2 bgGray pl-3 pr-3"
-                    onClick={() => {
-                      dispatch(actionTangGiamProduct(item.id, false));
-                    }}
+                    onClick={() => handleTangGiamSoLuong(item.maSanPham, item.maNguoiDung, false)}
                   >
                     -
                   </button>
                   <input
-                    value={item.soLuong}
+                    value={item.soLuongSpGioHang}
                     name="amount"
                     disabled
                     className="w-25 form-control text-center"
                   />
                   <button
                     className="btn ml-2 bgGray pl-3 pr-3"
-                    onClick={() => {
-                      dispatch(actionTangGiamProduct(item.id, true));
-                    }}
+                    onClick={() => handleTangGiamSoLuong(item.maSanPham, item.maNguoiDung, true)}
                   >
                     +
                   </button>
@@ -55,20 +72,14 @@ export default function Cart() {
             </div>
           </div>
           <div className="d-flex align-items-center myCart-cost">
-            <p className="amount mb-0">{item.soLuong} x </p>
+            <p className="amount mb-0">{item.soLuongSpGioHang} x </p>
             <p className="price mb-0 pl-2 pr-3">
-              {" "}
-              {(item.priceSale
-                ? item.priceSale
-                : item.price
-              ).toLocaleString()}{" "}
+              {Number(item.giaSale ? item.giaSale : item.giaGoc).toLocaleString()}{" "}
               ₫
             </p>
             <button
               className="btn"
-              onClick={() => {
-                dispatch(actionDeleteProduct(item));
-              }}
+              onClick={() => handleDeleteSp(item.id, item.maNguoiDung)}
             >
               <i className="fa-solid fa-trash textGray" />
             </button>
@@ -123,8 +134,12 @@ export default function Cart() {
           </div>
         </div>
         <div className="mt-4 text-center myCartbtn">
-          <button className="btn bgGray mr-4">Quay lại</button>
-          <button className="btn btn-warning">Thanh toán</button>
+          <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+            <button className="btn bgGray mr-4">Quay lại</button>
+          </Link>
+          <Link to="/thanh-toan" style={{ textDecoration: 'none', color: 'black' }}>
+            <button className="btn btn-warning">Thanh toán</button>
+          </Link>
         </div>
       </div>
     </div>

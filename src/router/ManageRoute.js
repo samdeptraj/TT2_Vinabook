@@ -12,6 +12,11 @@ import DetailProduct from "../pages/layouts/Main/mainLeft/DetailProduct";
 import PageNotFound from "../components/PageNotFound";
 import Home from "../components/admin/home/Home";
 import TaiKhoan from "../pages/layouts/header/component/headerMain/TaiKhoan";
+import UpdateChiTietSP from "../components/admin/home/UpdateChiTietSP";
+import AddChiTiet from "../components/admin/home/AddChiTiet";
+import Checkout from "../pages/cartPage/Checkout";
+import CompleteCheckout from "../pages/cartPage/CompleteCheckout";
+import ProductOrdered from "../pages/cartPage/ProductOrdered";
 export const ManageRoute = [
     {
         path: ROUTERS.HOME,
@@ -61,6 +66,21 @@ export const ManageRoute = [
         isShowLayout: true
     },
     {
+        path: ROUTERS.THANHTOAN,
+        component: <Checkout />,
+        isShowLayout: false
+    },
+    {
+        path: ROUTERS.KIEMTRATHANHTOAN,
+        component: < CompleteCheckout />,
+        isShowLayout: false
+    },
+    {
+        path: ROUTERS.DONHANGCUATOI,
+        component: < ProductOrdered />,
+        isShowLayout: true
+    },
+    {
         path: ROUTERS.NOTFOUND,
         component: <PageNotFound />,
         isShowLayout: true
@@ -68,6 +88,16 @@ export const ManageRoute = [
     {
         path: ROUTERS_ADMIN.HOME,
         component: <Home />,
+        isShowLayout: false
+    },
+    {
+        path: ROUTERS_ADMIN.UPDATE_CHITIET_SP,
+        component: <UpdateChiTietSP />,
+        isShowLayout: false
+    },
+    {
+        path: ROUTERS_ADMIN.ADD_CHITIET_SP,
+        component: <AddChiTiet />,
         isShowLayout: false
     }
 ];

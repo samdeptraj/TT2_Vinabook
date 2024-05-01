@@ -13,9 +13,20 @@ function* getAllSanPhamAPI(action) {
 export function* actionGetAllSanPhamAPI() {
     yield takeEvery(GET_ALL_SAN_PHAM, getAllSanPhamAPI);
 }
+// get user
+function* getAllSanPhamAPIUser(action) {
+    let result = yield call(() => sanPhamServices.getAllSanPhamAPIServiceUser());
+    const { data } = result;
+    yield put({
+        type: "GET_ALL_SAN_PHAM_USER_SAGA",
+        data
+    })
+}
+export function* actionGetAllSanPhamAPIUser() {
+    yield takeEvery("GET_ALL_SAN_PHAM_USER", getAllSanPhamAPIUser);
+}
 // create
 function* createSanPhamAPI(action) {
-    yield console.log('actions: ', action);
     try {
         let result = yield call(() => sanPhamServices.createSanPhamAPIService(action.data));
         if (result.status === 201) {

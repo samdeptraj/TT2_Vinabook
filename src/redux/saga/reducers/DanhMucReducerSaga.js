@@ -13,7 +13,6 @@ const DanhMucReducerSaga = (state = initialState, action) => {
             return { ...state, listDanhMuc: action.data }
         }
         case "UPDATE_DANH_MUC_RDC": {
-            console.log('actionsasa: ', action);
             return { ...state, danhMucUpdate: action.data }
         }
         default:

@@ -52,9 +52,10 @@ export function* actionDeleteDanhMucAPI() {
 // update
 function* updateDanhMucAPI(action) {
     console.log('action: ', action);
-    const id = action.data;
+    const {id,name} = action.data;
+    
     try {
-        let result = yield call(() => danhMucServices.deleteDanhMucAPIService(id));
+        let result = yield call(() => danhMucServices.updateDanhMucAPIService(name,id));
         console.log('result: ', result);
         if (result.status === 200) {
             yield put({

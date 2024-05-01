@@ -35,7 +35,7 @@ export default function Home() {
         return (
             <div className='container-fluid' style={{ height: '100vh' }}>
                 <div className='row'>
-                    <div className='col-2 bg-light' >
+                    <div className='col-2 ' >
                         <Dashboard />
                     </div>
                     <div className='col-10 bg-light'>

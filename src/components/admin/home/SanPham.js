@@ -1,23 +1,20 @@
-import { jwtDecode } from 'jwt-decode';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { GET_ALL_SAN_PHAM } from '../../../redux/saga/types/sanPham.types';
+import ModalAddSP from './modal/ModalAddSP';
+import ModalUpdateSP from './modal/ModalUpdateSP';
 
 export default function DonHang() {
     const dispatch = useDispatch();
     const listSanPham = useSelector(state => state.DonHangReducerSaga.listSanPham);
-    
+
     useEffect(() => {
         dispatch({
-            type: "GET_ALL_DON_HANG",
-        })
-    }, [dispatch])
-    useEffect(() => {
-        dispatch({
-            type: "GET_ALL_SAN_PHAM"
+            type: GET_ALL_SAN_PHAM
         });
     }, [dispatch]);
 
-    const handleUpdate = (sanPham) => {
+    const handleUpdate = (sanPham)=>{
         dispatch({
             type: "UPDATE_SANPHAM_RDC",
             data: sanPham
@@ -29,15 +26,14 @@ export default function DonHang() {
                 <tr key={item.id}>
                     <td>{item.id}</td>
                     <td>{item.tenSp.length < 50 ? item.tenSp : item.tenSp.slice(0, 50) + "..."}</td>
-                    <td style={{ width: '120px' }}>
+                    <td style={{ width: '150px' }}>
                         <img src={item.image} alt="" style={{ width: '100%' }} />
                     </td>
                     <td>{item.giaGoc}</td>
                     <td>{item.giaSale}</td>
                     <td style={{ width: '120px' }}>{item.soLuong}</td>
-                    <td style={{ width: '120px' }}>{item.soLuong}</td>
                     <td>
-                        <button className='btn btn-primary mr-2' onClick={() => handleUpdate(item)} data-toggle="modal" data-target="#modalUpdateSP" type='button'><i className="fa-solid fa-pen-to-square"></i></button>
+                        <button className='btn btn-primary mr-2' onClick={()=> handleUpdate(item)} data-toggle="modal" data-target="#modalUpdateSP" type='button'><i className="fa-solid fa-pen-to-square"></i></button>
                         <button className='btn btn-danger' onClick={() => handleDelete(item.id)} type='button'><i className="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
@@ -52,6 +48,8 @@ export default function DonHang() {
     }
     return (
         <div>
+            <ModalAddSP />
+            <ModalUpdateSP/>
             <h4 className='text-center mb-4'>Quản lý sản phẩm</h4>
             <table className="table  table-bordered" >
                 <thead>
@@ -69,10 +67,9 @@ export default function DonHang() {
                         <th scope="col">id</th>
                         <th scope="col">Tên sản phẩm</th>
                         <th scope="col">Hình ảnh</th>
-                        <th scope="col">Giá tiền</th>
-                        <th scope="col">Ngày tạo</th>
-                        <th scope="col">Địa chỉ giao hàng</th>
-                        <th scope="col">Trạng thái</th>
+                        <th scope="col">Giá gốc</th>
+                        <th scope="col">Giá sale</th>
+                        <th scope="col">Số lượng</th>
                         <th scope="col">Hành động</th>
                     </tr>
                 </thead>

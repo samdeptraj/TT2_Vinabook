@@ -1,12 +1,13 @@
 import React from "react";
-import HotSaleBook from "./HotSaleBook";
 import ProductMain from "./ProductMain";
+import { useSelector } from "react-redux";
 
 export default function SkillBook() {
-  const typeBook = "skill";
+  const listSanPhamUser = useSelector(state => state.DonHangReducerSaga.listSanPhamUser);
+  const data = listSanPhamUser.filter(item=>item.tenDanhMuc==="Sách kỹ năng");
   return (
     <div>
-      <ProductMain typeBook={typeBook} type="Sách Kỹ Năng" />
+      <ProductMain data={data} />
     </div>
   );
 }
