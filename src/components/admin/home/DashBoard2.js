@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CardHome from './CardHome'
 import SanPham from './SanPham'
 import NguoiDung from './NguoiDung'
 import DanhMuc from './DanhMuc'
 import ChiTietSP from './ChiTietSP'
 import DonHang from './DonHang'
+import { useDispatch, useSelector } from 'react-redux';
+import { jwtDecode } from 'jwt-decode';
 
 export default function DashBoard2() {
+   
     return (
         <div className="tab-content" id="v-pills-tabContent">
             <div className="tab-pane fade show active " id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab"><CardHome /></div>

@@ -9,11 +9,12 @@ export default class ChiTietSPServices {
             method: 'GET'
         })
     }
-    getChiTietSpAPIServiceUser = (tenSanPham) => {
-        return axios({
-            url: `${DOMAIN}/admin/chi-tiet-san-pham?tenSp=${encodeURIComponent(tenSanPham)}`,
-            method: 'GET'
-        })
+    getChiTietSpAPIServiceUser = (tenSp) => {
+        if (tenSp)
+            return axios({
+                url: `${DOMAIN}/chi-tiet-san-pham?tenSp=${encodeURIComponent(tenSp)}`,
+                method: 'GET'
+            })
     }
     createChiTietSpAPIService = (data) => {
         return axios({

@@ -66,11 +66,9 @@ export function* actionUpdateSpGioHangAPI() {
 }
 // delete
 function* deleteSpGioHangAPI(action) {
-    console.log('action: ', action);
     const { id,maNguoiDung } = action.data;
     try {
         const result = yield call(() => gioHangServices.deleteSanPhamAPIService(id));
-        console.log('result: ', result);
         yield put({
             type: "GET_ALL_SP_GIO_HANG",
             data: maNguoiDung

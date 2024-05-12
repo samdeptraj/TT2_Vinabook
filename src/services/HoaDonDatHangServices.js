@@ -3,7 +3,7 @@ import axios from 'axios'
 import { DOMAIN } from '../utils/const/services.const'
 
 export default class HoaDonDatHangServices {
-    getAllHoaDonDatHangAPIService = (data) => {
+    getAllHoaDonDatHangAPIService = () => {
         return axios({
             url: `${DOMAIN}/hoa-don-dat-hang/`,
             method: 'GET',

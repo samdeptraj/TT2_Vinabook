@@ -7,10 +7,12 @@ import reportWebVitals from "./reportWebVitals";
 import RouterCustom from "./router/routerUser";
 import { Provider } from "react-redux";
 import store from "./redux/configStore";
+import LoadingComponent from "./components/globalSetting/LoadingComponent/LoadingComponent";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Provider store={store}>
+      <LoadingComponent />
       <RouterCustom />
     </Provider>
   </BrowserRouter>

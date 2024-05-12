@@ -7,7 +7,6 @@ import { jwtDecode } from 'jwt-decode';
 export default function DetailProduct() {
   const dispatch = useDispatch();
   const sanPhamDetail = useSelector(state => state.ChiTietSPReducerSaga.sanPhamDetail);
-  console.log('sanPhamDetail: ', sanPhamDetail);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const tenSp = searchParams.get("tenSp");
@@ -17,10 +16,10 @@ export default function DetailProduct() {
   useEffect(() => {
     dispatch({
       type: "SAN_PHAM_GET_DETAIL_USER",
-      data: tenSp
+      data:  tenSp
     });
   }, [tenSp])
-  const addCart = () => {
+  const addCart = () => { 
     dispatch({
       type: "ADD_SAN_PHAM_CART",
       data: {

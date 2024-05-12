@@ -1,43 +1,32 @@
-import { jwtDecode } from 'jwt-decode';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { jwtDecode } from 'jwt-decode';
+import ModalUpdateDonHang from './modal/ModalUpdateDonHang';
+import excelExport from '../../../utils/ExcelExport';
 
 export default function DonHang() {
     const dispatch = useDispatch();
-    const listSanPham = useSelector(state => state.DonHangReducerSaga.listSanPham);
-    
-    useEffect(() => {
+    const listDonHang = useSelector(state => state.DonHangReducerSaga.listDonHang);
+    const handleUpdate = (id) => {
         dispatch({
-            type: "GET_ALL_DON_HANG",
-        })
-    }, [dispatch])
-    useEffect(() => {
-        dispatch({
-            type: "GET_ALL_SAN_PHAM"
-        });
-    }, [dispatch]);
-
-    const handleUpdate = (sanPham) => {
-        dispatch({
-            type: "UPDATE_SANPHAM_RDC",
-            data: sanPham
+            type: "UPDATE_DON_HANG_RDC",
+            data: id
         })
     }
     const renderSanPham = () => {
-        return listSanPham.map(item => {
+        return listDonHang.map(item => {
             return (
                 <tr key={item.id}>
                     <td>{item.id}</td>
-                    <td>{item.tenSp.length < 50 ? item.tenSp : item.tenSp.slice(0, 50) + "..."}</td>
+                    <td>{item.email}</td>
+                    <td style={{ width: '30%' }}>{item.tenSp.length < 50 ? item.tenSp : item.tenSp.slice(0, 50) + "..."}</td>
                     <td style={{ width: '120px' }}>
                         <img src={item.image} alt="" style={{ width: '100%' }} />
                     </td>
-                    <td>{item.giaGoc}</td>
-                    <td>{item.giaSale}</td>
-                    <td style={{ width: '120px' }}>{item.soLuong}</td>
-                    <td style={{ width: '120px' }}>{item.soLuong}</td>
+                    <td style={{ width: '20%' }}>{item.createdAt}</td>
+                    <td>{item.status}</td>
                     <td>
-                        <button className='btn btn-primary mr-2' onClick={() => handleUpdate(item)} data-toggle="modal" data-target="#modalUpdateSP" type='button'><i className="fa-solid fa-pen-to-square"></i></button>
+                        <button className='btn btn-primary mr-2' onClick={() => handleUpdate(item.id)} data-toggle="modal" data-target="#updateDonHang" type='button'><i className="fa-solid fa-pen-to-square"></i></button>
                         <button className='btn btn-danger' onClick={() => handleDelete(item.id)} type='button'><i className="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
@@ -50,8 +39,12 @@ export default function DonHang() {
             data: id
         })
     }
+    const handleExportXLXS = () => {
+        excelExport.exportToExcel(listDonHang, "Danh_sach_san_pham")
+    }
     return (
         <div>
+            <ModalUpdateDonHang />
             <h4 className='text-center mb-4'>Quản lý sản phẩm</h4>
             <table className="table  table-bordered" >
                 <thead>
@@ -62,16 +55,15 @@ export default function DonHang() {
                         <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col" colSpan={2}>
-                            <button className='btn btn-success' data-toggle="modal" data-target="#exampleModal" type='button'>Thêm mới</button>
+                            <button className='btn btn-success mr-2' onClick={handleExportXLXS}><i class="fa-solid fa-file-excel"></i> Xuất excel</button>
                         </th>
                     </tr>
                     <tr>
                         <th scope="col">id</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Tên sản phẩm</th>
                         <th scope="col">Hình ảnh</th>
-                        <th scope="col">Giá tiền</th>
                         <th scope="col">Ngày tạo</th>
-                        <th scope="col">Địa chỉ giao hàng</th>
                         <th scope="col">Trạng thái</th>
                         <th scope="col">Hành động</th>
                     </tr>

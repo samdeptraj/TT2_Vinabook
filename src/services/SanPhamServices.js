@@ -9,11 +9,18 @@ export default class SanPhamServices {
       method: 'GET'
     })
   }
-  getAllSanPhamAPIServiceUser = () => {
-    return axios({
-      url: `${DOMAIN}/admin/san-pham/user`,
-      method: 'GET'
-    })
+  getAllSanPhamAPIServiceUser = (tenSp) => {
+    if (tenSp) {
+      return axios({
+        url: `${DOMAIN}/admin/san-pham/user?tenSp=${tenSp}`,
+        method: 'GET'
+      })
+    } else {
+      return axios({
+        url: `${DOMAIN}/admin/san-pham/user`,
+        method: 'GET'
+      })
+    }
   }
   createSanPhamAPIService = (data) => {
     return axios({

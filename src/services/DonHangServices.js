@@ -3,13 +3,10 @@ import axios from 'axios'
 import { DOMAIN } from '../utils/const/services.const';
 
 export default class DonHangServices {
-    getAllSpGioHangAPIService = (maNguoiDung) => {
+    getAllDonHangAPIService = () => {
         return axios({
-            url: `${DOMAIN}/gio-hang/`,
+            url: `${DOMAIN}/admin/don-hang/`,
             method: 'GET',
-            headers: {
-                maNguoiDung
-            }
         })
     }
     getAllDonHangCuaToiAPIService = (maNguoiDung) => {
@@ -35,11 +32,11 @@ export default class DonHangServices {
             data: id,
         })
     }
-    updateSpGioHangAPIService = (data) => {
+    updateDonHangAPIService = (id, status) => {
         return axios({
-            url: `${DOMAIN}/gio-hang/`,
+            url: `${DOMAIN}/admin/don-hang/${id}`,
             method: 'PUT',
-            data
+            data: {id, status}
         })
     }
 }

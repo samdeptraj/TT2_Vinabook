@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import ScrollTop from "../components/ScrollTop";
 import MasterLayout from "../pages/layouts/masterLayouts";
 import { ManageRoute } from "./ManageRoute";
+import LoadingComponent from "../components/globalSetting/LoadingComponent/LoadingComponent";
 
 const renderUserRouter = () => {
   return (

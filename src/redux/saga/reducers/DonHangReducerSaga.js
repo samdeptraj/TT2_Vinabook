@@ -4,6 +4,8 @@ const initialState = {
     listSanPham: [],
     listSanPhamUser: [],
     listDonHangCuaToi: [],
+    listDonHang: [],
+    maDonHang: null,
 }
 
 const DonHangReducerSaga = (state = initialState, action) => {
@@ -32,7 +34,14 @@ const DonHangReducerSaga = (state = initialState, action) => {
 
         }
         case "GET_ALL_DON_HANG_CUA_TOI_SAGA": {
+            console.log('action: ', action);
             return { ...state, listDonHangCuaToi: action.data }
+        }
+        case "GET_ALL_DON_HANG_SAGA": {
+            return {...state, listDonHang: action.data}
+        }
+        case "UPDATE_DON_HANG_RDC":{
+            return {...state, maDonHang: action.data}
         }
         default:
             return { ...state }

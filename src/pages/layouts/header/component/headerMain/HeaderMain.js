@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./style.scss";
 import { ROUTERS } from "../../../../../utils/router";
@@ -9,6 +9,7 @@ import TaiKhoan from "./TaiKhoan";
 export default function HeaderMain() {
   const navigate = useNavigate();
   let listSanPhamCart = useSelector((state) => state.GioHangReducerSaga.listSanPhamCart);
+  const [tensp, setTensp] = useState("");
   let dispatch = useDispatch();
   const totalPrice = () => {
     return listSanPhamCart.reduce((acc, curr) => {
@@ -85,6 +86,17 @@ export default function HeaderMain() {
     localStorage.removeItem("token");
     navigate(ROUTERS.HOME)
   }
+  const handleChange = (e) => {
+    const { value } = e.target;
+    console.log('value: ', value);
+    setTensp(value);
+  }
+  const handleSubmitSearch = () => {
+    dispatch({
+      type: "GET_ALL_SAN_PHAM_USER",
+      data: tensp
+    })
+  }
   return (
     <div className="container mt-3 mb-3 myHeaderMain">
       <nav className="navbar navbar-expand-lg navbar-light row">
@@ -113,12 +125,19 @@ export default function HeaderMain() {
                 className="form-control"
                 type="search"
                 placeholder="Tìm kiếm tựa sách, tác giả"
+                onChange={handleChange}
               />
               <button
                 className="btn btn-outline-success my-2 my-sm-0 position-absolute"
                 type="submit"
+                onClick={handleSubmitSearch}
               >
-                Search
+                <Link
+                  to={"/" + ROUTERS.SEARCH}
+                  style={{ color: "white", textDecoration: "none" }}
+                >
+                  Search
+                </Link>
               </button>
             </form>
           </div>
@@ -131,7 +150,6 @@ export default function HeaderMain() {
                 style={{ color: "black", textDecoration: "none" }}
               >
                 <i className="fa-solid fa-cart-shopping"></i>
-
               </Link>
               <div className="position-absolute header-right-cartDiv">
                 <ul>
@@ -169,7 +187,6 @@ export default function HeaderMain() {
             </li>
           </ul>
         </div>
-        {/* menu mini */}
       </nav>
     </div>
   );

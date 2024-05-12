@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../../../sass/main.scss";
 import { ROUTERS } from "../../../../utils/router";
 import { useDispatch, useSelector } from "react-redux";
-import { actionProductDetail } from "../../../../redux/actions/Action";
 export default function ProductMain(props) {
   let dispatch = useDispatch();
   const { data } = props;

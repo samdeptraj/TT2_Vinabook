@@ -12,6 +12,7 @@ export const ROUTERS = {
   THANHTOAN: 'thanh-toan',
   KIEMTRATHANHTOAN: 'thanh-toan-check',
   DONHANGCUATOI: 'don-hang-cua-toi',
+  SEARCH: 'search',
   NOTFOUND: '*'
 };
 export const ROUTERS_ADMIN = {

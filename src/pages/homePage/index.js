@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import React, { memo, useEffect, useState } from "react";
 import MainBanner from "../layouts/Main/MainBanner";
 import HotSaleWeek from "../layouts/Main/mainRight/HotSaleWeek";
 import HotSaleBook from "../layouts/Main/mainLeft/HotSaleBook";
@@ -8,19 +8,26 @@ import EconomicBook from "../layouts/Main/mainLeft/EconomicBook";
 import BannerQc from "../layouts/Main/mainLeft/BannerQc";
 import AuthorBook from "../layouts/Main/mainLeft/AuthorBook";
 import MagazineBook from "../layouts/Main/mainLeft/MagazineBook";
-import SachThieuNhi from "../layouts/Main/mainLeft/SachThieuNhi";
 import SkillBook from "../layouts/Main/mainLeft/SkillBook";
 import LearnChildBook from "../layouts/Main/mainLeft/LearnChildBook";
 import NewBookGood from "../layouts/Main/mainLeft/NewBookGood";
 import SachMoiNhap from "../layouts/Main/mainRight/SachMoiNhap";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router";
 function HomePage() {
   const dispatch = useDispatch();
+  const location = useLocation();
   useEffect(() => {
     dispatch({
       type: "GET_ALL_SAN_PHAM_USER"
     })
-  }, [])
+  }, [location]);
+  
+  useEffect(()=>{
+    dispatch({
+      type: "CLEAR_SORT_SP"
+    })
+  },[])
   return (
     <div>
       <MainBanner />
@@ -35,7 +42,6 @@ function HomePage() {
             <AuthorBook />
             <MagazineBook />
             <LearnChildBook />
-            {/* <SachThieuNhi /> */}
             <SkillBook />
           </div>
           <div className="col-3">

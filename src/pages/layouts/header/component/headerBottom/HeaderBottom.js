@@ -1,27 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.scss";
 import { ROUTERS } from "../../../../../utils/router";
 import { Link, useLocation } from "react-router-dom";
-import typeBook from "../../../../../data/danhmucsp/danhMucSach.json";
+import { useDispatch, useSelector } from 'react-redux';
 export default function HeaderBottom() {
   const location = useLocation();
-  const [typeBookState, setTypeBook] = useState(typeBook);
+  const listDanhMuc = useSelector(state => state.DanhMucReducerSaga.listDanhMuc);
+  console.log('listDanhMuc: ', listDanhMuc);
+
   const renderTypeBooks = () => {
-    return typeBookState.map((item) => {
-      let routerLink = "";
-      if (item.title.trim() === "Sách Kinh Tế") {
-        routerLink = ROUTERS.CATEGORY;
-      }
+    return listDanhMuc.map((item) => {
       return (
-        <li className="">
-          <Link to={routerLink} className="dropdown-item ">
-            {item.title}
+        <li className="" style={{ width: "260px" }}>
+          <Link to={`${ROUTERS.CATEGORY}?tenDanhMuc=${encodeURIComponent(item.tenDanhMuc)}`} className="dropdown-item ">
+            {item.tenDanhMuc}
           </Link>
           <i class="fa-solid fa-angle-right "></i>
-        </li>
+        </li >
       );
     });
   };
+
   return (
     <div className="myHeaderBottom">
       <div className="container">
@@ -38,9 +37,8 @@ export default function HeaderBottom() {
             </a>
 
             <div
-              className={`dropdown-menu ${
-                location.pathname === ROUTERS.HOME ? "show" : ""
-              } myDropdown-menu`}
+              className={`dropdown-menu ${location.pathname === ROUTERS.HOME ? "show" : ""
+                } myDropdown-menu`}
             >
               <ul>{renderTypeBooks()}</ul>
             </div>

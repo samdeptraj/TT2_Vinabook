@@ -17,6 +17,7 @@ import AddChiTiet from "../components/admin/home/AddChiTiet";
 import Checkout from "../pages/cartPage/Checkout";
 import CompleteCheckout from "../pages/cartPage/CompleteCheckout";
 import ProductOrdered from "../pages/cartPage/ProductOrdered";
+import Search from "../pages/Search/Search";
 export const ManageRoute = [
     {
         path: ROUTERS.HOME,
@@ -78,6 +79,11 @@ export const ManageRoute = [
     {
         path: ROUTERS.DONHANGCUATOI,
         component: < ProductOrdered />,
+        isShowLayout: true
+    },
+    {
+        path: ROUTERS.SEARCH,
+        component: < Search />,
         isShowLayout: true
     },
     {

@@ -53,7 +53,6 @@ export default function Checkout() {
             [name]: value
         })
     }
-    console.log(state, tinhThanh, quanHuyenValue, phuongXaValue);
     const tinhThanhVN = [
         "Hà Nội",
         "Hà Giang",
@@ -234,8 +233,8 @@ export default function Checkout() {
     }
     const handleAdd = () => {
         const maNguoiDung = decodeToken.maNguoiDung;
-        const maSanPham = [];
-        listSanPhamCart.map(item => maSanPham.push(item.maSanPham))
+        const maSanPhams = [];
+        listSanPhamCart.map(item => maSanPhams.push(item.maSanPham))
         dispatch({
             type: "ADD_HOA_DON_DAT_HANG_USER",
             data: {
@@ -244,7 +243,7 @@ export default function Checkout() {
                 quanHuyen: quanHuyenValue,
                 phuongXa: phuongXaValue,
                 maNguoiDung,
-                maSanPham
+                maSanPhams
             }
         })
     }
@@ -263,17 +262,13 @@ export default function Checkout() {
                     <p>Thông tin giao hàng</p>
                     <form>
                         <div className="form-row">
-                            <div className="form-group col-md-6">
-                                <label htmlFor="email">Email</label>
-                                <input type="email" className="form-control" name='email' id="email" onChange={handleChangeInput} />
-                            </div>
-                            <div className="form-group col-md-6">
-                                <label htmlFor="sdt">Số điện thoại</label>
-                                <input type="text" className="form-control" id="sdt" name='sdt' onChange={handleChangeInput} />
+                            <div className="form-group col-md-12">
+                                <label htmlFor="sdt">Số điện thoại <span className='text-danger'>(*)</span></label>
+                                <input type="text" className="form-control" id="sdt" name='sdt' onChange={handleChangeInput} placeholder='(+84)' />
                             </div>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="diaChi">Địa chỉ</label>
+                            <label htmlFor="diaChi">Địa chỉ nhận hàng</label>
                             <input type="text" className="form-control" id="diaChi" name='diaChi' placeholder="1234 Main St" onChange={handleChangeInput} />
                         </div>
                         <div className="form-row">
@@ -282,7 +277,7 @@ export default function Checkout() {
                                 <input type="text" className="form-control" name="quocGia" id="quocGia" placeholder="Quoc gia" value={"Việt Nam"} disabled />
                             </div>
                             <div className="form-group col-md-6">
-                                <label htmlFor="tinhThanh">Tỉnh/thành</label>
+                                <label htmlFor="tinhThanh">Tỉnh/thành <span className='text-danger'>(*)</span></label>
                                 <select id="tinhThanh" name='tinhThanh' className="form-control" onChange={handleChangeTinhThanh}>
                                     <option selected>Chọn tỉnh/thành...</option>
                                     {renderTinhThanh()}
@@ -292,14 +287,14 @@ export default function Checkout() {
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-6">
-                                <label htmlFor="inputState">Quận/huyện</label>
+                                <label htmlFor="inputState">Quận/huyện <span className='text-danger'>(*)</span></label>
                                 <select id="inputState" className="form-control" name='quanHuyen' onChange={handleChangeQuanHuyen}>
                                     <option selected>Chọn quận/huyện...</option>
                                     {renderQuanHuyen()}
                                 </select>
                             </div>
                             <div className="form-group col-md-6">
-                                <label htmlFor="inputZip">Phường xã</label>
+                                <label htmlFor="inputZip">Phường xã <span className='text-danger'>(*)</span></label>
                                 <select id="inputState" className="form-control" name='phuongXa' onChange={handleChangePhuongXa}>
                                     <option selected>Chọn phường/xã...</option>
                                     {renderPhuongXa()}

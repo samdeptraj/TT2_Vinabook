@@ -45,7 +45,7 @@ export default function DanhMuc() {
                         <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col">
-                            <button className='btn btn-success mr-2' type='button' data-toggle="modal" data-target="#addDanhMuc">Tạo danh mục</button>
+                            <button className='btn btn-primary mr-2' type='button' data-toggle="modal" data-target="#addDanhMuc">Tạo danh mục</button>
                         </th>
                     </tr>
                     <tr>

@@ -75,7 +75,7 @@ export default function ChiTietSP() {
                         <th scope="col"></th>
                         <th scope="col" colSpan={3}>
                             <Link to={'/admin/add-chi-tiet-san-pham'}>
-                                <button className='btn btn-success' data-toggle="modal" data-target="#exampleModal" type='button'>Thêm mới</button>
+                                <button className='btn btn-primary' data-toggle="modal" data-target="#exampleModal" type='button'>Thêm mới</button>
                             </Link>
                         </th>
                     </tr>

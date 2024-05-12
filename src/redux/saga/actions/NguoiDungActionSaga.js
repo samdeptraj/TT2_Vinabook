@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, delay, put, takeEvery } from "redux-saga/effects";
 import { LOGIN, SIGNUP, SIGNUP_ERROR_EMAIL, SIGNUP_SAGA } from "../types/NguoiDung.types";
 import { nguoiDungServices } from "../../../services/NguoiDungServices";
 
@@ -6,6 +6,10 @@ function redirectToHome() {
     window.location.href = '/';
 }
 function* loginAPI(action) {
+    yield put({
+        type: "DISPLAY_LOADING"
+    })
+    yield delay(700);
     try {
         const result = yield call(() => nguoiDungServices.login(action.data));
         localStorage.setItem('token', result.data.token);
@@ -19,16 +23,21 @@ function* loginAPI(action) {
         })
         console.error('Error during login:', error);
     }
+    yield put({
+        type: "HIDE_LOADING"
+    })
 }
 export function* actionTheoDoiLoginAPI() {
     yield takeEvery(LOGIN, loginAPI)
 }
 // signup 
 function* signUpAPI(action) {
-    console.log('action: ', action);
+    yield put({
+        type: "DISPLAY_LOADING"
+    })
+    yield delay(700);
     try {
         const value = yield call(() => nguoiDungServices.signup(action.data));
-        console.log('value: ', value);
         yield put({
             type: SIGNUP_SAGA,
             data: { message: "Đăng ký tài khoản thành công!" }
@@ -47,6 +56,9 @@ function* signUpAPI(action) {
             data: error.response.data
         })
     }
+    yield put({
+        type: "HIDE_LOADING"
+    })
 }
 
 export function* actionTheoDoiSignUpAPI() {
@@ -70,13 +82,32 @@ function* getAllUserAPI(action) {
 export function* actionTheoDoiGetAllUserAPI() {
     yield takeEvery("GET_ALL_USER", getAllUserAPI)
 }
+// get user 
+function* getUserAPI(action) {
+    try {
+        const result = yield call(() => nguoiDungServices.getUserAPIService(action.data));
+        const { data } = result;
+        yield put({
+            type: "GET_USER_SAGA",
+            data
+        })
+    } catch (error) {
+        console.error('Error during login:', error);
+    }
+}
+
+export function* actionGetUserAPI() {
+    yield takeEvery("GET_USER", getUserAPI)
+}
 // update user
 function* updateUserAPI(action) {
-    console.log('actionewe: ', action);
+    yield put({
+        type: "DISPLAY_LOADING"
+    })
+    yield delay(700);
     const { values, id } = action.data;
     try {
         const result = yield call(() => nguoiDungServices.updateUserAPIService(values, id));
-        console.log('result: ', result);
 
         if (result.status === 200) {
             yield put({
@@ -91,6 +122,9 @@ function* updateUserAPI(action) {
         console.error('Error during login:', error);
 
     }
+    yield put({
+        type: "HIDE_LOADING"
+    })
 }
 
 export function* actionTheoDoiUpdateUserAPI() {
@@ -98,12 +132,13 @@ export function* actionTheoDoiUpdateUserAPI() {
 }
 // delete user
 function* deleteUserAPI(action) {
-    console.log('action userdel: ', action);
+    yield put({
+        type: "DISPLAY_LOADING"
+    })
+    yield delay(700);
     const id = action.data;
-    console.log('id: ', id);
     try {
         const result = yield call(() => nguoiDungServices.deleteUserAPIService(id));
-        console.log('result: ', result);
 
         if (result.status === 200) {
             yield put({
@@ -118,6 +153,9 @@ function* deleteUserAPI(action) {
         console.error('Error during login:', error);
 
     }
+    yield put({
+        type: "HIDE_LOADING"
+    })
 }
 
 export function* actionTheoDoiDeleteUserAPI() {

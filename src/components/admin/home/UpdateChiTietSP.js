@@ -5,11 +5,9 @@ import { useHistory, useNavigate } from 'react-router-dom';
 export default function UpdateChiTietSP() {
   const dispatch = useDispatch();
   const spChiTiet = useSelector(state => state.ChiTietSPReducerSaga.spChiTiet);
-  console.log('spChiTiet: ', spChiTiet);
   const listDanhMuc = useSelector(state => state.DanhMucReducerSaga.listDanhMuc);
   const listSanPham = useSelector(state => state.DonHangReducerSaga.listSanPham);
   const notify = useSelector(state => state.ChiTietSPReducerSaga.notify);
-  console.log('listSanPham: ', listSanPham);
   const navigate = useNavigate();
   const [state, setState] = useState({
     gioiThieuSach: "",

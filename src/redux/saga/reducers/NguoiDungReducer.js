@@ -6,7 +6,8 @@ const initialState = {
     notifyErrorLogin: '',
     listUser: [],
     user: {},
-    notifyUpdateUserSuccess: ""
+    notifyUpdateUserSuccess: "",
+    userProfile: {}
 }
 
 const NguoiDungReducer = (state = initialState, action) => {
@@ -32,6 +33,9 @@ const NguoiDungReducer = (state = initialState, action) => {
         }
         case "NOTIFY_UPDATE_SAGA": {
             return { ...state, notifyUpdateUser: action.data }
+        }
+        case "GET_USER_SAGA": {
+            return { ...state, userProfile: action.data }
         }
         default:
             return { ...state }

@@ -18,6 +18,9 @@ export default function Header() {
         data: decodeToken.maNguoiDung
       })
     }
+    dispatch({
+      type: "GET_ALL_DANH_MUC"
+    })
 
   }, [dispatch])
   return (

@@ -37,6 +37,17 @@ export default class NguoiDungServices {
             throw error; // Rethrow the error to propagate it further
         }
     }
+    async getUserAPIService(id) {
+        try {
+            return await axios({
+                url: `${DOMAIN}/admin/nguoi-dung/${id}`,
+                method: 'GET',
+            })
+        } catch (error) {
+            console.error('Error: ', error);
+            throw error; // Rethrow the error to propagate it further
+        }
+    }
     async updateUserAPIService(newUser, id) {
         try {
             return await axios({
