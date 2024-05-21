@@ -9,6 +9,7 @@ import ChiTietSPReducerSaga from './saga/reducers/ChiTietSPReducerSaga';
 import GioHangReducerSaga from './saga/reducers/GioHangReducerSaga';
 import HoaDonDatHangReducersSaga from './saga/reducers/HoaDonDatHangReducersSaga';
 import LoadingReducer from './saga/reducers/LoadingReducer';
+import NotifyReducer from './saga/reducers/NotifyReducer';
 
 const sagaMiddleware = createSagaMiddleware();
 // Combine your reducers
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
     ChiTietSPReducerSaga,
     GioHangReducerSaga,
     HoaDonDatHangReducersSaga,
-    LoadingReducer
+    LoadingReducer,
+    NotifyReducer
 });
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 // Run the root saga

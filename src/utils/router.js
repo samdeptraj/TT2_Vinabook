@@ -17,6 +17,13 @@ export const ROUTERS = {
 };
 export const ROUTERS_ADMIN = {
   HOME: '/admin/home',
+  SAN_PHAM: '/admin/san-pham/',
+  NGUOI_DUNG: '/admin/nguoi-dung/',
+  CHITIET_SP: '/admin/chi-tiet-san-pham',
+  DANH_MUC: '/admin/danh-muc/',
+  DON_HANG: '/admin/don-hang/',
   UPDATE_CHITIET_SP: '/admin/update-chi-tiet-san-pham/',
-  ADD_CHITIET_SP: '/admin/add-chi-tiet-san-pham/'
+  ADD_CHITIET_SP: '/admin/chi-tiet-san-pham/add',
+  ADD_SAN_PHAM: '/admin/san-pham/add',
+  ADD_NGUOI_DUNG: '/admin/nguoi-dung/add',
 }

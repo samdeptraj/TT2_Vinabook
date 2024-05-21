@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import ScrollTop from "../components/ScrollTop";
-import MasterLayout from "../pages/layouts/masterLayouts";
+import MasterLayout from "../pages/layouts/masterLayouts/MasterLayouts";
 import { ManageRoute } from "./ManageRoute";
-import LoadingComponent from "../components/globalSetting/LoadingComponent/LoadingComponent";
+import Home from "../components/admin/home/Home";
 
 const renderUserRouter = () => {
   return (
@@ -11,6 +11,7 @@ const renderUserRouter = () => {
       {ManageRoute.map((item, key) => {
         const Scroll = <ScrollTop />;
         const Layout = item.isShowLayout ? MasterLayout : null;
+        const LayoutAdmin = item.isShowLayoutAdmin ? Home : null;
         const Component = item.component;
         return (
           <Route key={key} path={item.path} element={
@@ -19,6 +20,10 @@ const renderUserRouter = () => {
                 {Scroll}
                 {Component}
               </Layout>
+            ) : LayoutAdmin ? (
+              <LayoutAdmin>
+                {Component}
+              </LayoutAdmin>
             ) : (
               <>
                 {Component}

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { PlusOutlined } from '@ant-design/icons';
+import { Alert, Button, Col, DatePicker, Drawer, Form, Input, Row, Select, Space, Upload } from 'antd';
 
 export default function ModalUpdateSP() {
     const sanPhamUpdate = useSelector(state => state.ProductsReducer.sanPhamUpdate);
+    const { onEditSanPham } = useSelector(state => state.DonHangReducerSaga);
     const dispatch = useDispatch();
     const [state, setState] = useState({
         value: {
@@ -12,31 +15,27 @@ export default function ModalUpdateSP() {
         }
     })
     useEffect(() => {
-        setState({
+        setState((prevState) => ({
             value: {
-                ...state.value,
+                ...prevState.value,
                 tenSp: sanPhamUpdate.tenSp,
                 giaGoc: sanPhamUpdate.giaGoc,
-                giaSale: sanPhamUpdate.giaSale
-            }
-        })
-    }, [sanPhamUpdate])
+                giaSale: sanPhamUpdate.giaSale,
+            },
+        }));
+    }, [sanPhamUpdate]);
     const [file, setFile] = useState("");
     const changeInput = (e) => {
         const { name, value } = e.target;
-        const newValue = {
-            ...state.value,
-            [name]: value
-        }
-        console.log('newValue: ', newValue);
-        setState(
-            {
-                value: newValue
+        setState({
+            value: {
+                ...state.value,
+                [name]: value
             }
-        )
+        })
+        console.log(state);
     }
     const handleChangeImg = (file) => {
-        console.log(file);
         setFile(file);
     }
     const updateSP = () => {
@@ -51,56 +50,91 @@ export default function ModalUpdateSP() {
             data: { formData, id }
         })
     }
+    const onClose = () => {
+        dispatch({
+            type: "EDIT_SAN_PHAM_RDC",
+            data: false
+        })
+    };
     return (
-        <div>
+        < Drawer
+            title="Cập nhập sản phẩm"
+            width={720}
+            onClose={onClose}
+            open={onEditSanPham}
+            styles={{
+                body: {
+                    paddingBottom: 80,
+                },
+            }
+            }
+            footer={
+                < Space style={{ display: "flex", justifyContent: 'end' }}>
+                    <Button onClick={onClose}>Cancel</Button>
+                    <Button onClick={() => {
+                        updateSP()
+                    }} type="primary" htmlType='submit' >
+                        Submit
+                    </Button>
+                </Space >
+            }
+        >
+            <Form layout="vertical" encType='multipart/form-data'>
 
-            {/* Modal */}
-            <div className="modal fade" id="modalUpdateSP" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog ">
-                    <div className="modal-content " style={{ width: '600px' }}>
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Cập nhập sản phẩm</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div className="modal-body">
-                            <form action="/" method="post" enctype="multipart/form-data">
-                                <div className="form-group row">
-                                    <label htmlFor="tenSp" className="col-sm-3 col-form-label">Tên sản phẩm</label>
-                                    <div className="col-sm-9">
-                                        <input type="text" className="form-control" name='tenSp' id="tenSp" onChange={changeInput} value={state.value.tenSp} />
-                                    </div>
-                                </div>
-                                <div className="form-group row">
-                                    <label htmlFor="giaGoc" className="col-sm-3 col-form-label">Hình ảnh</label>
-                                    <div className="col-sm-9">
-                                        <input type="file" name="image" onChange={(e) => handleChangeImg(e.target.files[0])} />
-                                    </div>
-                                </div>
-                                <div className="form-group row">
-                                    <label htmlFor="giaGoc" className="col-sm-3 col-form-label">Giá gốc</label>
-                                    <div className="col-sm-9">
-                                        <input type="text" className="form-control" name='giaGoc' id="giaGoc" onChange={changeInput} value={state.value.giaGoc} />
-                                    </div>
-                                </div>
-                                <div className="form-group row">
-                                    <label htmlFor="giaSale" className="col-sm-3 col-form-label">Giá Sale</label>
-                                    <div className="col-sm-9">
-                                        <input type="text" className="form-control" name='giaSale' id="giaSale" onChange={changeInput} value={state.value.giaSale} />
-                                    </div>
-                                </div>
+                <Row gutter={16}>
+                    <Col span={6}>
+                        <Form.Item
+                            name="id"
+                            label="ID"
+                        >
+                            <Input value={sanPhamUpdate.id} disabled />
+                            <Input hidden />
+                        </Form.Item>
+                    </Col>
+                    <Col span={18}>
+                        <Form.Item
+                            name="tenSp"
+                            label="Tên sản phẩm"
+                        >
+                            <Input value={state.value.tenSp} name='tenSp' onChange={changeInput} />
+                            <Input hidden />
+                        </Form.Item>
+                    </Col>
+                </Row>
+                <Row gutter={16}>
+                    <Col span={24}>
+                        <Form.Item label="Image" valuePropName="fileList">
+                            <Upload action="/upload.do" listType="picture-card" name='image' maxCount={1} onChange={(e) => handleChangeImg(e.file.originFileObj)}>
+                                <button style={{ border: 0, background: 'none' }} type="button">
+                                    <PlusOutlined />
+                                    <div style={{ marginTop: 8 }}>Upload</div>
+                                </button>
+                            </Upload>
+                        </Form.Item>
+                    </Col>
+                </Row>
+                <Row gutter={16}>
+                    <Col span={12}>
+                        <Form.Item
+                            name="giaGoc"
+                            label="Giá gốc"
+                        >
+                            <Input placeholder="Please enter field value" onChange={changeInput} name='giaGoc' value={state.value.giaGoc} />
+                            <Input hidden />
+                        </Form.Item>
+                    </Col>
+                    <Col span={12}>
+                        <Form.Item
+                            name="giaSale"
+                            label="Giá sale"
+                        >
+                            <Input placeholder="Please enter field value" onChange={changeInput} name='giaSale' value={state.value.giaSale} />
+                            <Input hidden />
+                        </Form.Item>
+                    </Col>
+                </Row>
+            </Form>
 
-                            </form>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={() => updateSP()}>Update</button>
-                        </div>
-                    </div>
-                </div>
-            </div >
-        </div >
-
+        </ Drawer>
     )
 }

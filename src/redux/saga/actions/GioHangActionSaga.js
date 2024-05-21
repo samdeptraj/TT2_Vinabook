@@ -30,23 +30,6 @@ function* createSpGioHangAPI(action) {
 export function* actionCreateSpGioHangAPI() {
     yield takeEvery("ADD_SAN_PHAM_CART", createSpGioHangAPI)
 }
-// delete
-function* deleteSanPhamAPI(action) {
-    try {
-        let result = yield call(() => sanPhamServices.deleteSanPhamAPIService(action.data));
-        if (result.status === 200) {
-            yield put({
-                type: GET_ALL_SAN_PHAM
-            })
-        }
-    } catch (error) {
-        console.log('error: ', error);
-
-    }
-}
-export function* actionDeleteSanPhamAPI() {
-    yield takeEvery("DELETE_SANPHAM", deleteSanPhamAPI)
-}
 // update
 function* updateSpGioHangAPI(action) {
     const { maNguoiDung } = action.data
@@ -66,16 +49,24 @@ export function* actionUpdateSpGioHangAPI() {
 }
 // delete
 function* deleteSpGioHangAPI(action) {
-    const { id,maNguoiDung } = action.data;
+    const { id, maNguoiDung } = action.data;
     try {
-        const result = yield call(() => gioHangServices.deleteSanPhamAPIService(id));
-        yield put({
-            type: "GET_ALL_SP_GIO_HANG",
-            data: maNguoiDung
-        })
+        const { data, status } = yield call(() => gioHangServices.deleteSanPhamGioHangAPIService(id));
+        if (status === 200) {
+            yield put({
+                type: "GET_ALL_SP_GIO_HANG",
+                data: maNguoiDung
+            })
+            yield put({
+                type: "NOTIFY_CRUD",
+                data: {
+                    type: "success",
+                    messageLog: data.message
+                }
+            })
+        }
     } catch (error) {
         console.log('error: ', error);
-
     }
 }
 export function* actionDeleteSpGioHangAPI() {

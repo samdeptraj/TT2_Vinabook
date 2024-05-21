@@ -1,6 +1,7 @@
 import { call, delay, put, takeEvery } from "redux-saga/effects";
 import ChiTietSPServices, { chiTietSPServices } from "../../../services/ChiTietSPServices";
 
+// get detail admin
 function* getAllChiTietSPAPI(action) {
     let result = yield call(() => chiTietSPServices.getAllChiTietSpAPIService());
     const { data } = result;
@@ -12,11 +13,11 @@ function* getAllChiTietSPAPI(action) {
 export function* actionGetAllChiTietSPAPI() {
     yield takeEvery("GET_ALL_CHI_TIET_SP", getAllChiTietSPAPI);
 }
-// get detail
+// get detail user
 function* getChiTietSPAPIUser(action) {
     let result = yield call(() => chiTietSPServices.getChiTietSpAPIServiceUser(action.data));
-    console.log('result: ', result);
     const { data } = result;
+    console.log('data: ', data);
     yield put({
         type: "SAN_PHAM_GET_DETAIL_USER_SAGA",
         data
@@ -25,21 +26,34 @@ function* getChiTietSPAPIUser(action) {
 export function* actionGetChiTietSPAPIUser() {
     yield takeEvery("SAN_PHAM_GET_DETAIL_USER", getChiTietSPAPIUser);
 }
+// get detail one admin
+function* getOneChiTietSPAPI(action) {
+    let result = yield call(() => chiTietSPServices.getOneChiTietSpAPIService(action.data));
+    const { data } = result;
+    yield put({
+        type: "SAN_PHAM_GET_ONE_DETAIL_RDC",
+        data
+    })
+}
+export function* actionGetOneChiTietSPAPI() {
+    yield takeEvery("SAN_PHAM_GET_ONE_DETAIL", getOneChiTietSPAPI);
+}
 // create
 function* createChiTietSPAPI(action) {
+    console.log('action: ', action);
     yield put({
         type: "DISPLAY_LOADING"
     })
     yield delay(700);
     try {
-        let result = yield call(() => chiTietSPServices.createChiTietSpAPIService(action.data.values));
-        if (result.status === 201) {
+        let { data, status } = yield call(() => chiTietSPServices.createChiTietSpAPIService(action.data));
+        if (status === 201) {
             yield put({
-                type: "GET_ALL_CHI_TIET_SP"
-            })
-            yield put({
-                type: "NOTIFY",
-                data: result.data
+                type: "NOTIFY_CRUD",
+                data: {
+                    type: "success",
+                    messageLog: data.message
+                }
             })
         }
     } catch (error) {
@@ -84,11 +98,15 @@ function* updateChiTietSPAPI(action) {
     yield delay(700);
     const { values, id } = action.data;
     try {
-        let result = yield call(() => chiTietSPServices.updateChiTietSpAPIService(values, id));
-        if (result.status === 200) {
+        let { data, status } = yield call(() => chiTietSPServices.updateChiTietSpAPIService(values, id));
+        console.log('data, status: ', data, status);
+        if (status === 200) {
             yield put({
-                type: "NOTIFY",
-                data: result.data
+                type: "NOTIFY_CRUD",
+                data: {
+                    type: "success",
+                    messageLog: data.message
+                }
             })
         }
     } catch (error) {

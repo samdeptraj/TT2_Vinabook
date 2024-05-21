@@ -19,7 +19,7 @@ export default class GioHangServices {
             data: data,
         })
     }
-    deleteSanPhamAPIService = (id) => {
+    deleteSanPhamGioHangAPIService = (id) => {
         return axios({
             url: `${DOMAIN}/gio-hang/${id}`,
             method: 'DELETE',

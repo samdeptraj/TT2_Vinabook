@@ -22,6 +22,12 @@ export default class SanPhamServices {
       })
     }
   }
+  getSanPhamYetDetailAPIService = () => {
+    return axios({
+      url: `${DOMAIN}/admin/san-pham/yet-detail`,
+      method: 'GET'
+    })
+  }
   createSanPhamAPIService = (data) => {
     return axios({
       url: `${DOMAIN}/admin/san-pham/`,
@@ -30,7 +36,7 @@ export default class SanPhamServices {
       headers: { token: localStorage.getItem('token') }
     })
   }
-  deleteSanPhamAPIService = (id) => {
+  deleteSanPhamGioHangAPIService = (id) => {
     return axios({
       url: `${DOMAIN}/admin/san-pham/${id}`,
       method: 'DELETE',

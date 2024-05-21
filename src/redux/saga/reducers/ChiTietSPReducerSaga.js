@@ -1,13 +1,17 @@
 
+
 const initialState = {
     listChiTietSP: [],
     spChiTiet: {},
     notify: "",
     sanPhamCart: [],
-    sanPhamDetail: {}
+    sanPhamDetail: {},
+    sanPhamDetailAdmin: {},
+
 }
 
 const ChiTietSPReducerSaga = (state = initialState, action) => {
+   
     switch (action.type) {
 
         case "GET_ALL_CHI_TIET_SP_SAGA": {
@@ -23,8 +27,10 @@ const ChiTietSPReducerSaga = (state = initialState, action) => {
             return { ...state, notify: "" }
         }
         case "SAN_PHAM_GET_DETAIL_USER_SAGA": {
-
             return { ...state, sanPhamDetail: action.data }
+        }
+        case "SAN_PHAM_GET_ONE_DETAIL_RDC": {
+            return { ...state, sanPhamDetailAdmin: action.data }
         }
         default:
             return { ...state }

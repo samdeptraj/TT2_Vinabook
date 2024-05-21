@@ -37,6 +37,25 @@ function* getAllSanPhamAPIUser(action) {
 export function* actionGetAllSanPhamAPIUser() {
     yield takeEvery("GET_ALL_SAN_PHAM_USER", getAllSanPhamAPIUser);
 }
+function* getSanPhamYetDetailAPI(action) {
+    yield put({
+        type: "DISPLAY_LOADING"
+    })
+    yield delay(700);
+    const { data, status } = yield call(() => sanPhamServices.getSanPhamYetDetailAPIService());
+    if (status === 200) {
+        yield put({
+            type: "GET_SAN_PHAM_YET_DETAIL_RDC",
+            data
+        })
+    }
+    yield put({
+        type: "HIDE_LOADING"
+    })
+}
+export function* actionGetSanPhamYetDetailAPI() {
+    yield takeEvery("GET_SAN_PHAM_YET_DETAIL", getSanPhamYetDetailAPI);
+}
 // create
 function* createSanPhamAPI(action) {
     yield put({
@@ -44,20 +63,42 @@ function* createSanPhamAPI(action) {
     })
     yield delay(700);
     try {
-        let result = yield call(() => sanPhamServices.createSanPhamAPIService(action.data));
-        if (result.status === 201) {
+        let { data, status } = yield call(() => sanPhamServices.createSanPhamAPIService(action.data));
+        console.log(' data, status: ', data, status);
+        if (status === 201) {
             yield put({
                 type: GET_ALL_SAN_PHAM
+            })
+            yield put({
+                type: "ALERT_CRUD",
+                data: {
+                    openAlert: true,
+                    type: "success",
+                    message: data.message
+                }
             })
         }
     } catch (error) {
         console.log('error: ', error);
+        const { data, status } = error.response;
+        if (status === 404) {
+            yield put({
+                type: "ALERT_CRUD",
+                data: {
+                    openAlert: true,
+                    type: "error",
+                    message: data.message
+                }
+            })
+        }
 
+    } finally {
+        yield put({
+            type: "HIDE_LOADING"
+        })
     }
-    yield put({
-        type: "HIDE_LOADING"
-    })
 }
+
 export function* actionCreateSanPhamAPI() {
     yield takeEvery(CREATE_SAN_PHAM, createSanPhamAPI)
 }
@@ -68,10 +109,17 @@ function* deleteSanPhamAPI(action) {
     })
     yield delay(700);
     try {
-        let result = yield call(() => sanPhamServices.deleteSanPhamAPIService(action.data));
-        if (result.status === 200) {
+        let { data, status } = yield call(() => sanPhamServices.deleteSanPhamAPIService(action.data));
+        if (status === 200) {
             yield put({
                 type: GET_ALL_SAN_PHAM
+            })
+            yield put({
+                type: "NOTIFY_CRUD",
+                data: {
+                    type: "success",
+                    messageLog: data.message
+                }
             })
         }
     } catch (error) {
@@ -83,7 +131,7 @@ function* deleteSanPhamAPI(action) {
     })
 }
 export function* actionDeleteSanPhamAPI() {
-    yield takeEvery("DELETE_SANPHAM", deleteSanPhamAPI)
+    yield takeEvery("DELETE_SAN_PHAM", deleteSanPhamAPI)
 }
 // update
 function* updateSanPhamAPI(action) {
@@ -93,10 +141,17 @@ function* updateSanPhamAPI(action) {
     yield delay(700);
     const { formData, id } = action.data
     try {
-        let result = yield call(() => sanPhamServices.updateSanPhamAPIService(formData, id));
-        if (result.status === 200) {
+        let { data, status } = yield call(() => sanPhamServices.updateSanPhamAPIService(formData, id));
+        if (status === 200) {
             yield put({
                 type: GET_ALL_SAN_PHAM
+            })
+            yield put({
+                type: "NOTIFY_CRUD",
+                data: {
+                    type: "success",
+                    messageLog: data.message
+                }
             })
         }
     } catch (error) {

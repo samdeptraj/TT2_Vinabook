@@ -5,7 +5,9 @@ const initialState = {
     notify: "",
     danhMucUpdate: {},
     listSanPhamDanhMuc: [],
-    listSpSapXep: []
+    listSpSapXep: [],
+    onModalUpdate: false,
+    onModalAdd: false
 }
 
 const DanhMucReducerSaga = (state = initialState, action) => {
@@ -25,6 +27,12 @@ const DanhMucReducerSaga = (state = initialState, action) => {
         }
         case "CLEAR_SORT_SP": {
             return { ...state, listSpSapXep: [] }
+        }
+        case "MODAL_UPDATE_DANH_MUC": {
+            return { ...state, onModalUpdate: action.data }
+        }
+        case "MODAL_ADD_DANH_MUC": {
+            return { ...state, onModalAdd: action.data }
         }
         default:
             return { ...state }

@@ -46,41 +46,60 @@ export function* actionCreateDonHangAPI() {
 }
 
 // delete
-function* deleteSanPhamAPI(action) {
+function* deleteDonHangAPI(action) {
     yield put({
         type: "DISPLAY_LOADING"
     })
     yield delay(700);
     try {
-        let result = yield call(() => sanPhamServices.deleteSanPhamAPIService(action.data));
-        if (result.status === 200) {
+        let { data, status } = yield call(() => donHangServices.deleteDonHangAPIService(action.data));
+        if (status === 200) {
             yield put({
-                type: GET_ALL_SAN_PHAM
+                type: "GET_ALL_DON_HANG"
+            })
+            yield put({
+                type: "NOTIFY_CRUD",
+                data: {
+                    type: "success",
+                    messageLog: data.message
+                }
             })
         }
     } catch (error) {
         console.log('error: ', error);
-
     }
     yield put({
         type: "HIDE_LOADING"
     })
 }
-export function* actionDeleteSanPhamAPI() {
-    yield takeEvery("DELETE_SANPHAM", deleteSanPhamAPI)
+export function* actionDeleteDonHangAPI() {
+    yield takeEvery("DELETE_DON_HANG", deleteDonHangAPI)
 }
 // update
 function* updateDonHangAPI(action) {
+    console.log('action: ', action);
     yield put({
         type: "DISPLAY_LOADING"
     })
     yield delay(700);
-    const { maDonHang, status } = action.data;
     try {
-        yield call(() => donHangServices.updateDonHangAPIService(maDonHang, status));
-        yield put({
-            type: "GET_ALL_DON_HANG",
-        })
+        const { data, status } = yield call(() => donHangServices.updateDonHangAPIService(action.data));
+        if (status === 200) {
+            yield put({
+                type: "GET_ALL_DON_HANG",
+            })
+            yield put({
+                type: "NOTIFY_CRUD",
+                data: {
+                    type: "success",
+                    messageLog: data.message
+                }
+            })
+            yield put({
+                type: "EDIT_DON_HANG_RDC",
+                data: false
+            })
+        }
     } catch (error) {
         console.log('error: ', error);
     }
@@ -90,27 +109,4 @@ function* updateDonHangAPI(action) {
 }
 export function* actionUpdateDonHangAPI() {
     yield takeEvery("UPDATE_DON_HANG", updateDonHangAPI)
-}
-// delete
-function* deleteSpGioHangAPI(action) {
-    yield put({
-        type: "DISPLAY_LOADING"
-    })
-    yield delay(700);
-    const { id, maNguoiDung } = action.data;
-    try {
-        yield call(() => gioHangServices.deleteSanPhamAPIService(id));
-        yield put({
-            type: "GET_ALL_SP_GIO_HANG",
-            data: maNguoiDung
-        })
-    } catch (error) {
-        console.log('error: ', error);
-    }
-    yield put({
-        type: "HIDE_LOADING"
-    })
-}
-export function* actionDeleteSpGioHangAPI() {
-    yield takeEvery("DELETE_SAN_PHAM_GIO_HANG_USER", deleteSpGioHangAPI)
 }

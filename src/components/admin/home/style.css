@@ -1,0 +1,9 @@
+/* home admin*/
+.admin_home_header {
+  align-items: center;
+  justify-content: end;
+  box-shadow: "1px 1px 4px 2px lightgray";
+  border-radius: "2px";
+  display: flex;
+  padding-right: 20px;
+}

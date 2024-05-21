@@ -37,23 +37,29 @@ function* signUpAPI(action) {
     })
     yield delay(700);
     try {
-        const value = yield call(() => nguoiDungServices.signup(action.data));
-        yield put({
-            type: SIGNUP_SAGA,
-            data: { message: "Đăng ký tài khoản thành công!" }
-        })
-        yield put({
-            type: "GET_ALL_USER"
-        })
-        yield put({
-            type: SIGNUP_ERROR_EMAIL,
-            data: ""
-        })
+        const { data, status } = yield call(() => nguoiDungServices.signup(action.data));
+        if (status === 201) {
+            yield put({
+                type: "GET_ALL_USER"
+            })
+            yield put({
+                type: "ALERT_CRUD",
+                data: {
+                    openAlert: true,
+                    type: "success",
+                    message: data.message
+                }
+            })
+        }
     } catch (error) {
-        console.error('Error during login:', error);
+        console.error('Error during Signup:', error);
         yield put({
-            type: SIGNUP_ERROR_EMAIL,
-            data: error.response.data
+            type: "ALERT_CRUD",
+            data: {
+                openAlert: true,
+                type: "error",
+                message: error.response.data
+            }
         })
     }
     yield put({
@@ -107,20 +113,22 @@ function* updateUserAPI(action) {
     yield delay(700);
     const { values, id } = action.data;
     try {
-        const result = yield call(() => nguoiDungServices.updateUserAPIService(values, id));
-
-        if (result.status === 200) {
+        const { data, status } = yield call(() => nguoiDungServices.updateUserAPIService(values, id));
+        if (status === 200) {
             yield put({
-                type: "NOTIFY_UPDATE_SAGA",
-                data: result.data
+                type: "NOTIFY_CRUD",
+                data: {
+                    type: "success",
+                    messageLog: data.message
+                }
+            })
+            yield put({
+                type: "GET_ALL_USER"
             })
         }
-        yield put({
-            type: "GET_ALL_USER"
-        })
+
     } catch (error) {
         console.error('Error during login:', error);
-
     }
     yield put({
         type: "HIDE_LOADING"
@@ -138,20 +146,22 @@ function* deleteUserAPI(action) {
     yield delay(700);
     const id = action.data;
     try {
-        const result = yield call(() => nguoiDungServices.deleteUserAPIService(id));
+        const { data, status } = yield call(() => nguoiDungServices.deleteUserAPIService(id));
 
-        if (result.status === 200) {
+        if (status === 200) {
             yield put({
-                type: "NOTIFY_UPDATE_SAGA",
-                data: result.data
+                type: "NOTIFY_CRUD",
+                data: {
+                    type: "success",
+                    messageLog: data.message
+                }
+            })
+            yield put({
+                type: "GET_ALL_USER"
             })
         }
-        yield put({
-            type: "GET_ALL_USER"
-        })
     } catch (error) {
         console.error('Error during login:', error);
-
     }
     yield put({
         type: "HIDE_LOADING"

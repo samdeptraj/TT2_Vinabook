@@ -1,54 +1,69 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { Button, Col, Drawer, Form, Input, Row, Space } from 'antd';
 
 export default function ModalAddDanhMuc() {
     const dispatch = useDispatch();
-    let notifySignUp = useSelector(state => state.NguoiDungReducer.notifySignUp);
+    const { onModalAdd } = useSelector(state => state.DanhMucReducerSaga);
     const [values, setValues] = useState({
         tenDanhMuc: ""
     });
-    const changeInput = (e) => {
-        const { name, value } = e.target;
-        setValues({ ...values, [name]: value });
+    const [form] = Form.useForm();
+    const addDanhMuc = (value) => {
+        dispatch({ type: "ADD_DANH_MUC", data: value });
+        onClose();
+        form.resetFields();
     };
-    const clearInputs = () => {
-        setValues({
-            tenDanhMuc: ""
-        });
+    const onClose = () => {
+        dispatch({
+            type: "MODAL_ADD_DANH_MUC",
+            data: false
+        })
     };
-    const addDanhMuc = () => {
-        dispatch({ type: "ADD_DANH_MUC", data: values });
+    const onFinish = (formValues) => {
+        addDanhMuc(formValues);
     };
     return (
-        <div>
-            <div className="modal fade" id="addDanhMuc" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Thêm người dùng</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={clearInputs}>
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div className="modal-body">
-                            <h5 className='text-success'>{notifySignUp}</h5>
-                            <hr />
-                            <form action="/" method="post" enctype="multipart/form-data">
-                                <div className="form-group row">
-                                    <label htmlFor="tenDanhMuc" className="col-sm-3 col-form-label">Tên danh mục</label>
-                                    <div className="col-sm-9">
-                                        <input type="text" className="form-control" name='tenDanhMuc' id="tenDanhMuc" onChange={changeInput} value={values.ho} placeholder='danh mục' />
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={clearInputs}>Đóng</button>
-                            <button type="button" className="btn btn-primary" onClick={() => addDanhMuc()}>Thêm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        < Drawer
+            title="Thêm danh mục sản phẩm"
+            width={720}
+            onClose={onClose}
+            open={onModalAdd}
+            styles={{
+                body: {
+                    paddingBottom: 80,
+                },
+            }
+            }
+            footer={
+                < Space style={{ display: "flex", justifyContent: 'end' }}>
+                    <Button onClick={onClose}>Cancel</Button>
+                    <Button type="primary" htmlType='submit' form='addDanhMucForm'>
+                        Submit
+                    </Button>
+                </Space >
+            }
+        >
+            <Form layout="vertical" encType='multipart/form-data'
+                id='addDanhMucForm'
+                onFinish={onFinish}
+                form={form}
+            >
+
+                <Row gutter={16}>
+                    <Col span={24}>
+                        <Form.Item
+                            name="tenDanhMuc"
+                            label="Tên danh mục"
+                        >
+                            <Input placeholder="Please enter field value" name='tenDanhMuc' value={values.tenDanhMuc} />
+                            {/* <Input hidden /> */}
+                        </Form.Item>
+                    </Col>
+
+                </Row>
+            </Form>
+
+        </ Drawer>
     )
 }

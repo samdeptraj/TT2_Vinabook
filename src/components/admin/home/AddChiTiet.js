@@ -1,143 +1,163 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
+import { Editor } from '@tinymce/tinymce-react';
+import {
+    Button,
+    Col,
+    Form,
+    Input,
+    Row,
+    Select,
+    Space,
+    Upload,
+} from 'antd';
+import { NotifyCRUD } from '../../globalSetting/notify/AlertCRUD';
+import { LocationGetHeader } from '../../globalSetting/Location/LocationGetHeader';
+
 
 export default function AddChiTiet() {
     const dispatch = useDispatch();
-    const notify = useSelector(state => state.ChiTietSPReducerSaga.notify);
     const listDanhMuc = useSelector(state => state.DanhMucReducerSaga.listDanhMuc);
-    const listSanPham = useSelector(state => state.DonHangReducerSaga.listSanPham);
+    const { listSanPhamYetDetail } = useSelector(state => state.DonHangReducerSaga);
+    const { notifyData } = useSelector(state => state.NotifyReducer);
+    console.log('notifyData: ', notifyData);
     const navigate = useNavigate();
-    const [state, setState] = useState({
-        gioiThieuSach: "",
-        tenNCC: "",
-        tacGia: "",
-        nguoiDich: "",
-        nxb: "",
-        namXb: "",
-        trongLuong: "",
-        kichThuocBaoBi: "",
-        soTrang: "",
-        hinhTHuc: "",
-    });
-    const handleChangeInput = (e) => {
-        const { name, value } = e.target
-        console.log('name, value : ', name, value );
-        setState({
-            ...state,
-            [name]: value
-        })
-    }
-    const handleAdd = (e) => {
-        e.preventDefault();
-        console.log("state: ",state);
+    const [form] = Form.useForm();
+    const [values, setValues] = useState({});
+    const tenSpParam = LocationGetHeader("tenSp");
+    const sanPhamURL = listSanPhamYetDetail.find(item => item.tenSp === tenSpParam);
+    const handleAdd = () => {
         dispatch({
             type: "ADD_CHI_TIET_SP",
-            data: {
-                values: state,
-            }
+            data: values
         })
-
+        navigate("/admin/san-pham")
     }
     useEffect(() => {
-        if (notify.trim() !== '') {
-            alert(notify);
-            dispatch({
-                type: "NULL_NOTIFY"
-            })
+        dispatch({ type: "GET_ALL_DANH_MUC" })
+        dispatch({ type: "GET_SAN_PHAM_YET_DETAIL" })
+    }, [dispatch, tenSpParam]);
+    useEffect(() => {
+        if (sanPhamURL) {
+            setValues({ ...values, maSanPham: sanPhamURL.id })
         }
-    }, [notify])
-    const handleBack = () => {
-        navigate('/admin/home');
+    }, [sanPhamURL]);
+    const onFinish = values => {
+        // handleUpdate(values)
+        // form.resetFields();
+        // handleUpdate(values)
     }
-    const renderTenDM = () => {
-        return listDanhMuc.map(item => {
-            return <>
-                <option value={item.id}>{item.tenDanhMuc}</option>
-            </>
+    const handleEditorChange = (content) => {
+        setValues({ ...values, gioiThieuSach: content })
+    }
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setValues({ ...values, [name]: value })
+    }
+    const onCancel = () => {
+        dispatch({
+            type: "VIEW_DETAIL_SAN_PHAM_RDC",
         })
+        navigate(-1);
     }
-    const renderTenSP = () => {
-        return listSanPham.map(item => {
-            return <>
-                <option value={item.id}>{item.tenSp}</option>
-            </>
-        })
-    }
+    console.log("values: ", values);
     return (
-        <div className='container mt-4'>
-            <h4 className='text-center mb-4'>Cập nhập chi tiết sản phẩm</h4>
-            <form>
-                <div className="form-group">
-                    <label htmlFor="gioiThieuSach">Giới thiệu sách</label>
-                    <textarea rows={4} type="text" className="form-control" id="gioiThieuSach" name='gioiThieuSach' placeholder='Nhập nội dung...' value={state.gioiThieuSach} onChange={handleChangeInput} />
-                </div>
-                <div className="form-row">
-                    <div className="form-group col-md-3">
-                        <label htmlFor="tenNCC">Tên nhà cung cấp</label>
-                        <input type="text" className="form-control" id="tenNCC" name='tenNCC' value={state.tenNCC} onChange={handleChangeInput} />
-                    </div>
-                    <div className="form-group col-md-3">
-                        <label htmlFor="tacGia">Tác giả</label>
-                        <input type="text" className="form-control" id="tacGia" name='tacGia' value={state.tacGia} onChange={handleChangeInput} />
-                    </div>
-                    <div className="form-group col-md-3">
-                        <label htmlFor="nguoiDich">Người dịch</label>
-                        <input type="text" className="form-control" id="nguoiDich" name='nguoiDich' value={state.nguoiDich} onChange={handleChangeInput} />
-                    </div>
-                    <div className="form-group col-md-3">
-                        <label htmlFor="nxb">Nhà xuất bản</label>
-                        <input type="text" className="form-control" id="nxb" name='nxb' value={state.nxb} onChange={handleChangeInput} />
-                    </div>
-                </div>
-                <div className="form-row">
-                    <div className="form-group col-md-3">
-                        <label htmlFor="namXb">Năm xuất bản</label>
-                        <input type="text" className="form-control" id="namXb" name='namXb' value={state.namXb} onChange={handleChangeInput} />
-                    </div>
-                    <div className="form-group col-md-3">
-                        <label htmlFor="trongLuong">Trọng lượng (gr)</label>
-                        <input type="text" className="form-control" id="trongLuong" name='trongLuong' value={state.trongLuong} onChange={handleChangeInput} />
-                    </div>
-                    <div className="form-group col-md-3">
-                        <label htmlFor="kichThuocBaoBi">Kích thước bao bì</label>
-                        <input type="text" className="form-control" id="kichThuocBaoBi" name='kichThuocBaoBi' value={state.kichThuocBaoBi} onChange={handleChangeInput} />
-                    </div>
-                    <div className="form-group col-md-3">
-                        <label htmlFor="soTrang">Số trang</label>
-                        <input type="text" className="form-control" id="soTrang" name='soTrang' value={state.soTrang} onChange={handleChangeInput} />
-                    </div>
-                </div>
-                <div className="form-row">
-                    <div className="form-group col-md-3">
-                        <label htmlFor="hinhTHuc">Hình thức</label>
-                        <input type="text" className="form-control" id="hinhTHuc" name='hinhTHuc' value={state.hinhTHuc} onChange={handleChangeInput} />
-                    </div>
-                    <div className="form-group col-md-3">
-                        <label htmlFor="maSanPham">Tên sản phẩm</label>
-                        <div className="input-group mb-3">
-                            <select className="custom-select" id="maSanPham" name='maSanPham' onChange={handleChangeInput}>
-                                <option selected disabled style={{ fontWeight: "bold" }}>Bạn chọn...</option>
-                                {renderTenSP()}
-                            </select>
-                        </div>
-                    </div>
-                    <div className="form-group col-md-3">
-                        <label htmlFor="maDanhMuc">Tên danh mục</label>
-                        <div className="input-group mb-3">
-                            <select className="custom-select" name='maDanhMuc' id="maDanhMuc" onChange={handleChangeInput}>
-                                <option selected disabled style={{ fontWeight: "bold" }}>Bạn chọn...</option>
-                                {renderTenDM()}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <button type="submit" className="btn btn-success mr-2" onClick={handleAdd}>Thêm</button>
-                    <button type="submit" className="btn btn-primary" onClick={handleBack}>Quay trở lại</button>
-                </div>
-            </form>
+        <div className="p-4">
+            <div style={{ backgroundColor: "#FAFAFA" }} className='p-1 mb-3 text-center'>
+                <h4 className="mb-0">Thêm chi tiết sản phẩm</h4>
+            </div>
+            {NotifyCRUD(notifyData)}
+            <Form
+                onFinish={onFinish}
+                form={form}
+                layout="vertical"
+                encType='multipart/form-data'
+            >
+                <Row gutter={24}>
+                    <Col span={6}>
+                        <Form.Item label="Mã sản phẩm" name="maSanPham">
+                            <Input name='maSanPham' value={sanPhamURL?.id} disabled />
+                            <Input hidden />
+                        </Form.Item>
+                    </Col>
+                    <Col span={18}>
+                        <Form.Item label="Tên sản phẩm" name="tenSp">
+                            <Select value={sanPhamURL?.tenSp} name="tenSp" onChange={value => setValues({ ...values, maSanPham: value })}>
+                                {listSanPhamYetDetail.map(item => (
+                                    <Select.Option key={item.tenSp} value={item.id}>
+                                        {item.tenSp}
+                                    </Select.Option>
+                                ))}
+                            </Select>
+                            <Input hidden />
 
+                        </Form.Item>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span={24}>
+                        <Form.Item label="Giới thiệu sách" name="gioiThieuSach">
+                            <Editor
+                                name="gioiThieuSach"
+                                apiKey='ncr45lxds6z6r5mb5ibsbg60jstwmit8jd80ivzeyhef9u1n'
+                                init={{
+                                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
+                                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                                }}
+                                value={values?.gioiThieuSach}
+                                onEditorChange={handleEditorChange}
+                            />
+                        </Form.Item>
+                    </Col>
+
+                </Row>
+                <Row gutter={24}>
+                    {[
+                        { label: 'Tên nhà cung cấp', name: 'tenNCC', value: values?.tenNCC },
+                        { label: 'Tác giả', name: 'tacGia', value: values.tacGia },
+                        { label: 'Người dịch', name: 'nguoiDich', value: values.nguoiDich },
+                        { label: 'Nhà xuất bản', name: 'nxb', value: values.nxb },
+                        { label: 'Năm xuất bản', name: 'namXb', value: values.namXb },
+                        { label: 'Trọng lượng', name: 'trongLuong', value: values.trongLuong },
+                        { label: 'Hình thức', name: 'hinhThuc', value: values.hinhThuc },
+                    ].map(({ label, name, value }) => (
+                        <Col span={8} key={name}>
+                            <Form.Item label={label} name={name}>
+                                <Input name={name} defaultValue={value} onChange={handleChange} />
+                                <Input hidden />
+                            </Form.Item>
+                        </Col>
+                    ))}
+                    <Col span={8}>
+                        <Form.Item label="Tên danh mục" name="tenDanhMuc">
+                            <Select defaultValue={values?.tenDanhMuc} name="tenDanhMuc" onChange={value => setValues({ ...values, maDanhMuc: value })}>
+                                {listDanhMuc.map(item => {
+                                    return <Select.Option key={item.tenDanhMuc} value={item.id}>
+                                        {item.tenDanhMuc}
+                                    </Select.Option>
+                                })}
+                                <Input hidden />
+                            </Select>
+                        </Form.Item>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span={24}>
+                        <Form.Item className='text-right' extra={
+                            <Space>
+                                <Button type="primary" htmlType="submit" onClick={() => handleAdd()}>
+                                    Thêm chi tiết
+                                </Button>
+                                <Button type="" htmlType="reset" onClick={() => onCancel()}>
+                                    Quay lại
+                                </Button>
+                            </Space>
+                        } >
+                        </Form.Item>
+                    </Col>
+                </Row>
+            </Form>
         </div>
     )
 }

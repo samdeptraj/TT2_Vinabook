@@ -1,11 +1,11 @@
 import { all, call } from 'redux-saga/effects';
-import { actionCreateSanPhamAPI, actionDeleteSanPhamAPI, actionGetAllSanPhamAPI, actionGetAllSanPhamAPIUser, actionUpdateSanPhamAPI } from './actions/SanPhamActionSaga';
+import { actionCreateSanPhamAPI, actionDeleteSanPhamAPI, actionGetAllSanPhamAPI, actionGetAllSanPhamAPIUser, actionGetSanPhamYetDetailAPI, actionUpdateSanPhamAPI } from './actions/SanPhamActionSaga';
 import { actionGetUserAPI, actionTheoDoiDeleteUserAPI, actionTheoDoiGetAllUserAPI, actionTheoDoiLoginAPI, actionTheoDoiSignUpAPI, actionTheoDoiUpdateUserAPI } from './actions/NguoiDungActionSaga';
 import { actionCreateDanhMucAPI, actionDeleteDanhMucAPI, actionGetAllDanhMucAPI, actionSapXepSpDanhMucAPI, actionUpdateDanhMucAPI } from './actions/DanhMucActionSaga';
-import { actionCreateChiTietSPAPI, actionGetAllChiTietSPAPI, actionGetChiTietSPAPIUser, actionUpdateChiTietSPAPI } from './actions/ChiTietSPActionSage';
+import { actionCreateChiTietSPAPI, actionGetAllChiTietSPAPI, actionGetChiTietSPAPIUser, actionGetOneChiTietSPAPI, actionUpdateChiTietSPAPI } from './actions/ChiTietSPActionSage';
 import { actionCreateSpGioHangAPI, actionDeleteSpGioHangAPI, actionGetAllSpGioHangAPI, actionUpdateSpGioHangAPI } from './actions/GioHangActionSaga';
 import { actionCreateHoaDonDatHangAPI, actionGetAllHoaDonDatHangAPI } from './actions/HoaDonDatHangAction';
-import { actionCreateDonHangAPI, actionGetAllDonHangAPI, actionGetAllDonHangCuaToiAPI, actionUpdateDonHangAPI } from './actions/DonHangActionSaga';
+import { actionCreateDonHangAPI, actionDeleteDonHangAPI, actionGetAllDonHangAPI, actionGetAllDonHangCuaToiAPI, actionUpdateDonHangAPI } from './actions/DonHangActionSaga';
 
 export function* rootSaga() {
     yield all([
@@ -16,6 +16,7 @@ export function* rootSaga() {
         call(actionUpdateSanPhamAPI),
         call(actionGetAllSanPhamAPIUser),
         call(actionGetChiTietSPAPIUser),
+        call(actionGetSanPhamYetDetailAPI),
 
         // nguoidung
         call(actionTheoDoiLoginAPI),
@@ -36,6 +37,7 @@ export function* rootSaga() {
         call(actionGetAllChiTietSPAPI),
         call(actionUpdateChiTietSPAPI),
         call(actionCreateChiTietSPAPI),
+        call(actionGetOneChiTietSPAPI),
 
         // cart
         call(actionCreateSpGioHangAPI),
@@ -52,5 +54,6 @@ export function* rootSaga() {
          call(actionGetAllDonHangCuaToiAPI),
          call(actionGetAllDonHangAPI),
          call(actionUpdateDonHangAPI),
+         call(actionDeleteDonHangAPI),
     ])
 }

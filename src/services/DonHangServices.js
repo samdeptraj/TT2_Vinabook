@@ -25,18 +25,19 @@ export default class DonHangServices {
             data: maDonHang,
         })
     }
-    deleteSanPhamAPIService = (id) => {
+    deleteDonHangAPIService = (id) => {
         return axios({
-            url: `${DOMAIN}/gio-hang/${id}`,
+            url: `${DOMAIN}/admin/don-hang/${id}`,
             method: 'DELETE',
             data: id,
         })
     }
-    updateDonHangAPIService = (id, status) => {
+    updateDonHangAPIService = ({ maDonHang, status }) => {
+        console.log(' maDonHang, status : ', maDonHang, status);
         return axios({
-            url: `${DOMAIN}/admin/don-hang/${id}`,
+            url: `${DOMAIN}/admin/don-hang/${maDonHang}`,
             method: 'PUT',
-            data: {id, status}
+            data: { id:maDonHang, status }
         })
     }
 }

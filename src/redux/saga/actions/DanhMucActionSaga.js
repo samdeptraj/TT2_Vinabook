@@ -29,10 +29,17 @@ function* createDanhMucAPI(action) {
     })
     yield delay(700);
     try {
-        let result = yield call(() => danhMucServices.createDanhMucAPIService(action.data));
-        if (result.status === 201) {
+        let { data, status } = yield call(() => danhMucServices.createDanhMucAPIService(action.data));
+        if (status === 201) {
             yield put({
                 type: "GET_ALL_DANH_MUC"
+            })
+            yield put({
+                type: "NOTIFY_CRUD",
+                data: {
+                    type: "success",
+                    messageLog: data.message
+                }
             })
         }
     } catch (error) {
@@ -52,10 +59,17 @@ function* deleteDanhMucAPI(action) {
     })
     yield delay(700);
     try {
-        let result = yield call(() => danhMucServices.deleteDanhMucAPIService(action.data));
-        if (result.status === 200) {
+        let { data, status } = yield call(() => danhMucServices.deleteDanhMucAPIService(action.data));
+        if (status === 200) {
             yield put({
                 type: "GET_ALL_DANH_MUC"
+            })
+            yield put({
+                type: "NOTIFY_CRUD",
+                data: {
+                    type: "success",
+                    messageLog: data.message
+                }
             })
         }
     } catch (error) {

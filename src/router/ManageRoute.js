@@ -18,6 +18,14 @@ import Checkout from "../pages/cartPage/Checkout";
 import CompleteCheckout from "../pages/cartPage/CompleteCheckout";
 import ProductOrdered from "../pages/cartPage/ProductOrdered";
 import Search from "../pages/Search/Search";
+import ChiTietSP from "../components/admin/home/ChiTietSP";
+import CardHome from "../components/admin/home/CardHome";
+import SanPham from "../components/admin/home/SanPham";
+import AddSanPham from "../components/admin/home/AddSanPham";
+import NguoiDung from "../components/admin/home/NguoiDung";
+import AddNguoiDung from "../components/admin/home/AddNguoiDung";
+import DanhMuc from "../components/admin/home/DanhMuc";
+import DonHang from "../components/admin/home/DonHang";
 export const ManageRoute = [
     {
         path: ROUTERS.HOME,
@@ -93,8 +101,9 @@ export const ManageRoute = [
     },
     {
         path: ROUTERS_ADMIN.HOME,
-        component: <Home />,
-        isShowLayout: false
+        component: <CardHome />,
+        isShowLayout: false,
+        isShowLayoutAdmin: true,
     },
     {
         path: ROUTERS_ADMIN.UPDATE_CHITIET_SP,
@@ -104,6 +113,50 @@ export const ManageRoute = [
     {
         path: ROUTERS_ADMIN.ADD_CHITIET_SP,
         component: <AddChiTiet />,
-        isShowLayout: false
-    }
+        isShowLayout: false,
+        isShowLayoutAdmin: true,
+
+    },
+    {
+        path: ROUTERS_ADMIN.CHITIET_SP,
+        component: <ChiTietSP />,
+        isShowLayout: false,
+        isShowLayoutAdmin: true,
+    },
+    {
+        path: ROUTERS_ADMIN.SAN_PHAM,
+        component: <SanPham />,
+        isShowLayout: false,
+        isShowLayoutAdmin: true,
+    },
+    {
+        path: ROUTERS_ADMIN.ADD_SAN_PHAM,
+        component: <AddSanPham />,
+        isShowLayout: false,
+        isShowLayoutAdmin: true,
+    },
+    {
+        path: ROUTERS_ADMIN.ADD_NGUOI_DUNG,
+        component: <AddNguoiDung />,
+        isShowLayout: false,
+        isShowLayoutAdmin: true,
+    },
+    {
+        path: ROUTERS_ADMIN.NGUOI_DUNG,
+        component: <NguoiDung />,
+        isShowLayout: false,
+        isShowLayoutAdmin: true,
+    },
+    {
+        path: ROUTERS_ADMIN.DANH_MUC,
+        component: <DanhMuc />,
+        isShowLayout: false,
+        isShowLayoutAdmin: true,
+    },
+    {
+        path: ROUTERS_ADMIN.DON_HANG,
+        component: <DonHang />,
+        isShowLayout: false,
+        isShowLayoutAdmin: true,
+    },
 ];

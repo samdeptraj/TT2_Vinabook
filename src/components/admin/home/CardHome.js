@@ -1,21 +1,28 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { GET_ALL_SAN_PHAM } from '../../../redux/saga/types/sanPham.types';
 
 export default function CardHome() {
+    const dispatch = useDispatch();
     const listUser = useSelector(state => state.NguoiDungReducer.listUser);
     const listSanPham = useSelector(state => state.DonHangReducerSaga.listSanPham);
     const listDonHang = useSelector(state => state.DonHangReducerSaga.listDonHang);
-    const totalUser = listUser.reduce((curr, acc) => {
+    useEffect(() => {
+        dispatch({ type: GET_ALL_SAN_PHAM });
+        dispatch({ type: "GET_ALL_DON_HANG" });
+        dispatch({ type: "GET_ALL_USER" });
+    }, []);
+    const totalUser = listUser?.reduce((curr, acc) => {
         return curr + 1;
     }, 0);
-    const totalSanPham = listSanPham.reduce((curr, acc) => {
+    const totalSanPham = listSanPham?.reduce((curr, acc) => {
         return curr + 1;
     }, 0);
-    const totalDonHang = listDonHang.reduce((curr, acc) => {
+    const totalDonHang = listDonHang?.reduce((curr, acc) => {
         return curr + 1;
     }, 0);
     return (
-        <div className='row'>
+        <div className='row p-4'>
             <div className='col-4'>
                 <div className="card mb-3" style={{ maxWidth: 540 }}>
                     <div className="row no-gutters">

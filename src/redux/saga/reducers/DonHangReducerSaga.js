@@ -2,10 +2,14 @@ import { GET_ALL_SAN_PHAM_SAGA } from "../types/sanPham.types";
 
 const initialState = {
     listSanPham: [],
+    listSanPhamYetDetail: [],
     listSanPhamUser: [],
     listDonHangCuaToi: [],
     listDonHang: [],
-    maDonHang: null,
+    donHang: {},
+    onEditSanPham: false,
+    onEditDonHang: false,
+    isNotViewDetail: true,
 }
 
 const DonHangReducerSaga = (state = initialState, action) => {
@@ -38,10 +42,20 @@ const DonHangReducerSaga = (state = initialState, action) => {
             return { ...state, listDonHangCuaToi: action.data }
         }
         case "GET_ALL_DON_HANG_SAGA": {
-            return {...state, listDonHang: action.data}
+            return { ...state, listDonHang: action.data }
         }
-        case "UPDATE_DON_HANG_RDC":{
-            return {...state, maDonHang: action.data}
+        case "UPDATE_DON_HANG_RDC": {
+            return { ...state, donHang: action.data }
+        }
+        case "EDIT_SAN_PHAM_RDC": {
+            return { ...state, onEditSanPham: action.data }
+        }
+        case "EDIT_DON_HANG_RDC": {
+            return { ...state, onEditDonHang: action.data }
+        }
+        case "GET_SAN_PHAM_YET_DETAIL_RDC": {
+            console.log(action);
+            return { ...state, listSanPhamYetDetail: action.data }
         }
         default:
             return { ...state }
