@@ -16,7 +16,7 @@ export default class GioHangServices {
         return axios({
             url: `${DOMAIN}/gio-hang/`,
             method: 'POST',
-            data: data,
+            data,
         })
     }
     deleteSanPhamGioHangAPIService = (id) => {

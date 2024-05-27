@@ -35,7 +35,6 @@ export default function SanPham() {
             data: true
         })
     }
-
     const handleDelete = (id) => {
         dispatch({
             type: "DELETE_SAN_PHAM",
@@ -224,7 +223,7 @@ export default function SanPham() {
                         >
                             <Button type="primary" danger><i class="fa-solid fa-trash-can" ></i></Button>
                         </Popconfirm>
-                        <Popover placement="topLeft" content="Xem chi tiết sản phẩm">
+                        <Popover placement="topLeft" content={sanPhamYetDetail ? "Thêm chi tiết sản phẩm" : "Xem chi tiết sản phẩm"}>
                             <Link to={linkPath} >
                                 <Button type='primary'> {sanPhamYetDetail ? <i class="fa-solid fa-file-circle-plus"></i> : <i class="fa-solid fa-eye"></i>}</Button>
                             </Link>

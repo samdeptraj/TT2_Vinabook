@@ -10,16 +10,34 @@ function* loginAPI(action) {
         type: "DISPLAY_LOADING"
     })
     yield delay(700);
+    const { email, password, remember } = action.data;
     try {
-        const result = yield call(() => nguoiDungServices.login(action.data));
-        localStorage.setItem('token', result.data.token);
-        if (result.data.token) {
-            redirectToHome();
+        const { data, status } = yield call(() => nguoiDungServices.login(email, password));
+        if (status === 200) {
+            yield put({
+                type: "NOTIFY_CRUD",
+                data: {
+                    type: "success",
+                    messageLog: data.message
+                }
+            })
+            if (remember) {
+                localStorage.setItem('token', data.token);
+            }
+            else {
+                sessionStorage.setItem('token', data.token);
+            }
+            if (data.token) {
+                redirectToHome();
+            }
         }
     } catch (error) {
         yield put({
-            type: "ERROR_LOGIN",
-            data: error.response.data.message
+            type: "NOTIFY_CRUD",
+            data: {
+                type: "error",
+                messageLog: error.response.data.message
+            }
         })
         console.error('Error during login:', error);
     }
@@ -43,11 +61,10 @@ function* signUpAPI(action) {
                 type: "GET_ALL_USER"
             })
             yield put({
-                type: "ALERT_CRUD",
+                type: "NOTIFY_CRUD",
                 data: {
-                    openAlert: true,
                     type: "success",
-                    message: data.message
+                    messageLog: data.message
                 }
             })
         }

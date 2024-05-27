@@ -23,6 +23,7 @@ export default function HeaderMain() {
       data: { id, maNguoiDung }
     })
   }
+
   const renderProductCart = () => {
     return listSanPhamCart.slice(0, 5).map(item => {
       return (
@@ -53,9 +54,24 @@ export default function HeaderMain() {
       );
     })
   }
+  const handleLogout = () => {
+    navigate(ROUTERS.HOME)
+    localStorage.removeItem("token");
+  }
+  const handleChange = (e) => {
+    const { value } = e.target;
+    console.log('value: ', value);
+    setTensp(value);
+  }
+  const handleSubmitSearch = () => {
+    dispatch({
+      type: "GET_ALL_SAN_PHAM_USER",
+      data: tensp
+    })
+  }
   const renderActionAccount = () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
+    const isToken = localStorage.getItem("token");
+    if (!isToken) {
       return (
         <>
           <div className="header-right-sign">
@@ -64,6 +80,12 @@ export default function HeaderMain() {
               className="btn"
               data-toggle="modal"
               data-target="#modalLogin"
+              onClick={() => {
+                dispatch({
+                  type: "LOGIN_RDC",
+                  data: true
+                })
+              }}
             >
               Đăng nhập
             </button>
@@ -81,21 +103,6 @@ export default function HeaderMain() {
         </>
       );
     }
-  }
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate(ROUTERS.HOME)
-  }
-  const handleChange = (e) => {
-    const { value } = e.target;
-    console.log('value: ', value);
-    setTensp(value);
-  }
-  const handleSubmitSearch = () => {
-    dispatch({
-      type: "GET_ALL_SAN_PHAM_USER",
-      data: tensp
-    })
   }
   return (
     <div className="container mt-3 mb-3 myHeaderMain">

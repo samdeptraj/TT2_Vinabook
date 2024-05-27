@@ -35,6 +35,7 @@ export function* actionGetAllDonHangCuaToiAPI() {
 }
 // create
 function* createDonHangAPI(action) {
+    console.log('action: ', action);
     try {
         let result = yield call(() => donHangServices.createDonHangAPIService(action.data));
     } catch (error) {

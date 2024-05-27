@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { jwtDecode } from 'jwt-decode';
 import { Link } from 'react-router-dom';
+import { Button, Form, Input, Select, Space } from 'antd';
 
 export default function Checkout() {
     let dispatch = useDispatch();
@@ -268,7 +269,7 @@ export default function Checkout() {
                             </div>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="diaChi">Địa chỉ nhận hàng</label>
+                            <label htmlFor="diaChi">Địa chỉ nhận hàng <span className='text-danger'>(*)</span></label>
                             <input type="text" className="form-control" id="diaChi" name='diaChi' placeholder="1234 Main St" onChange={handleChangeInput} />
                         </div>
                         <div className="form-row">

@@ -4,22 +4,26 @@ import { actionAddCart } from "../../../../redux/actions/Action";
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
+import { NotifyCRUD } from "../../../../components/globalSetting/notify/AlertCRUD";
+
 export default function DetailProduct() {
   const dispatch = useDispatch();
   const sanPhamDetail = useSelector(state => state.ChiTietSPReducerSaga.sanPhamDetail);
   const location = useLocation();
+  const { notifyData } = useSelector(state => state.NotifyReducer);
   const searchParams = new URLSearchParams(location.search);
   const tenSp = searchParams.get("tenSp");
   // get token
-  const token = localStorage.getItem('token');
-  const decodeToken = jwtDecode(token);
+
   useEffect(() => {
     dispatch({
       type: "SAN_PHAM_GET_DETAIL_USER",
-      data:  tenSp
+      data: tenSp
     });
   }, [tenSp])
-  const addCart = () => { 
+  const addCart = () => {
+    const token = localStorage.getItem('token');
+    const decodeToken = jwtDecode(token);
     dispatch({
       type: "ADD_SAN_PHAM_CART",
       data: {
@@ -28,9 +32,11 @@ export default function DetailProduct() {
       }
     });
   }
+
   const renderBookDetail = () => {
     return (
       <div className="row">
+        {NotifyCRUD(notifyData)}
         <div className="col-8">
           <div className="card mb-3 border-0">
             <div className="row no-gutters">
@@ -44,7 +50,6 @@ export default function DetailProduct() {
                   <p className="card-text">Nhà xuất bản: Nxb Hội Nhà Văn</p>
                   <p className="card-text">Nhà phát hành: Nhã Nam</p>
                   <p className="card-text borderBottom">
-                    {sanPhamDetail.gioiThieuSach}
                     <br />
                     <a href="/#">Xem thêm</a>
                   </p>
@@ -240,7 +245,9 @@ export default function DetailProduct() {
                 aria-labelledby="home-tab"
               >
                 <h4>{sanPhamDetail.tenSp}</h4>
-                <p className="mt-3">{sanPhamDetail.gioiThieuSach}</p>
+                <p className="mt-3">
+                  <div dangerouslySetInnerHTML={{ __html: sanPhamDetail.gioiThieuSach }}></div>
+                </p>
                 <p>Mời bạn đón đọc.</p>
               </div>
               <div

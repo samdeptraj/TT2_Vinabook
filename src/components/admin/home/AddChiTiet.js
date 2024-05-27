@@ -27,6 +27,8 @@ export default function AddChiTiet() {
     const [values, setValues] = useState({});
     const tenSpParam = LocationGetHeader("tenSp");
     const sanPhamURL = listSanPhamYetDetail.find(item => item.tenSp === tenSpParam);
+    const [characters, setCharacters] = useState(0);
+
     const handleAdd = () => {
         dispatch({
             type: "ADD_CHI_TIET_SP",
@@ -49,6 +51,7 @@ export default function AddChiTiet() {
         // handleUpdate(values)
     }
     const handleEditorChange = (content) => {
+        setCharacters(content.length)
         setValues({ ...values, gioiThieuSach: content })
     }
     const handleChange = (e) => {
@@ -97,7 +100,7 @@ export default function AddChiTiet() {
                 </Row>
                 <Row>
                     <Col span={24}>
-                        <Form.Item label="Giới thiệu sách" name="gioiThieuSach">
+                        <Form.Item label={<p>Giới thiệu sách (nhập ít hơn 999 ký tự) Đã nhập: <span className='text-danger'>{characters}</span></p>} name="gioiThieuSach">
                             <Editor
                                 name="gioiThieuSach"
                                 apiKey='ncr45lxds6z6r5mb5ibsbg60jstwmit8jd80ivzeyhef9u1n'
@@ -119,7 +122,7 @@ export default function AddChiTiet() {
                         { label: 'Người dịch', name: 'nguoiDich', value: values.nguoiDich },
                         { label: 'Nhà xuất bản', name: 'nxb', value: values.nxb },
                         { label: 'Năm xuất bản', name: 'namXb', value: values.namXb },
-                        { label: 'Trọng lượng', name: 'trongLuong', value: values.trongLuong },
+                        { label: 'Trọng lượng (gram)', name: 'trongLuong', value: values.trongLuong },
                         { label: 'Hình thức', name: 'hinhThuc', value: values.hinhThuc },
                     ].map(({ label, name, value }) => (
                         <Col span={8} key={name}>

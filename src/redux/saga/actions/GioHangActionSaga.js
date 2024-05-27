@@ -16,6 +16,7 @@ export function* actionGetAllSpGioHangAPI() {
 }
 // create
 function* createSpGioHangAPI(action) {
+    console.log('action: ', action);
     try {
         let result = yield call(() => gioHangServices.createSpGioHangAPIService(action.data));
         if (result.status === 201) {
@@ -24,6 +25,13 @@ function* createSpGioHangAPI(action) {
             })
         }
     } catch (error) {
+        yield put({
+            type: "NOTIFY_CRUD",
+            data: {
+                type: "error",
+                messageLog: error.response.data.message
+            }
+        })
         console.log('error: ', error);
     }
 }

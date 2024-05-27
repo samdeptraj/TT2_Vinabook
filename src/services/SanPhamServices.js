@@ -36,7 +36,7 @@ export default class SanPhamServices {
       headers: { token: localStorage.getItem('token') }
     })
   }
-  deleteSanPhamGioHangAPIService = (id) => {
+  deleteSanPhamAPIService = (id) => {
     return axios({
       url: `${DOMAIN}/admin/san-pham/${id}`,
       method: 'DELETE',

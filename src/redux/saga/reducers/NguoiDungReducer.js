@@ -7,7 +7,8 @@ const initialState = {
     listUser: [],
     user: {},
     userProfile: {},
-    onEditNguoiDung: false
+    onEditNguoiDung: false,
+    onLogin: false
 }
 
 const NguoiDungReducer = (state = initialState, action) => {
@@ -36,6 +37,9 @@ const NguoiDungReducer = (state = initialState, action) => {
         }
         case "EDIT_NGUOI_DUNG_RDC": {
             return { ...state, onEditNguoiDung: action.data }
+        }
+        case "LOGIN_RDC": {
+            return { ...state, onLogin: action.data }
         }
         default:
             return { ...state }

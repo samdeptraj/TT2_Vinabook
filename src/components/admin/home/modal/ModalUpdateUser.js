@@ -26,7 +26,6 @@ export default function ModalUpdateUser() {
             ho: user.ho,
             ten: user.ten,
             email: user.email,
-            password: user.password,
             quyenHan: user.quyenHan
         })
     }, [user])
@@ -67,7 +66,6 @@ export default function ModalUpdateUser() {
             }
         >
             <Form layout="vertical" encType='multipart/form-data' form={form}>
-
                 <Row gutter={16}>
                     <Col span={6}>
                         <Form.Item
@@ -112,18 +110,8 @@ export default function ModalUpdateUser() {
                 <Row gutter={16}>
                     <Col span={12}>
                         <Form.Item
-                            name="password"
-                            label="Password"
-                        >
-                            <Input placeholder="Please enter field value" onChange={changeInput} name='password' value={values.password} />
-                            {/* <Input hidden /> */}
-                        </Form.Item>
-                    </Col>
-                    <Col span={12}>
-                        <Form.Item
                             name="quyenHan"
                             label="Quyền hạn"
-
                         >
                             <select className="custom-select" onChange={changeInput} name="quyenHan">
                                 <option selected>No change</option>
@@ -131,7 +119,6 @@ export default function ModalUpdateUser() {
                                 <option value="admin">admin</option>
                             </select>
                         </Form.Item>
-
                     </Col>
                 </Row>
 

@@ -24,11 +24,13 @@ export default function ChiTietSP() {
     const navigate = useNavigate();
     const { notifyData } = useSelector(state => state.NotifyReducer);
     const { sanPhamDetailAdmin } = useSelector(state => state.ChiTietSPReducerSaga);
+    console.log('sanPhamDetailAdmin: ', sanPhamDetailAdmin);
     const { listDanhMuc } = useSelector(state => state.DanhMucReducerSaga);
     const { listSanPhamYetDetail } = useSelector(state => state.DonHangReducerSaga);
     const [form] = Form.useForm();
     const tenSpParam = LocationGetHeader("tenSp");
     const [values, setValues] = useState({});
+    const [characters, setCharacters] = useState(0);
     useEffect(() => {
         if (values !== sanPhamDetailAdmin) {
             dispatch({
@@ -41,7 +43,10 @@ export default function ChiTietSP() {
     }, [dispatch, tenSpParam]);
     useEffect(() => {
         setValues(sanPhamDetailAdmin);
-        form.setFieldsValue(sanPhamDetailAdmin)
+        form.setFieldsValue(sanPhamDetailAdmin);
+        if(sanPhamDetailAdmin){
+            setCharacters(sanPhamDetailAdmin.gioiThieuSach?.length)
+        }
     }, [sanPhamDetailAdmin]);
     const handleUpdate = (sanPham) => {
         dispatch({
@@ -64,6 +69,7 @@ export default function ChiTietSP() {
         navigate(-1);
     }
     const handleEditorChange = (content) => {
+        setCharacters(content.length)
         setValues({ ...values, gioiThieuSach: content })
     }
     const handleChange = (e) => {
@@ -107,14 +113,12 @@ export default function ChiTietSP() {
                                 ))}
                                 <Input hidden />
                             </Select>
-                            {/* <Input value={sanPhamDetailAdmin.tenSp} disabled /> */}
-
                         </Form.Item>
                     </Col>
                 </Row>
                 <Row>
                     <Col span={24}>
-                        <Form.Item label="Giới thiệu sách" name="gioiThieuSach">
+                        <Form.Item label={<p>Giới thiệu sách (nhập ít hơn 999 ký tự) Đã nhập: <span className='text-danger'>{characters}</span></p>} name="gioiThieuSach">
                             <Editor
                                 name="gioiThieuSach"
                                 apiKey='ncr45lxds6z6r5mb5ibsbg60jstwmit8jd80ivzeyhef9u1n'
@@ -124,6 +128,7 @@ export default function ChiTietSP() {
                                 }}
                                 value={values?.gioiThieuSach}
                                 onEditorChange={handleEditorChange}
+
                             />
                         </Form.Item>
                     </Col>

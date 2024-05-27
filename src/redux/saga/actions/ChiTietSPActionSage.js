@@ -97,6 +97,7 @@ function* updateChiTietSPAPI(action) {
     })
     yield delay(700);
     const { values, id } = action.data;
+    console.log(' values, id: ',  values, id);
     try {
         let { data, status } = yield call(() => chiTietSPServices.updateChiTietSpAPIService(values, id));
         console.log('data, status: ', data, status);

@@ -12,11 +12,11 @@ import moment from 'moment';
 export default function DonHang() {
     const dispatch = useDispatch();
     const { notifyData } = useSelector(state => state.NotifyReducer);
-    console.log('notifyData: ', notifyData);
     const searchInput = useRef(null);
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
     const listDonHang = useSelector(state => state.DonHangReducerSaga.listDonHang);
+    console.log('listDonHang: ', listDonHang);
 
     const handleUpdate = (donHang) => {
         dispatch({
@@ -169,6 +169,15 @@ export default function DonHang() {
             }
         },
         {
+            title: 'Địa chỉ giao',
+            dataIndex: 'diaChi',
+            width: '12%',
+            render: (item, record) => {
+                console.log('record: ', record);
+                return <p>{item},{record.phuongXa},{record.quanHuyen}</p>
+            }
+        },
+        {
             title: 'Ngày tạo',
             dataIndex: 'createdAt',
             sorter: {
@@ -184,7 +193,7 @@ export default function DonHang() {
                 if (status === "Chờ xác nhận") {
                     return <Tag color='blue'>{status}</Tag>
                 } else if (status === "Đang giao hàng") {
-                    return <Tag color='orange' style={{color:"black"}}>{status}</Tag>
+                    return <Tag color='orange' style={{ color: "black" }}>{status}</Tag>
                 } else if (status === "Đã giao") {
                     return <Tag color='green'>{status}</Tag>
                 }

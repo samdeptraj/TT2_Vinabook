@@ -2,12 +2,12 @@ import axios from 'axios';
 import { DOMAIN } from '../utils/const/services.const';
 
 export default class NguoiDungServices {
-    async login(user) {
+    async login(email, password) {
         try {
             return await axios({
                 url: `${DOMAIN}/admin/nguoi-dung/login`,
                 method: 'POST',
-                data: user
+                data: { email, password }
             })
         } catch (error) {
             console.error('Error during login:', error);

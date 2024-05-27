@@ -34,8 +34,8 @@ export default function ProductMain(props) {
                     </div>
                     <p className="card-text pt-2 pb-2">
                       {item.gioiThieuSach.length > 15
-                        ? item.gioiThieuSach.substring(0, 60) + "..."
-                        : item.gioiThieuSach}
+                        ? <div dangerouslySetInnerHTML={{ __html: item.gioiThieuSach.substring(0, 60)+"..." }}></div>
+                        : <div dangerouslySetInnerHTML={{ __html: item.gioiThieuSach }}></div>}
                     </p>
                   </div>
                 </div>

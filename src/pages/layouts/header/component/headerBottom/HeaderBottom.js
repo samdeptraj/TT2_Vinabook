@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function HeaderBottom() {
   const location = useLocation();
   const listDanhMuc = useSelector(state => state.DanhMucReducerSaga.listDanhMuc);
-  console.log('listDanhMuc: ', listDanhMuc);
 
   const renderTypeBooks = () => {
     return listDanhMuc.map((item) => {

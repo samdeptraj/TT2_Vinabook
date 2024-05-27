@@ -8,7 +8,7 @@ import {
     Input,
     Upload,
 } from 'antd';
-import { AlertCRUD } from '../../globalSetting/notify/AlertCRUD';
+import { AlertCRUD, NotifyCRUD } from '../../globalSetting/notify/AlertCRUD';
 export default function AddSanPham() {
     const dispatch = useDispatch();
     const { infoAlert } = useSelector(state => state.NotifyReducer);
@@ -22,7 +22,6 @@ export default function AddSanPham() {
     }
     const addSp = (values) => {
         const { tenSp, image, giaGoc, giaSale } = values;
-        console.log('tenSp, image, giaGoc, giaSale: ', tenSp, image, giaGoc, giaSale);
         let formData = new FormData();
         formData.append("image", image.file.originFileObj);
         formData.append("tenSp", tenSp);

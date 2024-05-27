@@ -5,13 +5,15 @@ import { jwtDecode } from "jwt-decode";
 export default function Cart() {
   let dispatch = useDispatch();
   let listSanPhamCart = useSelector((state) => state.GioHangReducerSaga.listSanPhamCart);
-  const token = localStorage.getItem('token');
-  const decodeToken = jwtDecode(token);
   useEffect(() => {
-    dispatch({
-      type: "GET_ALL_SP_GIO_HANG",
-      data: decodeToken.maNguoiDung
-    })
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodeToken = jwtDecode(token);
+      dispatch({
+        type: "GET_ALL_SP_GIO_HANG",
+        data: decodeToken.maNguoiDung
+      })
+    }
   }, [])
   const totalAmount = () => {
     const totalAmount = listSanPhamCart.reduce((curr, acc) => {
