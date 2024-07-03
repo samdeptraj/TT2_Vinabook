@@ -19,6 +19,7 @@ export default class DonHangServices {
         })
     }
     createDonHangAPIService = (maDonHang) => {
+        console.log('maDonHang: ', maDonHang);
         return axios({
             url: `${DOMAIN}/don-hang/`,
             method: 'POST',

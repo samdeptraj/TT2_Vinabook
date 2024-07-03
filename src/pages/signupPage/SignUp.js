@@ -93,12 +93,24 @@ export default function SignUp() {
                 <Form.Item
                   label="Họ"
                   name="ho"
+                  rules={[
+                    {
+                      required: true,
+                      message:"Not null"
+                    }
+                  ]}
                 >
                   <Input />
                 </Form.Item>
                 <Form.Item
                   label="Tên"
                   name="ten"
+                  rules={[
+                    {
+                      required: true,
+                      message:"Not null"
+                    }
+                  ]}
                 >
                   <Input />
                 </Form.Item>
